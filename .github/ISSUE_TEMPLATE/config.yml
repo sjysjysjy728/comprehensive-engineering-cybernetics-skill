@@ -1,2 +1,8 @@
 blank_issues_enabled: false
-contact_links: []
+contact_links:
+  - name: 使用交流与开放讨论
+    url: https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/discussions
+    about: 提问、分享案例，或讨论尚未形成明确工作项的想法。
+  - name: 安全漏洞（私密报告）
+    url: https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/security/advisories/new
+    about: 请通过私密渠道提交漏洞详情，不要创建公开 Issue。

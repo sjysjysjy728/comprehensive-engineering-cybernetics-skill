@@ -211,11 +211,11 @@ ci/                          发布范围和可重复校验
 
 欢迎把真实使用中的偏差反馈回来，这也是本项目闭环的一部分：
 
-- 可复现的错误、遗漏或与预期不一致的行为：进入仓库的 **Issues → New issue**，选择“缺陷报告”；
+- 可复现的错误、遗漏或与预期不一致的行为：进入 [Issues → New issue](https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/issues/new/choose)，选择“缺陷报告”；
 - 新功能、方法改进、案例需求、资源节省方案或资料授权线索：选择“功能或方法建议”；
-- 使用问题、经验交流、开放式想法和案例展示：进入 **Discussions** 发起讨论；
+- 使用问题、经验交流、开放式想法和案例展示：进入 [Discussions](https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/discussions) 发起讨论；
 - 已准备好的代码或文档修改：先阅读 [贡献指南](CONTRIBUTING.md)，再提交 Pull Request；
-- 安全漏洞：不要公开讨论细节，按 [安全策略](SECURITY.md) 使用 GitHub 私密漏洞报告。
+- 安全漏洞：不要公开讨论细节，按 [安全策略](SECURITY.md) 使用 GitHub [私密漏洞报告](https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/security/advisories/new)。
 
 Issue 表单会按反馈类型提示提供最小复现、预期结果或可验证成功标准。公开反馈中请删除密钥、个人信息、保密合同、未公开数据与漏洞利用细节。Discussions 适合尚未形成明确工作项的交流；当目标和验收条件清楚后，再转成 Issue 跟踪。
 

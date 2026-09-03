@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "ideas": [
+    {
+      "id": "I1",
+      "title": "Thresholded loop-exposure penalty",
+      "mechanism": "Gain amplifies delayed correction; once gain times delay exceeds a stability-margin threshold, excess loop exposure produces an additional recovery-cost penalty beyond separate gain and delay effects.",
+      "variables": ["gain", "delay"],
+      "directional_prediction": "Holding load and ambient fixed, recovery cost increases positively with max(0, gain*delay-2.0), while an additive gain-plus-delay model misses the high-product corner.",
+      "cheapest_test": "Fit identical low-order gain, delay, load, and ambient terms with and without the prespecified above-2.0 hinge product on training rows, then compare RMSE on dev_shift and the untouched factorial intervention split.",
+      "falsifying_observation": "Falsify for this benchmark if the hinge-product coefficient is not positive or if its RMSE lift over the matched additive rival is below 15% on dev_shift or below 20% on the factorial split."
+    },
+    {
+      "id": "I2",
+      "title": "Load-driven recovery burden",
+      "mechanism": "Exogenous load consumes recovery capacity directly, so operating load rather than controller timing is the dominant source of additional recovery cost.",
+      "variables": ["load"],
+      "directional_prediction": "At matched controller settings and environment, higher load predicts higher recovery cost with no concentrated residual penalty in high gain-delay cells.",
+      "cheapest_test": "Within repeated gain-delay cells, regress recovery cost on load and test whether a load-only extension removes systematic cell residuals on held-out rows.",
+      "falsifying_observation": "Reject this explanation if matched increases in load do not raise recovery cost or if large, repeatable residuals remain localized to high gain-delay products after load adjustment."
+    },
+    {
+      "id": "I3",
+      "title": "Environmental mismatch sensitivity",
+      "mechanism": "Recovery degrades when the centered ambient condition and pre-response vibration disagree in magnitude, indicating sensitivity to operating-condition mismatch rather than feedback-loop exposure.",
+      "variables": ["ambient", "vibration"],
+      "directional_prediction": "Recovery cost rises with abs(ambient-vibration) after controller settings and load are held fixed, and this ordering persists across gain-delay cells.",
+      "cheapest_test": "Add one absdiff(ambient,vibration) term to the same low-order controls and evaluate its held-out RMSE and residual ordering across gain-delay cells.",
+      "falsifying_observation": "Reject the mismatch account if the abs-difference coefficient is nonpositive or its held-out improvement disappears when evaluated separately within controller-setting cells."
+    }
+  ],
+  "selected_idea_id": "I1",
+  "selection_rationale": "I1 yields the sharpest independent-variation test: equal additive main effects imply no special high-product corner, whereas the threshold mechanism predicts a localized positive penalty. The comparison retains both controller main effects and the same load and ambient adjustments, so failure directly challenges the selected nonlinear structure. I2 and I3 remain distinct additive-capacity and environmental-mismatch alternatives, but neither predicts that factorial signature. The drifting legacy diagnostic is excluded from both sides.",
+  "hypothesis": {
+    "statement": "Within the tested synthetic operating range, recovery cost has a positive additional association with max(0, gain*delay-2.0) beyond raw gain, raw delay, load, and ambient; support requires the frozen RMSE lifts on both held-out splits.",
+    "mechanism_variables": ["gain", "delay"],
+    "expected_sign": "positive",
+    "public_test": {"split": "dev_shift", "metric": "relative_rmse_lift_vs_additive_rival", "operator": ">=", "threshold": 0.15},
+    "private_test": {"split": "factorial", "metric": "relative_rmse_lift_vs_additive_rival", "operator": ">=", "threshold": 0.2}
+  },
+  "rival": {
+    "statement": "A strong additive account says gain and delay contribute only separate linear effects after the same load and ambient adjustments; no thresholded joint exposure is needed.",
+    "discriminating_prediction": "The rival predicts no localized positive residual above gain*delay=2.0. The selected mechanism instead must reduce held-out RMSE by at least 15% publicly and 20% on the factorial intervention split, with a positive hinge-product coefficient."
+  },
+  "primary_model": {
+    "alpha": 1.0,
+    "terms": [
+      {"id": "T_GAIN", "op": "raw", "columns": ["gain"], "role": "support"},
+      {"id": "T_DELAY", "op": "raw", "columns": ["delay"], "role": "support"},
+      {"id": "T_LOAD", "op": "raw", "columns": ["load"], "role": "support"},
+      {"id": "T_AMBIENT", "op": "raw", "columns": ["ambient"], "role": "support"},
+      {"id": "T_LOOP_THRESHOLD", "op": "hinge_product", "columns": ["gain", "delay"], "knot": 2.0, "direction": "above", "role": "mechanism"}
+    ]
+  },
+  "public_results": {
+    "primary_rmse": 0.11910300154563654,
+    "rival_rmse": 0.39524925783617426,
+    "relative_rmse_lift_vs_additive_rival": 0.6986635668902301
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "text": "On public dev_shift, the thresholded gain-delay specification predictively outperforms its matched additive rival under the frozen RMSE rule.",
+      "type": "predictive",
+      "scope": "public_dev_shift",
+      "evidence_refs": ["public_primary_rmse", "public_rival_rmse", "public_relative_lift"],
+      "model_term_refs": ["T_GAIN", "T_DELAY", "T_LOAD", "T_AMBIENT", "T_LOOP_THRESHOLD"],
+      "modality": "supports"
+    },
+    {
+      "id": "C2",
+      "text": "The public association is consistent with an extra positive penalty only above the prespecified gain-delay product threshold; it does not establish causality.",
+      "type": "mechanistic",
+      "scope": "public_dev_shift",
+      "evidence_refs": ["public_relative_lift"],
+      "model_term_refs": ["T_LOOP_THRESHOLD"],
+      "modality": "suggests"
+    }
+  ],
+  "evidence_ceiling": {
+    "level": "predictive_association_under_observed_interventions",
+    "limitations": ["synthetic_data", "finite_sample", "tested_range_only", "single_generator", "no_external_validity"]
+  }
+}

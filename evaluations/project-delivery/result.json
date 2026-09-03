@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "evaluation_id": "project-delivery-deterministic-json-counter-merge-2026-09-03",
+  "recorded_date": "2026-09-03",
+  "status": "PASS",
+  "public_fixture_status": "regression-smoke-only",
+  "task": {
+    "name": "deterministic-json-counter-merge-repair",
+    "runtime": "CPython 3.11+ on Windows",
+    "standard_library_only": true,
+    "deterministic_checks": 52
+  },
+  "target_skill": {
+    "name": "comprehensive-engineering-cybernetics",
+    "source_commit": "7fa3bb8df271183c7aaf7d0c04a10510614f1f94",
+    "binding_scope": "historical run only; does not automatically validate later revisions"
+  },
+  "qualification": {
+    "defective_baseline": {
+      "passed": 8,
+      "failed": 44,
+      "checks": 52,
+      "bytes": 209,
+      "sha256": "e24a24ef1dc51dc3b659754bb31a340b0357dd5c7d238ba80a0c5fcf59dc1b12",
+      "included_in_public_package": false
+    },
+    "known_conforming_reference": {
+      "passed": 52,
+      "failed": 0,
+      "checks": 52,
+      "removed_before_target_run": true
+    },
+    "independent_harness_audit": "freezable"
+  },
+  "target_result": {
+    "first_complete_acceptance": {
+      "passed": 52,
+      "failed": 0,
+      "checks": 52
+    },
+    "independent_rerun": {
+      "command": "python -I -B acceptance_test.py counter_merge.py",
+      "exit_code": 0,
+      "passed": 52,
+      "failed": 0,
+      "checks": 52,
+      "recorded_duration_seconds": 2.26128
+    },
+    "rubric": {
+      "product": {
+        "score": 90,
+        "maximum": 90
+      },
+      "process": {
+        "score": 10,
+        "maximum": 10
+      },
+      "total": {
+        "score": 100,
+        "maximum": 100
+      },
+      "evaluator": "historical independent no-Skill source review plus acceptance rerun",
+      "public_reproducibility": "product acceptance is reproducible; the unpublished process trace prevents recomputing the process score"
+    }
+  },
+  "artifacts": {
+    "acceptance_test.py": {
+      "bytes": 19758,
+      "sha256": "9e25ca5b1a3135039464ba4cfd19f01614243786ebfc2f1c1d5f454d81d1b5ac"
+    },
+    "counter_merge.py": {
+      "bytes": 2025,
+      "sha256": "f8dc771c7dce05eb9e1089514329afa4dcbc6203e2f0036e5aa86168e959058d"
+    },
+    "RUN_PROMPT.md": {
+      "bytes": 1344,
+      "sha256": "bb50adaf82efd4ae76177a2da21bf9df9e62bca2f996ec1196d19d6cdb0a8d2d"
+    }
+  },
+  "isolation": {
+    "ephemeral_session": true,
+    "user_config_and_rules_ignored": true,
+    "non_target_local_skills_disabled": 48,
+    "web_allowed_by_prompt": false,
+    "subagents_allowed_by_prompt": false,
+    "editor_skill_content_allowed_by_prompt": false,
+    "book_pdf_or_ocr_allowed_by_prompt": false,
+    "sandbox": "danger-full-access",
+    "syscall_grade_access_audit": false
+  },
+  "resource_usage": {
+    "input_tokens": 410028,
+    "cached_input_tokens": 359808,
+    "non_cached_input_difference": 50220,
+    "output_tokens": 5278,
+    "reasoning_output_tokens": 869,
+    "assessment": "disproportionately high for this micro-task"
+  },
+  "interpretation": {
+    "supported": "One historical run that explicitly invoked the Skill satisfied every frozen acceptance requirement on this task and produced independently reviewed process evidence.",
+    "not_supported": [
+      "Universal effectiveness across projects",
+      "Causal superiority over a matched no-Skill agent",
+      "Forensic-grade knowledge or filesystem isolation",
+      "Future blind-test validity after publication"
+    ]
+  }
+}

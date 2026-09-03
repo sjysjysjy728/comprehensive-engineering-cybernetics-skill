@@ -47,6 +47,30 @@ REQUIRED_RELEASE_FILES = (
     "agents/openai.yaml",
     "ci/release-files.txt",
     "ci/validate_release.py",
+    "evaluations/README.md",
+    "evaluations/ai-research/RESULT.md",
+    "evaluations/ai-research/RUBRIC.md",
+    "evaluations/ai-research/RUN_PROMPT.md",
+    "evaluations/ai-research/TASK.md",
+    "evaluations/ai-research/evaluate.py",
+    "evaluations/ai-research/result.json",
+    "evaluations/ai-research/submission.json",
+    "evaluations/project-delivery/RESULT.md",
+    "evaluations/project-delivery/RUBRIC.md",
+    "evaluations/project-delivery/RUN_PROMPT.md",
+    "evaluations/project-delivery/TASK.md",
+    "evaluations/project-delivery/acceptance_test.py",
+    "evaluations/project-delivery/counter_merge.py",
+    "evaluations/project-delivery/result.json",
+    "evaluations/resource-synthesis/REPORT.md",
+    "evaluations/resource-synthesis/RESULT.md",
+    "evaluations/resource-synthesis/RUBRIC.md",
+    "evaluations/resource-synthesis/RUN_PROMPT.md",
+    "evaluations/resource-synthesis/TASK.md",
+    "evaluations/resource-synthesis/evaluate.py",
+    "evaluations/resource-synthesis/plan.json",
+    "evaluations/resource-synthesis/result.json",
+    "evaluations/run_all.py",
     "references/ai-research.md",
     "references/foundations.md",
     "references/project-delivery.md",
@@ -65,6 +89,14 @@ FORBIDDEN_SUFFIXES = {
     ".tar",
     ".tgz",
     ".zip",
+}
+
+EVALUATION_FORBIDDEN_PARTS = {
+    ".run",
+    "private",
+    "evidence",
+    "workspaces",
+    "__pycache__",
 }
 
 MARKDOWN_LINK = re.compile(r"!?\[[^\]\n]*\]\(([^)\n]+)\)")
@@ -185,6 +217,82 @@ def validate_file_policy(relative: str, size: int, findings: list[Finding]) -> N
         add(findings, "size", relative, "file exceeds the per-file release limit")
     if Path(relative).suffix.lower() in FORBIDDEN_SUFFIXES:
         add(findings, "file-type", relative, "archive or private-source file type is not allowed")
+    pure = PurePosixPath(relative)
+    if relative.startswith("evaluations/") and any(part in EVALUATION_FORBIDDEN_PARTS for part in pure.parts):
+        add(findings, "evaluation-artifact", relative, "raw or private evaluation directories are not publishable")
+    name = pure.name.lower()
+    if relative.startswith("evaluations/") and (
+        name.endswith(".pyc")
+        or name.startswith("heldout-seed.")
+        or "seed-reveal" in name
+    ):
+        add(findings, "evaluation-artifact", relative, "raw caches and held-out seed material are not publishable")
+
+
+def validate_json_document(relative: str, text: str, findings: list[Finding]) -> object | None:
+    def no_duplicates(pairs: list[tuple[str, object]]) -> dict[str, object]:
+        result: dict[str, object] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"duplicate key: {key}")
+            result[key] = value
+        return result
+
+    def reject_constant(value: str) -> object:
+        raise ValueError(f"non-finite JSON constant: {value}")
+
+    try:
+        return json.loads(text, object_pairs_hook=no_duplicates, parse_constant=reject_constant)
+    except (json.JSONDecodeError, ValueError) as error:
+        add(findings, "json", relative, f"strict JSON parse failed: {error}")
+        return None
+
+
+def validate_python_source(relative: str, text: str, findings: list[Finding]) -> None:
+    try:
+        compile(text, relative, "exec")
+    except (SyntaxError, ValueError, TypeError) as error:
+        add(findings, "python", relative, f"source does not compile: {error}")
+
+
+def validate_project_artifacts(repo: Path, documents: dict[str, object], findings: list[Finding]) -> None:
+    relative = "evaluations/project-delivery/result.json"
+    result = documents.get(relative)
+    if not isinstance(result, dict):
+        return
+    artifacts = result.get("artifacts")
+    if not isinstance(artifacts, dict):
+        add(findings, "evaluation-integrity", relative, "artifact records are missing")
+        return
+    for name in ("acceptance_test.py", "counter_merge.py", "RUN_PROMPT.md"):
+        record = artifacts.get(name)
+        path = repo / "evaluations" / "project-delivery" / name
+        if not isinstance(record, dict) or not path.is_file():
+            add(findings, "evaluation-integrity", relative, f"artifact record is missing for {name}")
+            continue
+        data = path.read_bytes()
+        if record.get("bytes") != len(data) or record.get("sha256") != hashlib.sha256(data).hexdigest():
+            add(findings, "evaluation-integrity", relative, f"artifact record does not match {name}")
+
+
+def validate_ai_skill_binding(repo: Path, documents: dict[str, object], findings: list[Finding]) -> None:
+    relative = "evaluations/ai-research/result.json"
+    result = documents.get(relative)
+    if not isinstance(result, dict):
+        return
+    binding = result.get("closed_loop_fix")
+    if not isinstance(binding, dict):
+        add(findings, "evaluation-integrity", relative, "revised Skill hash binding is missing")
+        return
+    expected = {
+        "SKILL.md": binding.get("current_skill_sha256"),
+        "references/ai-research.md": binding.get("current_ai_research_reference_sha256"),
+    }
+    for name, recorded in expected.items():
+        path = repo / PurePosixPath(name)
+        actual = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+        if recorded != actual:
+            add(findings, "evaluation-integrity", relative, f"revised Skill binding does not match {name}")
 
 
 def is_link_like(path: Path) -> bool:
@@ -411,6 +519,7 @@ def validate_workflow(text: str, findings: list[Finding]) -> None:
         "persist-credentials: false",
         "python3 -X utf8 -I -B ci/validate_release.py --self-test",
         "python3 -X utf8 -I -B ci/validate_release.py",
+        "python3 -X utf8 -I -B evaluations/run_all.py",
         "Validate, build, and revalidate deterministic archive",
         "--archive",
     )
@@ -459,6 +568,7 @@ def validate_release(repo: Path) -> tuple[list[Finding], list[str], int]:
 
     texts: dict[str, str] = {}
     blobs: dict[str, bytes] = {}
+    documents: dict[str, object] = {}
     total = 0
     for relative in entries:
         path = repo / PurePosixPath(relative)
@@ -476,6 +586,12 @@ def validate_release(repo: Path) -> tuple[list[Finding], list[str], int]:
         validate_sensitive_content(relative, text, findings)
         if relative.endswith(".md"):
             validate_links(repo, relative, text, findings)
+        if relative.endswith(".json"):
+            document = validate_json_document(relative, text, findings)
+            if document is not None:
+                documents[relative] = document
+        if relative.endswith(".py"):
+            validate_python_source(relative, text, findings)
 
     if total > MAX_RELEASE_BYTES:
         add(findings, "size", ".", "release exceeds the total size limit")
@@ -487,6 +603,8 @@ def validate_release(repo: Path) -> tuple[list[Finding], list[str], int]:
         validate_workflow(texts[".github/workflows/quality-gate.yml"], findings)
     if "LICENSE" in blobs:
         validate_license(blobs["LICENSE"], findings)
+    validate_project_artifacts(repo, documents, findings)
+    validate_ai_skill_binding(repo, documents, findings)
 
     return sorted(set(findings)), entries, total
 
@@ -604,6 +722,16 @@ def run_self_test() -> int:
     findings = []
     validate_file_policy("private-source.pdf", 1, findings)
     require(any(item.category == "file-type" for item in findings), "forbidden PDF was not detected")
+    assertions += 1
+
+    findings = []
+    validate_json_document("result.json", '{"a": 1, "a": 2, "b": NaN}\n', findings)
+    require(any(item.category == "json" for item in findings), "non-strict JSON was accepted")
+    assertions += 1
+
+    findings = []
+    validate_python_source("evaluate.py", "def broken(:\n", findings)
+    require(any(item.category == "python" for item in findings), "invalid Python source was accepted")
     assertions += 1
 
     findings = []

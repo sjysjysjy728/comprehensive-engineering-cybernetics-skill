@@ -5,6 +5,8 @@ description: "把合同或需求驱动的项目交付，以及 AI 科研的 idea
 
 # 工程控制论
 
+Runtime portability: when Windows PowerShell 5 reads this UTF-8 Skill or a linked reference, use `Get-Content -Raw -Encoding UTF8`; if the text is garbled, reread it correctly before acting.
+
 把工作对象当作一个会受到扰动、观测不完备且控制能力有限的动态系统。先确定真正目标与可验证误差，再用实际反馈修正行动；不要把控制论术语当作完成证据。
 
 这是以《工程控制论》第三版为主要理论依据、结合实际 Agent 工作流重新设计的原创操作框架，不是原书摘录、官方阐释或第三方 skill 的拼接。需要核对理论来源或现代映射边界时，读 [理论依据与边界](references/foundations.md)。

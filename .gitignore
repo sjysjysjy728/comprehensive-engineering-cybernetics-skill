@@ -22,3 +22,11 @@ downloads/
 *.pem
 *.key
 cookies*.txt
+
+# Keep raw evaluation workspaces and once-secret fixtures local.
+evaluations/**/.run/
+evaluations/**/private/
+evaluations/**/evidence/
+evaluations/**/workspaces/
+evaluations/**/heldout-seed.*
+evaluations/**/*seed-reveal*

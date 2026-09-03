@@ -33,6 +33,7 @@
 ```bash
 python -X utf8 -I -B ci/validate_release.py --self-test
 python -X utf8 -I -B ci/validate_release.py --repo . --skill .
+python -X utf8 -I -B evaluations/run_all.py
 ```
 
 同时人工确认：

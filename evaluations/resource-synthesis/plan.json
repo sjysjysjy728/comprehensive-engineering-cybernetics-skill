@@ -1,0 +1,14 @@
+{
+  "schema_version": "weak3-plan-v1",
+  "calls": [
+    {"id": "site-call", "resource": "site_v1"},
+    {"id": "mode-call", "resource": "mode_v1"},
+    {"id": "action-guard-call", "resource": "action_guard_v1"}
+  ],
+  "fields": {
+    "site": {"call": "site-call", "field": "site"},
+    "mode": {"call": "mode-call", "field": "mode"},
+    "action": {"call": "action-guard-call", "field": "action"}
+  },
+  "abstain_if": {"op": "or_all_alarms"}
+}

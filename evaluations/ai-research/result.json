@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.0-public",
+  "benchmark_id": "CEC-MiniResearch-1",
+  "evaluation_date": "2026-09-03",
+  "fixture_state": "historical held-out results disclosed; public regression audit only",
+  "public_artifact": {
+    "kind": "revised-Skill condition example from targeted regression",
+    "submission_sha256": "51ca953d0eee5390b35657a9538a67853fe5bc797909e3d356c302208ceece0e",
+    "term_count": 5,
+    "weighted_cost": 7,
+    "nested_main_effects_verified": true
+  },
+  "initial_ab": {
+    "design": "matched candidate task; Q=no-Skill baseline, R=target Skill; 15 fail-closed machine gates plus two-order blind judgment",
+    "source_commit_context": "7fa3bb8df271183c7aaf7d0c04a10510614f1f94",
+    "source_commit_provenance": "repository HEAD recorded in the contemporaneous work log; not embedded in the initial candidate freeze",
+    "cryptographically_bound_in_initial_evidence": false,
+    "Q_no_skill": {
+      "machine_gates": {
+        "passed": 15,
+        "total": 15
+      },
+      "hypothesis_verdict": "supported",
+      "complexity": {
+        "term_count": 5,
+        "weighted_cost": 7
+      },
+      "metrics": {
+        "public": {
+          "primary_rmse": 0.11910300154563654,
+          "rival_rmse": 0.39524925783617426,
+          "relative_rmse_lift_vs_additive_rival": 0.6986635668902301
+        },
+        "factorial": {
+          "rmse": 0.1238922934297558,
+          "mae": 0.10014374158757812,
+          "nrmse": 0.11101131021753105,
+          "baseline_rmse": 1.12389468048537,
+          "baseline_improvement": 0.8897652105833874,
+          "rival_rmse": 0.7067299662142871,
+          "additive_rival_lift": 0.8246964196333646
+        },
+        "shadow": {
+          "rmse": 0.13431351209737938,
+          "mae": 0.1129212135134375,
+          "nrmse": 0.15920193236379035,
+          "baseline_rmse": 0.8466875567758293,
+          "baseline_improvement": 0.8413659076214102
+        },
+        "boundary": {
+          "rmse": 0.12427991028904332,
+          "mae": 0.0995371202284375,
+          "nrmse": 0.36873750146697953,
+          "baseline_rmse": 0.40149867506228554,
+          "baseline_improvement": 0.6904599740714874
+        },
+        "declared_direction_coefficient": 0.6120728741494618
+      },
+      "tokens": {
+        "input": 307419,
+        "cached_input": 285824,
+        "output": 6993,
+        "reasoning_output": 848
+      }
+    },
+    "R_target_skill": {
+      "machine_gates": {
+        "passed": 15,
+        "total": 15
+      },
+      "hypothesis_verdict": "supported",
+      "complexity": {
+        "term_count": 3,
+        "weighted_cost": 5
+      },
+      "metrics": {
+        "public": {
+          "primary_rmse": 0.1332353844878441,
+          "rival_rmse": 0.3952492578361741,
+          "relative_rmse_lift_vs_additive_rival": 0.6629079451856466
+        },
+        "factorial": {
+          "rmse": 0.1386833227299649,
+          "mae": 0.11559788811226562,
+          "nrmse": 0.12426452796519559,
+          "baseline_rmse": 1.12389468048537,
+          "baseline_improvement": 0.8766046986982157,
+          "rival_rmse": 0.706729966214287,
+          "additive_rival_lift": 0.8037675924896117
+        },
+        "shadow": {
+          "rmse": 0.1571580405500086,
+          "mae": 0.13401681981583333,
+          "nrmse": 0.18627957344997798,
+          "baseline_rmse": 0.8466875567758293,
+          "baseline_improvement": 0.8143848468159098
+        },
+        "boundary": {
+          "rmse": 0.12601401830521772,
+          "mae": 0.10054971832765626,
+          "nrmse": 0.3738825861043184,
+          "baseline_rmse": 0.40149867506228554,
+          "baseline_improvement": 0.6861408863038743
+        },
+        "declared_direction_coefficient": 0.6530620847909291
+      },
+      "tokens": {
+        "input": 561871,
+        "cached_input": 515328,
+        "output": 7806,
+        "reasoning_output": 1054
+      }
+    },
+    "resource_comparison": {
+      "target_minus_baseline_input_tokens": 254452,
+      "target_input_token_increase_percent": 82.770421,
+      "end_to_end_resource_savings_supported": false,
+      "note": "The target used fewer model terms, but model-term economy is not end-to-end authoring economy."
+    },
+    "blind_judgment": {
+      "orders": {
+        "forward": [
+          "Q",
+          "R"
+        ],
+        "reverse": [
+          "R",
+          "Q"
+        ]
+      },
+      "valid_scores_by_candidate": {
+        "Q": {
+          "forward": 100,
+          "reverse": 100,
+          "mean": 100
+        },
+        "R": {
+          "forward": 66,
+          "reverse": 74,
+          "mean": 70
+        }
+      },
+      "preferences": {
+        "forward": "Q",
+        "reverse": "Q"
+      },
+      "mean_margin": 30,
+      "position_sensitivity_delta": {
+        "Q": 0,
+        "R": 8
+      },
+      "position_sensitive": false,
+      "winner": "Q"
+    },
+    "comparative_verdict": {
+      "absolute_machine_validity": "both candidates passed 15/15 and were supported inside the frozen synthetic benchmark",
+      "objective_comparison": "Q no-Skill baseline was better on every reported predictive metric",
+      "subjective_comparison": "Q no-Skill baseline won both candidate orders, 100 versus 70 mean",
+      "skill_quality_advantage_supported": false
+    },
+    "protocol_deviations": [
+      {
+        "id": "condition-bearing-path-labels",
+        "detail": "Initial candidate paths used baseline and target names rather than neutral labels."
+      },
+      {
+        "id": "powershell5-utf8-mojibake",
+        "detail": "The target trace read UTF-8 Skill text without an explicit PowerShell 5 encoding, producing severe garbling and likely impairing semantic use."
+      },
+      {
+        "id": "non-nested-mechanism-comparison",
+        "detail": "The target primary model omitted raw gain and delay while claiming a threshold effect beyond additive main effects; its automatically augmented rival was therefore non-nested and the claim-to-model comparison was unfair."
+      },
+      {
+        "id": "public-evaluator-path-workaround",
+        "detail": "The literal isolated evaluator command could not import its sibling helper. Both conditions used an explicit path workaround; the target also made one exploratory non-isolated Python invocation."
+      },
+      {
+        "id": "attempt-one-not-retained",
+        "detail": "The retained candidate traces were second attempts; first-attempt traces were not retained."
+      },
+      {
+        "id": "runtime-equivalence-not-forensic",
+        "detail": "Same model, decoding seed, CPU, memory and output caps were not established with forensic proof."
+      },
+      {
+        "id": "no-syscall-grade-isolation",
+        "detail": "Prompt and runner controls were used, but no system-call-level proof of network and filesystem isolation was collected."
+      },
+      {
+        "id": "same-family-judges",
+        "detail": "Blind judges were fresh contexts but from the same Codex model family, not independent humans or a different model family."
+      }
+    ]
+  },
+  "closed_loop_fix": {
+    "trigger": "Initial blind feedback located a UTF-8 portability failure and a claim-to-model hierarchy mismatch.",
+    "current_skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+    "current_ai_research_reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c",
+    "changes": [
+      "Added an explicit Windows PowerShell 5 UTF-8 portability instruction and mandatory reread on garbling.",
+      "Added a structural-hierarchy gate requiring matched lower-order main effects for incremental high-order mechanism claims."
+    ],
+    "evidence_status": "post-test correction; assessed only by a benchmark-informed targeted regression"
+  },
+  "targeted_regression": {
+    "design": "neutral Q/R paths; Q=no Skill, R=revised target Skill; new candidate generations and a separately committed held-out fixture",
+    "independence_status": "benchmark-informed targeted regression, not independent validation",
+    "Q_no_skill": {
+      "machine_gates": {
+        "passed": 15,
+        "total": 15
+      },
+      "hypothesis_verdict": "supported",
+      "complexity": {
+        "term_count": 5,
+        "weighted_cost": 7
+      },
+      "tokens": {
+        "input": 353634,
+        "cached_input": 329472,
+        "output": 9259,
+        "reasoning_output": 1079
+      }
+    },
+    "R_revised_skill": {
+      "machine_gates": {
+        "passed": 15,
+        "total": 15
+      },
+      "hypothesis_verdict": "supported",
+      "complexity": {
+        "term_count": 5,
+        "weighted_cost": 7
+      },
+      "tokens": {
+        "input": 552310,
+        "cached_input": 510848,
+        "output": 7800,
+        "reasoning_output": 1056
+      }
+    },
+    "identical_machine_metrics": {
+      "public": {
+        "primary_rmse": 0.11910300154563654,
+        "rival_rmse": 0.39524925783617426,
+        "relative_rmse_lift_vs_additive_rival": 0.6986635668902301
+      },
+      "factorial": {
+        "rmse": 0.11551703091817248,
+        "mae": 0.09193590001421877,
+        "nrmse": 0.10329295109679625,
+        "baseline_rmse": 1.1256578568730933,
+        "baseline_improvement": 0.8973782040316751,
+        "rival_rmse": 0.702730994248741,
+        "additive_rival_lift": 0.8356169973096652
+      },
+      "shadow": {
+        "rmse": 0.12274207191712698,
+        "mae": 0.09827050082666666,
+        "nrmse": 0.12891219125043282,
+        "baseline_rmse": 0.952414633701912,
+        "baseline_improvement": 0.871125382187751
+      },
+      "boundary": {
+        "rmse": 0.12055033947704347,
+        "mae": 0.09775127909609374,
+        "nrmse": 0.3597009580854465,
+        "baseline_rmse": 0.40834973048599504,
+        "baseline_improvement": 0.7047865335099617
+      },
+      "declared_direction_coefficient": 0.6120728741494618
+    },
+    "resource_comparison": {
+      "R_minus_Q_input_tokens": 198676,
+      "R_input_token_increase_percent": 56.18125,
+      "end_to_end_resource_savings_supported": false
+    },
+    "blind_judgment": {
+      "orders": {
+        "forward": [
+          "Q",
+          "R"
+        ],
+        "reverse": [
+          "R",
+          "Q"
+        ]
+      },
+      "discarded_forward_attempt": {
+        "dimension_scores": {
+          "first_Q": {
+            "mechanistic_insight_and_distinctness": 4,
+            "fair_rival_and_falsifiability": 4,
+            "heldout_and_ablation_logic": 4,
+            "economy_and_claim_to_model_coherence": 4,
+            "epistemic_calibration": 5
+          },
+          "second_R": {
+            "mechanistic_insight_and_distinctness": 4,
+            "fair_rival_and_falsifiability": 5,
+            "heldout_and_ablation_logic": 5,
+            "economy_and_claim_to_model_coherence": 5,
+            "epistemic_calibration": 5
+          }
+        },
+        "self_reported_totals": {
+          "first_Q": 83,
+          "second_R": 94
+        },
+        "recomputed_totals": {
+          "first_Q": 82,
+          "second_R": 94
+        },
+        "accepted": false,
+        "reason": "first total disagreed with weighted dimension recomputation; fail-closed rerun"
+      },
+      "valid_scores_by_candidate": {
+        "Q": {
+          "forward": 96,
+          "reverse": 95,
+          "mean": 95.5
+        },
+        "R": {
+          "forward": 96,
+          "reverse": 100,
+          "mean": 98
+        }
+      },
+      "preferences": {
+        "forward": "tie",
+        "reverse": "R"
+      },
+      "position_sensitivity_delta": {
+        "Q": 1,
+        "R": 4
+      },
+      "position_sensitive": false,
+      "winner": "tie",
+      "decision_reason": "Preferences were inconsistent across orders, so the frozen rule returns tie despite R's 98.0 versus Q's 95.5 mean."
+    },
+    "verdict": {
+      "utf8_readability_observed": true,
+      "nested_main_effects_observed": true,
+      "machine_metric_difference": 0,
+      "comparative_quality_winner": "tie",
+      "skill_quality_advantage_supported": false,
+      "end_to_end_resource_savings_supported": false
+    }
+  },
+  "interpretation": {
+    "supported": [
+      "The initial Skill candidate and no-Skill baseline both produced runnable, traceable submissions that passed all 15 frozen machine gates in this synthetic benchmark.",
+      "The initial negative comparison identified actionable UTF-8 and model-hierarchy faults, and the revised Skill condition produced a properly nested five-term model in the targeted regression.",
+      "The revised example submission is structurally auditable and its recorded predictive metrics satisfy the frozen synthetic-task thresholds."
+    ],
+    "not_supported": [
+      "A quality advantage for the Skill over a matched no-Skill condition.",
+      "End-to-end token or resource savings from using the Skill.",
+      "Causal or mechanistic proof, external validity, distributional generalization or production effectiveness.",
+      "An independent post-fix confirmation: the targeted regression was designed after inspecting the initial failure."
+    ],
+    "limitations": [
+      "single synthetic task and single data generator",
+      "predictive association only",
+      "same Codex model family used for candidates and blind judges",
+      "no system-call-grade isolation proof",
+      "held-out artifacts are disclosed after evaluation and are no longer hidden",
+      "initial A/B and targeted regression must not be pooled into a causal estimate"
+    ]
+  },
+  "public_audit_scope": "evaluate.py validates public JSON structure, submission hash, model nesting and cost, recorded gate counts, exact key metrics, token arithmetic, blind-score arithmetic and verdicts; it does not rerun an LLM, frozen model code or hidden data"
+}

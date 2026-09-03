@@ -1,0 +1,469 @@
+{
+  "authoring_scope": {
+    "causal_claim": "none versus a no-Skill authoring baseline",
+    "condition": "target Skill only; other installed Skills disabled by the isolated runner"
+  },
+  "benchmark_design": {
+    "balanced_buckets_per_shard": 20,
+    "fixed_error_buckets": true,
+    "interpretation": "deterministic structural proof and regression, not distributional generalization"
+  },
+  "benchmark_id": "weak3-structural-gain-v1",
+  "checks": {
+    "guard": {
+      "common_cause_containment": true,
+      "coverage_in_0.94_to_0.96": true,
+      "guard_removal_unsafe_delta_at_least_0.90": true,
+      "no_safety_regression_vs_safest_singleton": true,
+      "zero_false_abstentions_outside_common": true,
+      "zero_unsafe_common_emissions": true
+    },
+    "hard": {
+      "budget_no_more_than_3": true,
+      "deterministic_replay": true,
+      "exact_at_least_0.75": true,
+      "minimum_raw_field_at_least_0.88": true,
+      "schema_and_field_provenance": true,
+      "selective_exact_at_least_0.83": true
+    },
+    "structural": {
+      "all_27_source_vectors_enumerated": true,
+      "all_drop_one_ablations": true,
+      "all_role_substitutions": true,
+      "all_singleton_and_shard_gains": true,
+      "candidate_uses_three_distinct_resources": true,
+      "error_overlap_measured": true,
+      "minimum_passing_width_is_3": true,
+      "resource_depth_is_1": true
+    }
+  },
+  "comparisons": {
+    "action_guard_v1": {
+      "exact_gain": {
+        "denominator": 2000,
+        "fraction": "9/20",
+        "numerator": 900,
+        "value": 0.45
+      },
+      "minimum_shard_gain": {
+        "denominator": 200,
+        "fraction": "9/20",
+        "numerator": 90,
+        "value": 0.45
+      },
+      "paired_losses": {
+        "denominator": 2000,
+        "fraction": "1/10",
+        "numerator": 200,
+        "value": 0.1
+      },
+      "paired_net": {
+        "denominator": 2000,
+        "fraction": "9/20",
+        "numerator": 900,
+        "value": 0.45
+      },
+      "paired_wins": {
+        "denominator": 2000,
+        "fraction": "11/20",
+        "numerator": 1100,
+        "value": 0.55
+      },
+      "passes": true,
+      "shards_passing_min_gain": "10/10"
+    },
+    "mode_v1": {
+      "exact_gain": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "minimum_shard_gain": {
+        "denominator": 200,
+        "fraction": "2/5",
+        "numerator": 80,
+        "value": 0.4
+      },
+      "paired_losses": {
+        "denominator": 2000,
+        "fraction": "1/20",
+        "numerator": 100,
+        "value": 0.05
+      },
+      "paired_net": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "paired_wins": {
+        "denominator": 2000,
+        "fraction": "9/20",
+        "numerator": 900,
+        "value": 0.45
+      },
+      "passes": true,
+      "shards_passing_min_gain": "10/10"
+    },
+    "site_v1": {
+      "exact_gain": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "minimum_shard_gain": {
+        "denominator": 200,
+        "fraction": "2/5",
+        "numerator": 80,
+        "value": 0.4
+      },
+      "paired_losses": {
+        "denominator": 2000,
+        "fraction": "0",
+        "numerator": 0,
+        "value": 0.0
+      },
+      "paired_net": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "paired_wins": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "passes": true,
+      "shards_passing_min_gain": "10/10"
+    }
+  },
+  "dataset": {
+    "buckets": 20,
+    "items": 2000,
+    "items_per_bucket": 100,
+    "shards": 10
+  },
+  "evaluation_date": "2026-09-03",
+  "fixture_state": "separate deterministic public regression fixture; original held-out seed and reveal excluded",
+  "guards": {
+    "common_cause_containment": {
+      "denominator": 100,
+      "fraction": "1",
+      "numerator": 100,
+      "value": 1.0
+    },
+    "false_abstain_noncommon": {
+      "denominator": 1900,
+      "fraction": "0",
+      "numerator": 0,
+      "value": 0.0
+    },
+    "guard_removal_unsafe_delta": {
+      "denominator": 1,
+      "fraction": "1",
+      "numerator": 1,
+      "value": 1.0
+    },
+    "unsafe_common": {
+      "denominator": 100,
+      "fraction": "0",
+      "numerator": 0,
+      "value": 0.0
+    }
+  },
+  "integrity": {
+    "dataset_balanced": true,
+    "frozen_plan_sha256": "21115adbdf51d1fd92a8209d654beb416db31dd7abe4e07b0186afd62c063f9d",
+    "frozen_plan_verified": true,
+    "historical_seed_commitment_sha256": "d7ece7f9ab80bbb108f19dbbe0a751cd42c7bfc96dcf0ada7acf65b03b590886",
+    "historical_seed_commitment_status": "verified during the original private evaluation; reveal excluded from the public package",
+    "independent_recount_match": true,
+    "public_regression_seed_derivation": "sha256(UTF8('weak3-structural-gain-v1/public-regression/v1'))",
+    "public_regression_seed_sha256": "5ac45bcf55ed661ccaccf2da740e3987e6f2a7abb1cf83bca2bf4928b148ba8d"
+  },
+  "matched_budget_singletons": {
+    "action_guard_v1": {
+      "cost": 3,
+      "exact": {
+        "denominator": 2000,
+        "fraction": "7/20",
+        "numerator": 700,
+        "value": 0.35
+      }
+    },
+    "mode_v1": {
+      "cost": 3,
+      "exact": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      }
+    },
+    "site_v1": {
+      "cost": 3,
+      "exact": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      }
+    }
+  },
+  "reason_codes": [],
+  "schema_version": "1.0-public",
+  "status": "GAIN-VERIFIED",
+  "interpretation": {
+    "not_supported": [
+      "Causal superiority over a matched no-Skill authoring condition",
+      "Benefit from arbitrary weak-resource combinations",
+      "Distributional or production generalization"
+    ],
+    "supported": "The frozen plan has objective equal-budget structural gain inside this benchmark."
+  },
+  "structural": {
+    "ablations": {
+      "drop_action_guard": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "drop_mode": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "drop_site": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "3/5",
+          "numerator": 1200,
+          "value": 0.6
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 5,
+          "fraction": "1/5",
+          "numerator": 1,
+          "value": 0.2
+        }
+      }
+    },
+    "best_exact_by_distinct_resource_count": {
+      "1": {
+        "denominator": 2000,
+        "fraction": "2/5",
+        "numerator": 800,
+        "value": 0.4
+      },
+      "2": {
+        "denominator": 2000,
+        "fraction": "3/5",
+        "numerator": 1200,
+        "value": 0.6
+      },
+      "3": {
+        "denominator": 2000,
+        "fraction": "4/5",
+        "numerator": 1600,
+        "value": 0.8
+      }
+    },
+    "minimum_passing_width": 3,
+    "plans_enumerated": 27,
+    "selected_specialist_error_overlap": {
+      "error_counts": {
+        "action_guard_v1": 200,
+        "mode_v1": 200,
+        "site_v1": 200
+      },
+      "pairwise_jaccard": {
+        "mode_v1|action_guard_v1": {
+          "denominator": 300,
+          "fraction": "1/3",
+          "numerator": 100,
+          "value": 0.3333333333333333
+        },
+        "site_v1|action_guard_v1": {
+          "denominator": 300,
+          "fraction": "1/3",
+          "numerator": 100,
+          "value": 0.3333333333333333
+        },
+        "site_v1|mode_v1": {
+          "denominator": 300,
+          "fraction": "1/3",
+          "numerator": 100,
+          "value": 0.3333333333333333
+        }
+      },
+      "triple_intersection": {
+        "denominator": 2000,
+        "fraction": "1/20",
+        "numerator": 100,
+        "value": 0.05
+      },
+      "union": {
+        "denominator": 2000,
+        "fraction": "1/5",
+        "numerator": 400,
+        "value": 0.2
+      }
+    },
+    "substitutions": {
+      "action_guard_to_mode": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "action_guard_to_site": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "mode_to_action_guard": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "mode_to_site": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "site_to_action_guard": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "11/20",
+          "numerator": 1100,
+          "value": 0.55
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 4,
+          "fraction": "1/4",
+          "numerator": 1,
+          "value": 0.25
+        }
+      },
+      "site_to_mode": {
+        "exact": {
+          "denominator": 2000,
+          "fraction": "3/5",
+          "numerator": 1200,
+          "value": 0.6
+        },
+        "passes": true,
+        "target_exact_gain": {
+          "denominator": 5,
+          "fraction": "1/5",
+          "numerator": 1,
+          "value": 0.2
+        }
+      }
+    }
+  },
+  "target": {
+    "cost": 3,
+    "coverage": {
+      "denominator": 2000,
+      "fraction": "19/20",
+      "numerator": 1900,
+      "value": 0.95
+    },
+    "depth": 1,
+    "exact": {
+      "denominator": 2000,
+      "fraction": "4/5",
+      "numerator": 1600,
+      "value": 0.8
+    },
+    "minimum_raw_field_accuracy": {
+      "denominator": 2000,
+      "fraction": "9/10",
+      "numerator": 1800,
+      "value": 0.9
+    },
+    "selective_exact": {
+      "denominator": 1900,
+      "fraction": "16/19",
+      "numerator": 1600,
+      "value": 0.8421052631578947
+    },
+    "source_vector": [
+      "site_v1",
+      "mode_v1",
+      "action_guard_v1"
+    ]
+  },
+  "target_skill": {
+    "cryptographically_bound_in_original_evidence": false,
+    "name": "comprehensive-engineering-cybernetics",
+    "scope": "repository HEAD recorded in the work log; the original frozen evidence did not embed this commit",
+    "source_commit_context": "7fa3bb8df271183c7aaf7d0c04a10510614f1f94"
+  }
+}

@@ -1,0 +1,78 @@
+name: 缺陷报告
+description: 报告可复现的错误、遗漏或与预期不一致的行为
+title: "[缺陷] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。请只提供复现问题所需的信息，不要粘贴保密合同、未公开数据、密钥或个人信息。
+
+        **安全漏洞不要在公开 Issue 中披露。** 请按照仓库根目录的 `SECURITY.md`，优先使用 GitHub Security Advisory 私密报告。
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题所在部分
+      description: 请选择最接近的一项。
+      options:
+        - Skill 激活或适用性判断
+        - 项目交付流程
+        - AI 科研流程
+        - 资源综合与节省
+        - 文档、链接或示例
+        - 发布校验
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本或提交
+      description: 填写版本号、分支名或 commit；不确定时可写“未知”。
+      placeholder: 例如：v1.0.0、main 或 commit 哈希
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 问题概述
+      description: 简要说明发生了什么，以及它为什么是一个问题。
+      placeholder: 清楚描述实际行为及其影响。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现步骤
+      description: 请给出尽可能短、可重复的输入与操作步骤；必要时先匿名化。
+      placeholder: |
+        1. 使用以下类型的任务或输入……
+        2. 执行……
+        3. 观察到……
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+      description: 你认为正确的行为或输出应当是什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 补充环境与证据
+      description: 可选。填写所用客户端/模型、相关日志、截图或最小示例；请先删除敏感信息。
+
+  - type: checkboxes
+    id: public_information
+    attributes:
+      label: 公开信息确认
+      options:
+        - label: 我确认本 Issue 不包含漏洞利用细节、凭据、个人信息、保密材料或其他不宜公开的内容。
+          required: true

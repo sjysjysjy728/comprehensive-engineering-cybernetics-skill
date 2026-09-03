@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Never publish preparation materials or private source corpora.
+materials/
+repositories/
+downloads/
+.planning/
+*.pdf
+*.zip
+*.7z
+*.rar
+*.pem
+*.key
+cookies*.txt

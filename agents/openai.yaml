@@ -1,0 +1,4 @@
+interface:
+  display_name: "最全面工程控制论 Skill：面向工程与 AI 领域科研"
+  short_description: "用反馈闭环和资源综合完成项目与 AI 科研，守住指标与实现保真"
+  default_prompt: "使用 $comprehensive-engineering-cybernetics，把我的合同项目或 AI 科研任务转成可验证、不静默降级的受控闭环，并在必要时组织现有资源、检验是否产生结构增益。"

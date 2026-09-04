@@ -14,6 +14,11 @@ EVALUATIONS = (
         ("--check", "result.json"),
     ),
     (
+        "ai-ideation/behavioral-8x3",
+        "evaluate.py",
+        ("--check", "result.json"),
+    ),
+    (
         "project-delivery",
         "acceptance_test.py",
         ("counter_merge.py",),

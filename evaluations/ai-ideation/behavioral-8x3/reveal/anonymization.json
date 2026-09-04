@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "created_before_generation": true,
+  "task_mappings": {
+    "IDEA-01": {"X": "current", "Y": "no_skill", "Z": "legacy"},
+    "IDEA-02": {"X": "legacy", "Y": "current", "Z": "no_skill"},
+    "IDEA-03": {"X": "no_skill", "Y": "legacy", "Z": "current"},
+    "IDEA-04": {"X": "current", "Y": "legacy", "Z": "no_skill"},
+    "IDEA-05": {"X": "no_skill", "Y": "current", "Z": "legacy"},
+    "IDEA-06": {"X": "legacy", "Y": "no_skill", "Z": "current"},
+    "IDEA-07": {"X": "current", "Y": "no_skill", "Z": "legacy"},
+    "IDEA-08": {"X": "legacy", "Y": "current", "Z": "no_skill"}
+  },
+  "judge_orders": {
+    "forward": ["X", "Y", "Z"],
+    "reverse": ["Z", "Y", "X"]
+  }
+}

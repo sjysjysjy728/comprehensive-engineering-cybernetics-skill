@@ -1,0 +1,1930 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "CEC-AIIdea-8x3-Dev-1",
+  "aggregation_version": "1.0",
+  "status": "complete",
+  "evidence_ceiling": "exploratory comparison on eight frozen paired development tasks; not a general advantage proof",
+  "integrity": {
+    "all_checks_passed": true,
+    "preregistered_commitments_verified": {
+      "PROTOCOL.md": "b0c05a83d9efca272ce53b14840535297542e809d2abecf452ed14caa6342d82",
+      "RUBRIC.md": "4129539380b45ff712a62e9afef805c434707ee0f9dacc133dd492a1a8bd1255",
+      "prompts/CANDIDATE.md": "a6dcb22dfff736f2bafb1670803d65420270659bb7d72b8085d3c704a6e5aeb0",
+      "prompts/JUDGE.md": "cd0f5c4e1842dd12dca2415952d89707568f4f3bb3383d0bebee849034c0957c",
+      "TASKS.md": "61cde0ec150c5bda50f6e29e6524140239c06719bd2bc02d1ee0f32d0f6178c6",
+      "EVALUATOR_KEYS.md": "9705a3d1985e12434ff22cd041757289e01230c02527a975c406d0986bab8637",
+      "anonymization.json": "79c4edcb85ae5711636d74b2c0f0015ad64e60452c65fbf79eceffddb340183d",
+      "current/SKILL.md": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+      "current/references/ai-ideation.md": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+    },
+    "candidate_raw_hashes_verified": {
+      "IDEA-01": {
+        "no_skill": "c00c739305dea1bab13b0edd861b54a8adb72fab72bac58a99af3242867c6817",
+        "legacy": "de51a8887a2e3fd86c05f5fb3560552d7c8d7a6b03e82781a0b04405019a9aaa",
+        "current": "59be7f03de4dc6f97e33af7adfd9d596e77eb9da1ba3a2c105e88077cd653b7b"
+      },
+      "IDEA-02": {
+        "no_skill": "aa9ea5ef432a10def3fe75d44302160e2f6acd96bc6896daa761b1fb845e24ef",
+        "legacy": "12e956b215e2e65c757ef3e5df34f0cebdcb0d8b56e9f98db00d76aa7db42d72",
+        "current": "2f223928a2f2e15d114df2079cff6c79235bf3d82665d23a12e5cd0326197d44"
+      },
+      "IDEA-03": {
+        "no_skill": "3a062cc760eefbf72e7a960d9544a73625a92417b8da60b6783c57ee0710ffd8",
+        "legacy": "66280daebdb4109fe61c26a787d26bcad0468d865253307b74abf684fba26e47",
+        "current": "689c84eb70a1da0e0a1ae7552376efed97729131c90fa7ca81aeb4181a9d9ac6"
+      },
+      "IDEA-04": {
+        "no_skill": "cfd652eb2ddd8b8dfd8ac27c2e0df28909e634785cfe580fc12cd9cd1480dbc0",
+        "legacy": "15b7cb830cdfb7f07060c3384f62696d9083a8ff0e4b83f0c7b2b04de75f19f4",
+        "current": "e6ba2d88853e1457397b8299c97b9be11e8a8537a5fa9f38c425cf0ca80c6d28"
+      },
+      "IDEA-05": {
+        "no_skill": "9cbe6c46811a61baa6be5cd04808d3c732b6ab45f2ef84a948eb3b68c8c5d1d1",
+        "legacy": "2e06d386e53f4fc2d6b81fdda374b1e605b169761d44c29ffe5b3700c14394c8",
+        "current": "f203d6f82b0fbe9564753adf80e76b4909a069b782441dd0756e0a6e4be3973a"
+      },
+      "IDEA-06": {
+        "no_skill": "e515147929776482437d7adb842ac2bdd13a671da903f5024f541aac980fe214",
+        "legacy": "991cb55835fe2f40a2ca658d8641f79388c74c2381c21450e95a937cdefd9dbc",
+        "current": "f22c51314cfb561369ec2a87514683cbe1676dc5fcd4469904ca9e93b3026ce5"
+      },
+      "IDEA-07": {
+        "no_skill": "70874bb43922bc7d707549fc69ca6ca4042bc5104ca51b5166ceb7111c22dc75",
+        "legacy": "0a4e6c1fe4001ef7b09f1613bbc3bdc83a074e73d9bed7811593cb3852235bb3",
+        "current": "ad1c0c802c1b749201a9abf487ec8e0c359b1d40d0962b603ba02cd7e89e4fa1"
+      },
+      "IDEA-08": {
+        "no_skill": "569b87f1c86deb4b775ab0e61ab960c023fec08e0ef4e679bc7995767bd6e7d1",
+        "legacy": "8d8d555ffe3880c9333155456b04e1567c6cbc0ff98cec2f5d27722bdd2b18c6",
+        "current": "2f69cc2bfaae51bf5d5adaae05525fb9e91770ed196c87cfda68839321c39182"
+      }
+    },
+    "judgment_raw_hashes_verified": {
+      "IDEA-01": {
+        "forward": "02fd487b7600ecfb8dbc4b28aabd120cb598876bc813b44eba963c2cbef13eb4",
+        "reverse": "af0c376891c0ee7804e0a540aadac857302064faace1837c2de9aee04d889a0e"
+      },
+      "IDEA-02": {
+        "forward": "ae40d5416c45f7dfc206b8c1d5596ff12ba6f69272bb437c3d7820e859356bf5",
+        "reverse": "2eef02d3e9ead21b4b91c8371b209a9a021f3f880983537d4d819f33fa780a8e"
+      },
+      "IDEA-03": {
+        "forward": "0f5475ec519f7b6459cbf3f605aabe74f8ba510b4c7e840f9c09d72c64fe4bf8",
+        "reverse": "65f59f39fcc1a87d5f18727f0def2093fd6d743ae142fa676db0dc7aa81b1043"
+      },
+      "IDEA-04": {
+        "forward": "dbcb30e038fbb6a783428d5e827c707532e38a987439fc60c7cb3253e3dcfeed",
+        "reverse": "15bdaee8c3e4b5bc61c8b03e34baf01deedb0a269c0f3d6735f082a1325a2d5a"
+      },
+      "IDEA-05": {
+        "forward": "1e493a3402eb3b1b2d17919366ce68ec48e209a676d8d9486c5193dfe06d96bc",
+        "reverse": "0aba1c0e0d0545f93886060a4362602cd7b88d7bb966ba2c2bbad26012a03f2c"
+      },
+      "IDEA-06": {
+        "forward": "6eb1927a1ccbc1196c43c979f4232fb367f8bf4a5eb7ab8eec70ee4e9727aa5d",
+        "reverse": "7bc273dc0a5abe73d63bdef254dbc5297ccbf57d8569691efffc3465e5b49948"
+      },
+      "IDEA-07": {
+        "forward": "0fd28744909c2e79d7992a14072fb563cc48e480d1d043fe606a8299ad420d78",
+        "reverse": "fd8a6d4d861ece3137875f7a460e984b1bb3c4e8c8bca51e0c2baf49725a2408"
+      },
+      "IDEA-08": {
+        "forward": "2cfdc62d0afe514823a1b0d55d9c228ac86faa07fa9b6b854524b6730f477271",
+        "reverse": "2b7ad38cc072ded9a5a8d0ce9e942a9058552fe3216d683db7a46ecd65a35070"
+      }
+    },
+    "candidate_source_freeze": {
+      "declared_sha256": "984eca608a46ea3895bcae23963aec7f375383e2b6c0e9277af3b8681975ad70",
+      "verification": "not_independently_verifiable_from_public_release; source manifest is not published"
+    },
+    "judgment_source_freeze": {
+      "declared_sha256": "273707fd0b4d935092987b4361bb9b5fcb9d0e17b47d0ecff3775ddfb05e8297",
+      "verification": "not_independently_verifiable_from_public_release; source manifest is not published"
+    },
+    "legacy_bundle": {
+      "declared_commit_and_hashes_match_preregistration": true,
+      "historical_bytes_verified_by_this_evaluator": false
+    },
+    "candidate_outputs_verified": 24,
+    "judge_outputs_verified": 16
+  },
+  "run_accounting": {
+    "candidate_runs": 24,
+    "candidate_precheck_valid": 22,
+    "candidate_precheck_invalid": 2,
+    "judge_runs": 16,
+    "judge_strict_json_and_usable": 16,
+    "candidate_quality_retries": 0,
+    "judge_quality_retries": 0,
+    "judge_semantic_objective_invalid_cells": 0,
+    "isolation_level": "prompt_trace_only"
+  },
+  "arm_summary": {
+    "no_skill": {
+      "precheck_valid_tasks": 8,
+      "semantic_objective_invalid_judge_orders": 0,
+      "task_score_median": 89.0625,
+      "task_score_mean": 87.984375,
+      "valid_task_score_median": 89.0625,
+      "valid_task_score_mean": 87.984375
+    },
+    "legacy": {
+      "precheck_valid_tasks": 6,
+      "semantic_objective_invalid_judge_orders": 0,
+      "task_score_median": 87.125,
+      "task_score_mean": 66.9375,
+      "valid_task_score_median": 90.25,
+      "valid_task_score_mean": 89.25
+    },
+    "current": {
+      "precheck_valid_tasks": 8,
+      "semantic_objective_invalid_judge_orders": 0,
+      "task_score_median": 93,
+      "task_score_mean": 90.5,
+      "valid_task_score_median": 93,
+      "valid_task_score_mean": 90.5
+    }
+  },
+  "tasks": {
+    "IDEA-01": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 377,
+        "legacy": 380,
+        "current": 435
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 82.25,
+          "reverse": 79,
+          "two_judge_mean": 80.625
+        },
+        "legacy": {
+          "forward": 93.75,
+          "reverse": 89.25,
+          "two_judge_mean": 91.5
+        },
+        "current": {
+          "forward": 97.25,
+          "reverse": 93.25,
+          "two_judge_mean": 95.25
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 14.625,
+        "vs_legacy": 3.75
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "legacy",
+          "reverse": "legacy",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "strict_loss",
+          "favored_arm": "legacy",
+          "order_consistent": true
+        }
+      ],
+      "all_three_pairs_order_consistent": true
+    },
+    "IDEA-02": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 407,
+        "legacy": 439,
+        "current": 443
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 77.5,
+          "reverse": 81,
+          "two_judge_mean": 79.25
+        },
+        "legacy": {
+          "forward": 87,
+          "reverse": 91,
+          "two_judge_mean": 89
+        },
+        "current": {
+          "forward": 87.5,
+          "reverse": 86.5,
+          "two_judge_mean": 87
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 7.75,
+        "vs_legacy": -2
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.5,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "legacy",
+          "reverse": "legacy",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "strict_loss",
+          "favored_arm": "legacy",
+          "order_consistent": true
+        }
+      ],
+      "all_three_pairs_order_consistent": true
+    },
+    "IDEA-03": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 470,
+        "legacy": 452,
+        "current": 428
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 87.75,
+          "reverse": 91.5,
+          "two_judge_mean": 89.625
+        },
+        "legacy": {
+          "forward": 86,
+          "reverse": 82.75,
+          "two_judge_mean": 84.375
+        },
+        "current": {
+          "forward": 77,
+          "reverse": 80.25,
+          "two_judge_mean": 78.625
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": -11,
+        "vs_legacy": -5.75
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 3.75,
+          "status_from_left": "strict_loss",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "legacy",
+          "reverse": "tie",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "low_confidence_against",
+          "favored_arm": "legacy",
+          "order_consistent": false
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 3.75,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "no_skill",
+          "order_consistent": false
+        }
+      ],
+      "all_three_pairs_order_consistent": false
+    },
+    "IDEA-04": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 382,
+        "legacy": 466,
+        "current": 460
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 82.5,
+          "reverse": 94.5,
+          "two_judge_mean": 88.5
+        },
+        "legacy": {
+          "forward": 84.75,
+          "reverse": 85.75,
+          "two_judge_mean": 85.25
+        },
+        "current": {
+          "forward": 90,
+          "reverse": 96.25,
+          "two_judge_mean": 93.125
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 4.625,
+        "vs_legacy": 7.875
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "tie",
+          "max_candidate_score_drift": 12,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 6.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 12,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "no_skill",
+          "order_consistent": false
+        }
+      ],
+      "all_three_pairs_order_consistent": false
+    },
+    "IDEA-05": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 406,
+        "legacy": 450,
+        "current": 449
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 95,
+          "reverse": 86.25,
+          "two_judge_mean": 90.625
+        },
+        "legacy": {
+          "forward": 92.25,
+          "reverse": 95.5,
+          "two_judge_mean": 93.875
+        },
+        "current": {
+          "forward": 99,
+          "reverse": 95,
+          "two_judge_mean": 97
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 6.375,
+        "vs_legacy": 3.125
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "tie",
+          "reverse": "current",
+          "max_candidate_score_drift": 8.75,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "legacy",
+          "max_candidate_score_drift": 8.75,
+          "status_from_left": "low_confidence_against",
+          "favored_arm": "legacy",
+          "order_consistent": false
+        }
+      ],
+      "all_three_pairs_order_consistent": false
+    },
+    "IDEA-06": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": false,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 450,
+        "legacy": null,
+        "current": 499
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 86.5,
+          "reverse": 84,
+          "two_judge_mean": 85.25
+        },
+        "legacy": {
+          "forward": 0,
+          "reverse": 0,
+          "two_judge_mean": 0
+        },
+        "current": {
+          "forward": 94.5,
+          "reverse": 91.25,
+          "two_judge_mean": 92.875
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 7.625,
+        "vs_legacy": 92.875
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 2.5,
+          "status_from_left": "strict_win",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        }
+      ],
+      "all_three_pairs_order_consistent": true
+    },
+    "IDEA-07": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": false,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 467,
+        "legacy": 780,
+        "current": 481
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 96.75,
+          "reverse": 96.75,
+          "two_judge_mean": 96.75
+        },
+        "legacy": {
+          "forward": 0,
+          "reverse": 0,
+          "two_judge_mean": 0
+        },
+        "current": {
+          "forward": 86,
+          "reverse": 81.5,
+          "two_judge_mean": 83.75
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": -13,
+        "vs_legacy": 83.75
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "strict_loss",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 0,
+          "status_from_left": "strict_win",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        }
+      ],
+      "all_three_pairs_order_consistent": true
+    },
+    "IDEA-08": {
+      "precheck_valid": {
+        "no_skill": true,
+        "legacy": true,
+        "current": true
+      },
+      "semantic_objective_invalid_by_judge": {
+        "no_skill": {
+          "forward": false,
+          "reverse": false
+        },
+        "legacy": {
+          "forward": false,
+          "reverse": false
+        },
+        "current": {
+          "forward": false,
+          "reverse": false
+        }
+      },
+      "semantic_invalid_reasons_by_judge": {
+        "no_skill": {
+          "forward": "",
+          "reverse": ""
+        },
+        "legacy": {
+          "forward": "",
+          "reverse": ""
+        },
+        "current": {
+          "forward": "",
+          "reverse": ""
+        }
+      },
+      "answer_codepoints": {
+        "no_skill": 440,
+        "legacy": 473,
+        "current": 400
+      },
+      "scores": {
+        "no_skill": {
+          "forward": 90.75,
+          "reverse": 95.75,
+          "two_judge_mean": 93.25
+        },
+        "legacy": {
+          "forward": 94.25,
+          "reverse": 88.75,
+          "two_judge_mean": 91.5
+        },
+        "current": {
+          "forward": 95.5,
+          "reverse": 97.25,
+          "two_judge_mean": 96.375
+        }
+      },
+      "current_deltas": {
+        "vs_no_skill": 3.125,
+        "vs_legacy": 4.875
+      },
+      "pairs": [
+        {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 5,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        },
+        {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "current",
+          "max_candidate_score_drift": 5.5,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        {
+          "left": "no_skill",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 5.5,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "no_skill",
+          "order_consistent": false
+        }
+      ],
+      "all_three_pairs_order_consistent": false
+    }
+  },
+  "comparisons": {
+    "current_vs_no_skill": {
+      "per_task_delta": {
+        "IDEA-01": 14.625,
+        "IDEA-02": 7.75,
+        "IDEA-03": -11,
+        "IDEA-04": 4.625,
+        "IDEA-05": 6.375,
+        "IDEA-06": 7.625,
+        "IDEA-07": -13,
+        "IDEA-08": 3.125
+      },
+      "median_delta": 5.5,
+      "mean_delta": 2.515625,
+      "pair_outcomes": {
+        "IDEA-01": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-02": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.5,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-03": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 3.75,
+          "status_from_left": "strict_loss",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        },
+        "IDEA-04": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "tie",
+          "max_candidate_score_drift": 12,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        "IDEA-05": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "tie",
+          "reverse": "current",
+          "max_candidate_score_drift": 8.75,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        "IDEA-06": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-07": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "no_skill",
+          "reverse": "no_skill",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "strict_loss",
+          "favored_arm": "no_skill",
+          "order_consistent": true
+        },
+        "IDEA-08": {
+          "left": "current",
+          "right": "no_skill",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 5,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        }
+      },
+      "outcome_counts": {
+        "strict_win": 3,
+        "strict_loss": 2,
+        "low_confidence_lean": 2,
+        "low_confidence_against": 0,
+        "tie_low_confidence": 1
+      }
+    },
+    "current_vs_legacy": {
+      "per_task_delta": {
+        "IDEA-01": 3.75,
+        "IDEA-02": -2,
+        "IDEA-03": -5.75,
+        "IDEA-04": 7.875,
+        "IDEA-05": 3.125,
+        "IDEA-06": 92.875,
+        "IDEA-07": 83.75,
+        "IDEA-08": 4.875
+      },
+      "median_delta": 4.3125,
+      "mean_delta": 23.5625,
+      "pair_outcomes": {
+        "IDEA-01": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        },
+        "IDEA-02": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "tie_low_confidence",
+          "favored_arm": null,
+          "order_consistent": true
+        },
+        "IDEA-03": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "legacy",
+          "reverse": "tie",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "low_confidence_against",
+          "favored_arm": "legacy",
+          "order_consistent": false
+        },
+        "IDEA-04": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 6.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-05": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "tie",
+          "max_candidate_score_drift": 4,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        },
+        "IDEA-06": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 3.25,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-07": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "current",
+          "reverse": "current",
+          "max_candidate_score_drift": 4.5,
+          "status_from_left": "strict_win",
+          "favored_arm": "current",
+          "order_consistent": true
+        },
+        "IDEA-08": {
+          "left": "current",
+          "right": "legacy",
+          "forward": "tie",
+          "reverse": "current",
+          "max_candidate_score_drift": 5.5,
+          "status_from_left": "low_confidence_lean",
+          "favored_arm": "current",
+          "order_consistent": false
+        }
+      },
+      "outcome_counts": {
+        "strict_win": 3,
+        "strict_loss": 0,
+        "low_confidence_lean": 2,
+        "low_confidence_against": 1,
+        "tie_low_confidence": 2
+      }
+    }
+  },
+  "valid_pair_sensitivity": {
+    "status": "post_run_descriptive_not_preregistered",
+    "definition": "A task is eligible when both arms have envelope-valid candidates and neither arm is judge-marked semantic objective-invalid in either reading order. Statistics retain the task as the unit and do not replace the preregistered main result.",
+    "comparisons": {
+      "current_vs_no_skill": {
+        "eligible_tasks": [
+          "IDEA-01",
+          "IDEA-02",
+          "IDEA-03",
+          "IDEA-04",
+          "IDEA-05",
+          "IDEA-06",
+          "IDEA-07",
+          "IDEA-08"
+        ],
+        "eligible_task_count": 8,
+        "median_delta": 5.5,
+        "per_task_delta": {
+          "IDEA-01": 14.625,
+          "IDEA-02": 7.75,
+          "IDEA-03": -11,
+          "IDEA-04": 4.625,
+          "IDEA-05": 6.375,
+          "IDEA-06": 7.625,
+          "IDEA-07": -13,
+          "IDEA-08": 3.125
+        },
+        "outcome_counts": {
+          "strict_win": 3,
+          "strict_loss": 2,
+          "low_confidence_lean": 2,
+          "low_confidence_against": 0,
+          "tie_low_confidence": 1
+        }
+      },
+      "current_vs_legacy": {
+        "eligible_tasks": [
+          "IDEA-01",
+          "IDEA-02",
+          "IDEA-03",
+          "IDEA-04",
+          "IDEA-05",
+          "IDEA-08"
+        ],
+        "eligible_task_count": 6,
+        "median_delta": 3.4375,
+        "per_task_delta": {
+          "IDEA-01": 3.75,
+          "IDEA-02": -2,
+          "IDEA-03": -5.75,
+          "IDEA-04": 7.875,
+          "IDEA-05": 3.125,
+          "IDEA-08": 4.875
+        },
+        "outcome_counts": {
+          "strict_win": 1,
+          "strict_loss": 0,
+          "low_confidence_lean": 2,
+          "low_confidence_against": 1,
+          "tie_low_confidence": 2
+        }
+      }
+    }
+  },
+  "dimension_deltas": {
+    "current_vs_no_skill": {
+      "D1": {
+        "median_delta_on_0_to_4_scale": 0.125,
+        "per_task_delta": {
+          "IDEA-01": 0.5,
+          "IDEA-02": 0.5,
+          "IDEA-03": -0.25,
+          "IDEA-04": 0,
+          "IDEA-05": 0.25,
+          "IDEA-06": 0.25,
+          "IDEA-07": -0.5,
+          "IDEA-08": 0
+        }
+      },
+      "D2": {
+        "median_delta_on_0_to_4_scale": 0.125,
+        "per_task_delta": {
+          "IDEA-01": 1,
+          "IDEA-02": 0.5,
+          "IDEA-03": -0.5,
+          "IDEA-04": -0.25,
+          "IDEA-05": 0.25,
+          "IDEA-06": 0,
+          "IDEA-07": 0,
+          "IDEA-08": 0.25
+        }
+      },
+      "D3": {
+        "median_delta_on_0_to_4_scale": 0.125,
+        "per_task_delta": {
+          "IDEA-01": 0.75,
+          "IDEA-02": 0.25,
+          "IDEA-03": -0.5,
+          "IDEA-04": 0.75,
+          "IDEA-05": 0.25,
+          "IDEA-06": 0,
+          "IDEA-07": -1,
+          "IDEA-08": 0
+        }
+      },
+      "D4": {
+        "median_delta_on_0_to_4_scale": 0.25,
+        "per_task_delta": {
+          "IDEA-01": 0.75,
+          "IDEA-02": 0,
+          "IDEA-03": -0.5,
+          "IDEA-04": 0.5,
+          "IDEA-05": 0.5,
+          "IDEA-06": 0.75,
+          "IDEA-07": -0.25,
+          "IDEA-08": 0
+        }
+      },
+      "D5": {
+        "median_delta_on_0_to_4_scale": 0.25,
+        "per_task_delta": {
+          "IDEA-01": 0.25,
+          "IDEA-02": 0.75,
+          "IDEA-03": -1,
+          "IDEA-04": 0.25,
+          "IDEA-05": 0.25,
+          "IDEA-06": 0.5,
+          "IDEA-07": -0.75,
+          "IDEA-08": 0
+        }
+      },
+      "D6": {
+        "median_delta_on_0_to_4_scale": 0,
+        "per_task_delta": {
+          "IDEA-01": 0.25,
+          "IDEA-02": 0,
+          "IDEA-03": 0,
+          "IDEA-04": 0,
+          "IDEA-05": 0,
+          "IDEA-06": 0,
+          "IDEA-07": -1,
+          "IDEA-08": 0.5
+        }
+      },
+      "D7": {
+        "median_delta_on_0_to_4_scale": 0.25,
+        "per_task_delta": {
+          "IDEA-01": 0.5,
+          "IDEA-02": 0.25,
+          "IDEA-03": -0.25,
+          "IDEA-04": 0,
+          "IDEA-05": 0.25,
+          "IDEA-06": 0.75,
+          "IDEA-07": -0.5,
+          "IDEA-08": 0.25
+        }
+      },
+      "D8": {
+        "median_delta_on_0_to_4_scale": 0,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": 0,
+          "IDEA-03": 0,
+          "IDEA-04": 0,
+          "IDEA-05": 0,
+          "IDEA-06": 0.25,
+          "IDEA-07": -0.25,
+          "IDEA-08": 0
+        }
+      }
+    },
+    "current_vs_legacy": {
+      "D1": {
+        "median_delta_on_0_to_4_scale": 0.25,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": 0,
+          "IDEA-03": 0,
+          "IDEA-04": 0.25,
+          "IDEA-05": 0.25,
+          "IDEA-06": 4,
+          "IDEA-07": 3.5,
+          "IDEA-08": 0.25
+        }
+      },
+      "D2": {
+        "median_delta_on_0_to_4_scale": 0.375,
+        "per_task_delta": {
+          "IDEA-01": 0.25,
+          "IDEA-02": 0.5,
+          "IDEA-03": -0.25,
+          "IDEA-04": 0,
+          "IDEA-05": 0.25,
+          "IDEA-06": 3.5,
+          "IDEA-07": 3.75,
+          "IDEA-08": 0.5
+        }
+      },
+      "D3": {
+        "median_delta_on_0_to_4_scale": 0.375,
+        "per_task_delta": {
+          "IDEA-01": 0.5,
+          "IDEA-02": -1.25,
+          "IDEA-03": -0.5,
+          "IDEA-04": 0.75,
+          "IDEA-05": 0,
+          "IDEA-06": 3.5,
+          "IDEA-07": 3,
+          "IDEA-08": 0.25
+        }
+      },
+      "D4": {
+        "median_delta_on_0_to_4_scale": 0.375,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": -0.25,
+          "IDEA-03": -0.25,
+          "IDEA-04": 0.5,
+          "IDEA-05": 0.5,
+          "IDEA-06": 3.75,
+          "IDEA-07": 3.5,
+          "IDEA-08": 0.25
+        }
+      },
+      "D5": {
+        "median_delta_on_0_to_4_scale": 0.375,
+        "per_task_delta": {
+          "IDEA-01": 0.25,
+          "IDEA-02": 0.5,
+          "IDEA-03": -0.5,
+          "IDEA-04": 0.5,
+          "IDEA-05": 0,
+          "IDEA-06": 4,
+          "IDEA-07": 3.25,
+          "IDEA-08": 0.25
+        }
+      },
+      "D6": {
+        "median_delta_on_0_to_4_scale": 0,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": 0,
+          "IDEA-03": 0,
+          "IDEA-04": 0,
+          "IDEA-05": 0,
+          "IDEA-06": 3.5,
+          "IDEA-07": 3,
+          "IDEA-08": 0
+        }
+      },
+      "D7": {
+        "median_delta_on_0_to_4_scale": 0,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": -0.25,
+          "IDEA-03": 0,
+          "IDEA-04": 0.25,
+          "IDEA-05": -0.5,
+          "IDEA-06": 3.75,
+          "IDEA-07": 3,
+          "IDEA-08": -0.5
+        }
+      },
+      "D8": {
+        "median_delta_on_0_to_4_scale": 0,
+        "per_task_delta": {
+          "IDEA-01": 0,
+          "IDEA-02": 0,
+          "IDEA-03": 0,
+          "IDEA-04": 0,
+          "IDEA-05": 0,
+          "IDEA-06": 4,
+          "IDEA-07": 3.75,
+          "IDEA-08": 0
+        }
+      }
+    }
+  },
+  "order_consistency": {
+    "definition": "all three normalized arm-pair outcomes match across forward and reverse readings",
+    "consistent_tasks": 4,
+    "total_tasks": 8,
+    "per_task": {
+      "IDEA-01": true,
+      "IDEA-02": true,
+      "IDEA-03": false,
+      "IDEA-04": false,
+      "IDEA-05": false,
+      "IDEA-06": true,
+      "IDEA-07": true,
+      "IDEA-08": false
+    }
+  },
+  "length_diagnostic": {
+    "definition": "Pearson correlation after centering valid candidate lengths and two-judge mean scores within each task; alert also requires longer-answer wins >=75% of >=6 resolved valid-valid pairs",
+    "status": "post_run_descriptive_not_publicly_preregistered",
+    "can_resolve_preregistered_length_confounding_gate": false,
+    "within_task_centered_pearson_r": 0.366467,
+    "resolved_valid_valid_pairs": 17,
+    "longer_answer_wins": 11,
+    "longer_answer_win_rate": 0.647059,
+    "descriptive_alert": false,
+    "interpretation": "No descriptive alert is not evidence that length confounding was resolved; the numeric alert rule was not in the public preregistration."
+  },
+  "judge_audit": {
+    "reported_math_exact_judges": 4,
+    "reported_math_inexact_judges": 12,
+    "reported_total_mismatch_cell_count": 25,
+    "reported_total_mismatch_cells": [
+      {
+        "task_id": "IDEA-01",
+        "order": "forward",
+        "candidate": "X",
+        "reported": 97,
+        "recomputed": 97.25
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 92.5,
+        "recomputed": 93.75
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "X",
+        "reported": 94.25,
+        "recomputed": 93.25
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Y",
+        "reported": 78.5,
+        "recomputed": 79
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Z",
+        "reported": 88.25,
+        "recomputed": 89.25
+      },
+      {
+        "task_id": "IDEA-02",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 78.75,
+        "recomputed": 77.5
+      },
+      {
+        "task_id": "IDEA-03",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 77.5,
+        "recomputed": 77
+      },
+      {
+        "task_id": "IDEA-04",
+        "order": "reverse",
+        "candidate": "X",
+        "reported": 94.0,
+        "recomputed": 96.25
+      },
+      {
+        "task_id": "IDEA-04",
+        "order": "reverse",
+        "candidate": "Y",
+        "reported": 85.5,
+        "recomputed": 85.75
+      },
+      {
+        "task_id": "IDEA-04",
+        "order": "reverse",
+        "candidate": "Z",
+        "reported": 93.75,
+        "recomputed": 94.5
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "forward",
+        "candidate": "X",
+        "reported": 93.25,
+        "recomputed": 95
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 89.5,
+        "recomputed": 92.25
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "reverse",
+        "candidate": "X",
+        "reported": 86.0,
+        "recomputed": 86.25
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "reverse",
+        "candidate": "Y",
+        "reported": 93.75,
+        "recomputed": 95
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Y",
+        "reported": 86.25,
+        "recomputed": 86.5
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 93.25,
+        "recomputed": 94.5
+      },
+      {
+        "task_id": "IDEA-07",
+        "order": "forward",
+        "candidate": "Y",
+        "reported": 95.0,
+        "recomputed": 96.75
+      },
+      {
+        "task_id": "IDEA-07",
+        "order": "reverse",
+        "candidate": "X",
+        "reported": 82.5,
+        "recomputed": 81.5
+      },
+      {
+        "task_id": "IDEA-07",
+        "order": "reverse",
+        "candidate": "Y",
+        "reported": 96.5,
+        "recomputed": 96.75
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "X",
+        "reported": 91.75,
+        "recomputed": 94.25
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "Y",
+        "reported": 91,
+        "recomputed": 95.5
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "Z",
+        "reported": 88.25,
+        "recomputed": 90.75
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "X",
+        "reported": 87.25,
+        "recomputed": 88.75
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "Y",
+        "reported": 96.0,
+        "recomputed": 97.25
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "Z",
+        "reported": 94.5,
+        "recomputed": 95.75
+      }
+    ],
+    "reported_pairwise_fully_consistent_judges": 14,
+    "reported_pairwise_downgrade_count": 2,
+    "reported_pairwise_downgrades": [
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "left": "Z",
+        "right": "X",
+        "reported": "X",
+        "normalized": "tie"
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "forward",
+        "left": "X",
+        "right": "Y",
+        "reported": "Y",
+        "normalized": "tie"
+      }
+    ],
+    "quote_deviation_count": 28,
+    "quote_deviation_kinds": {
+      "not_exact_candidate_substring": 25,
+      "over_35_codepoints": 3
+    },
+    "quote_deviations": [
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "X",
+        "dimension": "D4",
+        "kind": "over_35_codepoints",
+        "quote": "主指标为偏移macro-F1；机制指标为小于4%动物召回率和空画面误报率",
+        "length": 36
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "X",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "总计≤2 GPU小时…各微调一个等步数实验臂"
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D2",
+        "kind": "not_exact_candidate_substring",
+        "quote": "裁出动物…粘贴到训练集空画面和不同拍摄点背景"
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D4",
+        "kind": "not_exact_candidate_substring",
+        "quote": "若偏移macro-F1提升不足0.04…则放弃"
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D7",
+        "kind": "over_35_codepoints",
+        "quote": "主看偏移macro-F1，辅看同地点macro-F1、小于4%动物召回率、空画面误报率",
+        "length": 43
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D4",
+        "kind": "not_exact_candidate_substring",
+        "quote": "偏移macro-F1提升不足0.03…即判定核心预测未获支持"
+      },
+      {
+        "task_id": "IDEA-01",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D7",
+        "kind": "not_exact_candidate_substring",
+        "quote": "复核延迟和模型大小…同地点F1低于0.86"
+      },
+      {
+        "task_id": "IDEA-03",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D2",
+        "kind": "not_exact_candidate_substring",
+        "quote": "支持片段作正例、冲突片段作硬负例"
+      },
+      {
+        "task_id": "IDEA-05",
+        "order": "forward",
+        "candidate": "X",
+        "dimension": "D2",
+        "kind": "not_exact_candidate_substring",
+        "quote": "旧对手方行为嵌入；首24小时序列"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Y",
+        "dimension": "D2",
+        "kind": "not_exact_candidate_substring",
+        "quote": "共享编码器…适配器和分类头；…边际损失"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Y",
+        "dimension": "D4",
+        "kind": "not_exact_candidate_substring",
+        "quote": "粗/细标签厂差距…14家迁移集无一致收益，即放弃"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Y",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "仅3轮…复查10段，共60段；冻结…最终测试均不检查"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Z",
+        "dimension": "D2",
+        "kind": "not_exact_candidate_substring",
+        "quote": "共享轻量时序编码器和四类头，各厂保留…条件归一化"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Z",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "24厂均参加3轮；开发厂选全部6家粗标签厂…包含当前最差厂"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "forward",
+        "candidate": "Z",
+        "dimension": "D7",
+        "kind": "over_35_codepoints",
+        "quote": "基线与约束为reported；机制创新性not-searched，结论待实验",
+        "length": 38
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "每个粗标签厂...复查10段，共60段"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D4",
+        "kind": "not_exact_candidate_substring",
+        "quote": "机械混淆未降20%...则放弃"
+      },
+      {
+        "task_id": "IDEA-06",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "全6粗标签厂...覆盖选4家细标签厂"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "X",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "固定80题错误细节集...分层随机抽40题"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "X",
+        "dimension": "D6",
+        "kind": "not_exact_candidate_substring",
+        "quote": "每题恰好两次7B调用...预算上限2 GPU小时"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "Y",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "固定80题冲突子集...分层随机抽40题"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "Z",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "纳入固定80题错误细节集...抽40题"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "forward",
+        "candidate": "Z",
+        "dimension": "D8",
+        "kind": "not_exact_candidate_substring",
+        "quote": "只JSON"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "X",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "固定80题错误细节集，再...抽40题"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "X",
+        "dimension": "D6",
+        "kind": "not_exact_candidate_substring",
+        "quote": "每题恰好两次7B调用...预算上限2 GPU小时"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "Y",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "固定80题冲突子集...分层随机抽40题"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D4",
+        "kind": "not_exact_candidate_substring",
+        "quote": "κ、相当F1、80题误选率...变化率"
+      },
+      {
+        "task_id": "IDEA-08",
+        "order": "reverse",
+        "candidate": "Z",
+        "dimension": "D5",
+        "kind": "not_exact_candidate_substring",
+        "quote": "纳入固定80题错误细节集...抽40题"
+      }
+    ],
+    "semantic_objective_invalid_valid_envelope_cells": [],
+    "authoritative_policy": "Totals are recomputed from frozen dimensions. In each order, a reported pair winner counts only when it agrees with the recomputed score direction and leads by at least 5/100; otherwise the pair is normalized to tie. A precheck-invalid or judge-marked objective-invalid candidate scores zero and automatically loses to a valid candidate in that order.",
+    "policy_provenance_limitation": "The zero-score/automatic-loss handling for invalid candidates was recorded in the nonpublic run aggregation notes but was not stated verbatim in the public preregistration.",
+    "evidence_limitation": "quote deviations and post-prereg arithmetic normalization reduce confidence in the subjective evidence even though every change is deterministic and raw outputs remain public"
+  },
+  "advancement_gate": {
+    "verdict": "does_not_pass_confirmatory_expansion_gate",
+    "all_checks_pass": false,
+    "checks": {
+      "current_valid_at_least_7_of_8_and_no_leakage_or_safety_hard_fail": {
+        "actual_valid": 8,
+        "leakage_hard_fail": false,
+        "semantic_constraint_or_safety_hard_fail": false,
+        "ordinary_envelope_invalid_is_not_automatically_a_hard_fail": true,
+        "hard_fail": false,
+        "pass": true
+      },
+      "current_strict_wins_vs_no_skill_at_least_7_of_8": {
+        "actual": 3,
+        "pass": false
+      },
+      "current_strict_wins_vs_legacy_at_least_7_of_8": {
+        "actual": 3,
+        "pass": false
+      },
+      "median_total_delta_at_least_plus_5_vs_both": {
+        "actual": {
+          "no_skill": 5.5,
+          "legacy": 4.3125
+        },
+        "pass": false
+      },
+      "key_dimension_median_deltas_nonnegative_vs_both": {
+        "dimensions": [
+          "D1",
+          "D2",
+          "D4",
+          "D5",
+          "D6"
+        ],
+        "actual": {
+          "no_skill": {
+            "D1": 0.125,
+            "D2": 0.125,
+            "D4": 0.25,
+            "D5": 0.25,
+            "D6": 0
+          },
+          "legacy": {
+            "D1": 0.25,
+            "D2": 0.375,
+            "D4": 0.375,
+            "D5": 0.375,
+            "D6": 0
+          }
+        },
+        "pass": true
+      },
+      "at_least_7_of_8_tasks_order_consistent_and_length_confounding_resolved": {
+        "actual_order_consistent_tasks": 4,
+        "post_run_descriptive_length_alert": false,
+        "length_confounding_resolved": false,
+        "length_resolution_rule_publicly_preregistered": false,
+        "pass": false
+      }
+    },
+    "interpretation": "A failure means this frozen development set did not clear the preregistered expansion gate; it does not establish that the Skill is ineffective."
+  },
+  "runtime_verdict": "runtime_savings_not_supported",
+  "limitations": [
+    "Eight paired development tasks and one candidate per arm per task are exploratory, not a general advantage proof.",
+    "Candidate and judge models differ but remain within one provider family.",
+    "Isolation is prompt_trace_only; no operating-system-call forensic sandbox was available.",
+    "Comparable token and wall-clock usage were unavailable, so runtime savings are not inferred.",
+    "Twenty-eight quote deviations and judge arithmetic mismatches require deterministic normalization and weaken evidentiary confidence.",
+    "The numeric length-alert rule is a post-run descriptive diagnostic, not a publicly preregistered resolution rule; length confounding therefore remains unresolved for the advancement gate.",
+    "The candidate and judgment source_freeze hashes point to unpublished working manifests and cannot be independently verified from the public release alone.",
+    "Legacy bundle commit and file hashes are checked as declared metadata against the preregistration, but this evaluator does not verify the historical legacy file bytes.",
+    "The invalid-candidate zero-score/automatic-loss aggregation rule was not stated verbatim in the public preregistration.",
+    "The task pack and mapping are now public and cannot serve as a future blind holdout without replacement tasks."
+  ]
+}

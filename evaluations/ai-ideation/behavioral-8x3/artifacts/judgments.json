@@ -1,0 +1,1891 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "CEC-AIIdea-8x3-Dev-1",
+  "artifact_role": "frozen_blind_judgments_before_mapping_reveal",
+  "source_freeze_sha256": "273707fd0b4d935092987b4361bb9b5fcb9d0e17b47d0ecff3775ddfb05e8297",
+  "judging": {
+    "model": "gpt-5.5",
+    "reasoning_effort": "high",
+    "fresh_context_per_task_order": true,
+    "isolation_level": "prompt_trace_only",
+    "quality_retries": 0,
+    "usage": "unavailable"
+  },
+  "summary": {
+    "expected_judges": 16,
+    "present_judges": 16,
+    "strict_json": 16,
+    "structure_usable": 16,
+    "reported_math_exact": 4,
+    "reported_pairwise_consistent": 14,
+    "precheck_exclusions_correct": 16,
+    "quote_deviation_count": 28
+  },
+  "judges": {
+    "IDEA-01": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-01\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"依赖地点背景，导致小动物漏检\",\"task_fact\":\"偏移F1 0.617，小目标召回0.29，空画面误报17.8%，目标未见地点F1≥0.70\",\"score\":4},\"D2\":{\"candidate_quote\":\"同一背景无动物/加入动物\",\"task_fact\":\"只有7000张动物框，需不增模型且解决背景捷径与小目标信息损失\",\"score\":4},\"D3\":{\"candidate_quote\":\"控制臂使用相同图片、采样次数\",\"task_fact\":\"需与普通随机裁剪和颜色增强的现有ConvNeXt-T公平比较\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"小动物召回未提升至少0.08且空画面误报未下降\",\"task_fact\":\"评测者要求区分陌生背景关联与小目标信息损失，并有证伪观察\",\"score\":4},\"D5\":{\"candidate_quote\":\"总计≤2 GPU小时\",\"task_fact\":\"最低成本验证最多2 GPU小时，不能完整训练才验证\",\"score\":4},\"D6\":{\"candidate_quote\":\"不增加模型或耗时\",\"task_fact\":\"推理≤45ms，模型≤130MB，不能新增标注，最终集不可触碰\",\"score\":4},\"D7\":{\"candidate_quote\":\"同时检查同地点macro-F1、延迟和模型大小\",\"task_fact\":\"同地点不得低于0.86，需检查副作用和硬约束\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先验证\",\"task_fact\":\"只允许一个最优先idea和一次首测，≤550汉字\",\"score\":4}},\"weighted_total\":97,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"直接针对背景捷径、小目标漏检和空画面误报\",\"task_fact\":\"偏移集小目标召回低，空画面误报高，存在地点偏移\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"裁出动物，将其按真实分布\",\"task_fact\":\"可用7000框，不增推理结构；但方法偏常规copy-paste增强\",\"score\":3},\"D3\":{\"candidate_quote\":\"对照组沿用普通增强\",\"task_fact\":\"强rival是等预算普通增强或同数据微调，需说明核心新增价值\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"偏移macro-F1提升不足0.04\",\"task_fact\":\"需能判别机制；仅总体及切片改善阈值较难区分增强收益来源\",\"score\":3},\"D5\":{\"candidate_quote\":\"从同一现有ConvNeXt-T检查点出发\",\"task_fact\":\"2 GPU小时内，同权重、同步数、同采样，对开发集只评估\",\"score\":4},\"D6\":{\"candidate_quote\":\"只改变训练，不增加模型大小或推理耗时\",\"task_fact\":\"模型≤130MB、推理≤45ms、不能新增标注\",\"score\":4},\"D7\":{\"candidate_quote\":\"辅看同地点macro-F1、小于4%动物召回率\",\"task_fact\":\"需检查同地点退化、小目标、空画面误报等副作用\",\"score\":3},\"D8\":{\"candidate_quote\":\"最低成本验证共2 GPU小时\",\"task_fact\":\"无备选清单，无代码或综述，篇幅合规\",\"score\":4}},\"weighted_total\":82.25,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"随机裁剪丢失小动物且模型依赖拍摄点背景\",\"task_fact\":\"小目标召回0.29，偏移F1显著低于同地点，空画面误报偏移更高\",\"score\":4},\"D2\":{\"candidate_quote\":\"约束同一前景跨背景预测一致\",\"task_fact\":\"需利用框标注形成机制性训练变化，不增加推理结构\",\"score\":4},\"D3\":{\"candidate_quote\":\"对照组用原增强继续训练50分钟\",\"task_fact\":\"需公平比较强常规rival；有对照但相对优势说明较简略\",\"score\":3},\"D4\":{\"candidate_quote\":\"比较macro-F1、逐地点F1、<4%动物召回\",\"task_fact\":\"需切片和干预下差异预测，避免只看总体F1\",\"score\":4},\"D5\":{\"candidate_quote\":\"总GPU时间封顶2小时\",\"task_fact\":\"首测需在2 GPU小时内，使用训练集，开发集只评估\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"推理结构不变\",\"task_fact\":\"推理≤45ms，模型≤130MB，不能新增标注或使用最终集调参\",\"score\":4},\"D7\":{\"candidate_quote\":\"任一偏移地点下降\",\"task_fact\":\"需稳健检查地点切片、同地点副作用与约束边界\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"只给一个idea和一个低成本验证，未列备选\",\"score\":4}},\"weighted_total\":92.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"X\",\"reason\":\"X比Y多出配对反事实一致性与同背景无/有动物对照，更能判别背景捷径和小目标机制，总分领先超过5分。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"tie\",\"reason\":\"二者核心机制接近；X的匹配控制更细，Z有逐地点下降证伪，差距不足5分。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Z\",\"reason\":\"Z包含跨背景一致性约束和逐地点切片证伪，机制距离与判别力明显强于Y的常规解耦增强，总分领先超过5分。\"}],\"ranking\":[[\"X\",\"Z\"],[\"Y\"]],\"position_or_length_concern\":\"\",\"most_decisive_evidence\":\"X/Z把同一动物跨背景或同一背景无/有动物做成机制性约束，并在偏移小目标召回、空画面误报、同地点退化上设置放弃阈值；Y主要是常规copy-paste增强，较难区分真正机制。\"}\n",
+        "raw_sha256": "02fd487b7600ecfb8dbc4b28aabd120cb598876bc813b44eba963c2cbef13eb4",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 97,
+            "Y": 82.25,
+            "Z": 92.5
+          },
+          "recomputed_totals": {
+            "X": 97.25,
+            "Y": 82.25,
+            "Z": 93.75
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 97,
+              "recomputed": 97.25
+            },
+            {
+              "candidate": "Z",
+              "reported": 92.5,
+              "recomputed": 93.75
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "X"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Z"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "X"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Z"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-01\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"依赖地点背景，导致小动物漏检和空画面误报\",\"task_fact\":\"偏移macro-F1 0.617；<4%召回0.29；空画面误报17.8%\",\"score\":4},\"D2\":{\"candidate_quote\":\"同一背景无动物/加入动物”和“同一动物跨背景”组成配对\",\"task_fact\":\"7,000张带动物框；其余只有图像级标签；不能新增标注\",\"score\":4},\"D3\":{\"candidate_quote\":\"控制臂使用相同图片、采样次数和普通裁剪/颜色增强\",\"task_fact\":\"现有ConvNeXt-T使用普通随机裁剪和颜色增强\",\"score\":3},\"D4\":{\"candidate_quote\":\"主指标为偏移macro-F1；机制指标为小于4%动物召回率和空画面误报率\",\"task_fact\":\"评测者要求区分陌生背景关联与小目标信息损失\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"总计≤2 GPU小时…各微调一个等步数实验臂\",\"task_fact\":\"最低成本验证最多2 GPU小时；可用训练/同地点/偏移开发集\",\"score\":4},\"D6\":{\"candidate_quote\":\"推理仍用原ConvNeXt-T，不增加模型或耗时\",\"task_fact\":\"推理不超过45 ms；模型不超过130 MB；现有38 ms/112 MB\",\"score\":4},\"D7\":{\"candidate_quote\":\"假设当前模型依赖地点背景\",\"task_fact\":\"已知只是偏移退化和切片异常，机制仍是假设\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先验证：框引导的跨拍摄点反事实一致性训练\",\"task_fact\":\"只要一个idea、一次首测、不超过550字\",\"score\":4}},\"weighted_total\":94.25,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"直接针对背景捷径、小目标漏检和空画面误报\",\"task_fact\":\"小动物召回0.29；空画面误报偏移17.8%；同地点6.3%\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"裁出动物…粘贴到训练集空画面和不同拍摄点背景\",\"task_fact\":\"训练集中7,000张带动物框；8个训练拍摄点\",\"score\":3},\"D3\":{\"candidate_quote\":\"对照组沿用普通增强\",\"task_fact\":\"现有基线即普通随机裁剪和颜色增强\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"若偏移macro-F1提升不足0.04…则放弃\",\"task_fact\":\"要求能区分idea与rival在切片/干预下的不同结果\",\"score\":3},\"D5\":{\"candidate_quote\":\"从同一现有ConvNeXt-T检查点出发，用相同步数和采样各微调1小时\",\"task_fact\":\"预算为一张RTX4090、16 GPU小时；首测最多2 GPU小时\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"不增加模型大小或推理耗时\",\"task_fact\":\"模型≤130 MB；推理≤45 ms\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"主看偏移macro-F1，辅看同地点macro-F1、小于4%动物召回率、空画面误报率\",\"task_fact\":\"不能只看总体F1；同地点不得低于0.86\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先验证“框引导的前景—背景解耦增强”\",\"task_fact\":\"不得给备选方案、代码或文献综述\",\"score\":4}},\"weighted_total\":78.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"普通随机裁剪丢失小动物且模型依赖拍摄点背景\",\"task_fact\":\"<4%召回0.29；偏移空画面误报17.8%；同地点6.3%\",\"score\":4},\"D2\":{\"candidate_quote\":\"同一前景跨背景预测一致；原始样本仍保留\",\"task_fact\":\"7,000张带框；可用训练集空画面与8个训练地点\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"对照组用原增强继续训练50分钟\",\"task_fact\":\"现有基线为ConvNeXt-T加普通随机裁剪和颜色增强\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"偏移macro-F1提升不足0.03…即判定核心预测未获支持\",\"task_fact\":\"要求切片预测、证伪和避免只看总体F1\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"从现有ConvNeXt-T检查点出发，总GPU时间封顶2小时\",\"task_fact\":\"最低成本验证最多2 GPU小时\",\"score\":4},\"D6\":{\"candidate_quote\":\"该方法只改变训练，推理结构不变\",\"task_fact\":\"推理≤45 ms；模型≤130 MB；现有38 ms/112 MB\",\"score\":4},\"D7\":{\"candidate_quote\":\"复核延迟和模型大小…同地点F1低于0.86\",\"task_fact\":\"目标同地点不低于0.86，且有资源和部署硬约束\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea：框引导的“前景—背景解耦”增强\",\"task_fact\":\"只提出一个最优先验证idea，输出不超过550字\",\"score\":4}},\"weighted_total\":88.25,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"Z\",\"reason\":\"Z领先9.75分；它更明确同时建模随机裁剪丢小动物和地点背景依赖，并加入跨背景一致性与逐偏移地点放弃条件。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X领先6分；其反事实配对把同一背景无动物/加入动物和同一动物跨背景写成核心机制，验证更忠实且公平。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X领先15.75分；Y主要是粘贴增强和硬负样本，X有更清楚的反事实一致性机制与等图片采样控制。\"}],\"ranking\":[[\"X\"],[\"Z\"],[\"Y\"]],\"position_or_length_concern\":\"\",\"most_decisive_evidence\":\"X最强证据是“同一背景无动物/加入动物”和“同一动物跨背景”配对，能在小目标召回与空画面误报切片上检验背景捷径，而不改推理结构。\"}\n",
+        "raw_sha256": "af0c376891c0ee7804e0a540aadac857302064faace1837c2de9aee04d889a0e",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 94.25,
+            "Y": 78.5,
+            "Z": 88.25
+          },
+          "recomputed_totals": {
+            "X": 93.25,
+            "Y": 79.0,
+            "Z": 89.25
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 94.25,
+              "recomputed": 93.25
+            },
+            {
+              "candidate": "Y",
+              "reported": 78.5,
+              "recomputed": 79.0
+            },
+            {
+              "candidate": "Z",
+              "reported": 88.25,
+              "recomputed": 89.25
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "pairwise_mismatches": [
+            {
+              "left": "Z",
+              "right": "X",
+              "reported": "X",
+              "normalized": "tie"
+            }
+          ],
+          "quote_deviations": [
+            {
+              "candidate": "X",
+              "dimension": "D4",
+              "kind": "over_35_codepoints",
+              "quote": "主指标为偏移macro-F1；机制指标为小于4%动物召回率和空画面误报率",
+              "length": 36
+            },
+            {
+              "candidate": "X",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "总计≤2 GPU小时…各微调一个等步数实验臂"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D2",
+              "kind": "not_exact_candidate_substring",
+              "quote": "裁出动物…粘贴到训练集空画面和不同拍摄点背景"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D4",
+              "kind": "not_exact_candidate_substring",
+              "quote": "若偏移macro-F1提升不足0.04…则放弃"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D7",
+              "kind": "over_35_codepoints",
+              "quote": "主看偏移macro-F1，辅看同地点macro-F1、小于4%动物召回率、空画面误报率",
+              "length": 43
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D4",
+              "kind": "not_exact_candidate_substring",
+              "quote": "偏移macro-F1提升不足0.03…即判定核心预测未获支持"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D7",
+              "kind": "not_exact_candidate_substring",
+              "quote": "复核延迟和模型大小…同地点F1低于0.86"
+            }
+          ],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-02": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-02\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"按最终37%未见名比例加权\",\"task_fact\":\"最终评测37%产品名未出现在训练录音但在目录中\",\"score\":4},\"D2\":{\"candidate_quote\":\"动态目录前缀 Trie 偏置\",\"task_fact\":\"部署只能保留一条声学解码路径且目录须5分钟生效\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"核心竞争解释是召回提升仅来自宽松搜索\",\"task_fact\":\"需警惕召回提升伴随误插入或宽松搜索副作用\",\"score\":3},\"D4\":{\"candidate_quote\":\"任一项失败即否决\",\"task_fact\":\"目标同时约束召回、CER、误插入、延迟和模型大小\",\"score\":3},\"D5\":{\"candidate_quote\":\"固定4小时混合录音，按名称隔离\",\"task_fact\":\"可从28小时混合录音固定留出4小时并按产品名划分\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"不增加声学路径或第二语言模型\",\"task_fact\":\"不能调用在线服务或第二个语言模型，模型≤400MB\",\"score\":4},\"D7\":{\"candidate_quote\":\"用无名称语句校准触发门槛\",\"task_fact\":\"无产品名语句中的名称误插入率目标不超过1.2%\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"只提出一个最优先idea和一个最低成本验证\",\"score\":4}},\"weighted_total\":87,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"保证“未出现组”在其余全部训练录音中为零\",\"task_fact\":\"留出名称需完全不出现在其余训练录音中\",\"score\":4},\"D2\":{\"candidate_quote\":\"目录前缀Trie门控偏置\",\"task_fact\":\"开放词表产品名需借助当周32000个英文产品名目录\",\"score\":4},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"量表要求给出强常规rival并说明等预算Core增加什么\",\"score\":2},\"D4\":{\"candidate_quote\":\"分别报告出现名、未出现名召回\",\"task_fact\":\"需检查训练录音中出现过和人为留出的未出现产品名\",\"score\":3},\"D5\":{\"candidate_quote\":\"0.5小时锁定偏置强度和门限，余3.5小时\",\"task_fact\":\"最低成本验证最多2 GPU小时\",\"score\":4},\"D6\":{\"candidate_quote\":\"模型仍为338 MB；换目录只重编Trie\",\"task_fact\":\"模型≤400MB，新目录须在5分钟内生效\",\"score\":4},\"D7\":{\"candidate_quote\":\"同时保留无产品名负样本\",\"task_fact\":\"需包含无产品名负样本并控制误插入\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"无需训练和新增转写\",\"task_fact\":\"无额外转写预算，输出需一个idea非清单\",\"score\":4}},\"weighted_total\":87.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"被人为留出且训练中从未出现\",\"task_fact\":\"最终评测含训练未出现但目录存在的产品名\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"可热更新的字符级产品名 Trie 偏置\",\"task_fact\":\"每周更新32000个英文产品名且需快速生效\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"量表要求强竞争解释与反平庸\",\"score\":1.5},\"D4\":{\"candidate_quote\":\"任一名称组不提升即否决\",\"task_fact\":\"需分别检查已见和未见产品名而非总体CER代理\",\"score\":3},\"D5\":{\"candidate_quote\":\"2小时调参与2小时盲测\",\"task_fact\":\"4小时可固定留出，验证预算最多2 GPU小时\",\"score\":3},\"D6\":{\"candidate_quote\":\"不增设声学路径或第二语言模型\",\"task_fact\":\"部署只能一条声学解码路径，不能第二语言模型\",\"score\":4},\"D7\":{\"candidate_quote\":\"用无产品名片段校准门限，抑制误插入\",\"task_fact\":\"无产品名名称误插入率不得超过1.2%\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"不得罗列多个方向，输出不超过550字\",\"score\":4}},\"weighted_total\":78.75,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"Y机制和验证切分略更具体，X有明确rival；总分差0.5，小于5。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"X\",\"reason\":\"X给出竞争解释、最终37%加权和更公平校准，领先超过5。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Y\",\"reason\":\"Y对未出现组、校准/盲测、目录更新和约束覆盖更完整，领先超过5。\"}],\"ranking\":[[\"X\",\"Y\"],[\"Z\"]],\"position_or_length_concern\":\"三者篇幅相近，未见明显位置或长度导致的评分疑虑。\",\"most_decisive_evidence\":\"X/Y都在单束RNN-T内用可热更新Trie偏置，并覆盖已见、未见和无名称负样本；Z缺强竞争解释且验证集过小。\"}\n",
+        "raw_sha256": "ae40d5416c45f7dfc206b8c1d5596ff12ba6f69272bb437c3d7820e859356bf5",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 87,
+            "Y": 87.5,
+            "Z": 78.75
+          },
+          "recomputed_totals": {
+            "X": 87.0,
+            "Y": 87.5,
+            "Z": 77.5
+          },
+          "total_mismatches": [
+            {
+              "candidate": "Z",
+              "reported": 78.75,
+              "recomputed": 77.5
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-02\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"按最终37%未见名比例加权\",\"task_fact\":\"37%产品名未出现在训练录音但在目录\",\"score\":4},\"D2\":{\"candidate_quote\":\"动态目录前缀 Trie 偏置\",\"task_fact\":\"单解码路径且目录5分钟内生效\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"核心竞争解释是召回提升仅来自宽松搜索\",\"task_fact\":\"需区分目录机制与普通放宽搜索\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"误插入≤1.2%\",\"task_fact\":\"无产品名语句名称误插入率硬上限\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"独立校准子集搜索偏置强度/上限\",\"task_fact\":\"验证成本最多2 GPU小时且需含未出现名和负样本\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"无训练和新标注\",\"task_fact\":\"无额外转写预算、18 GPU小时、一工程师日\",\"score\":4},\"D7\":{\"candidate_quote\":\"用无名称语句校准触发门槛\",\"task_fact\":\"需控制误插入和非名称CER副作用\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"只提出一个idea和一次最低成本验证\",\"score\":4}},\"weighted_total\":91,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"保证“未出现组”在其余全部训练录音中为零\",\"task_fact\":\"可固定留出4小时并按产品名划分\",\"score\":4},\"D2\":{\"candidate_quote\":\"目录前缀Trie门控偏置\",\"task_fact\":\"开放词表产品名目录每周更新\",\"score\":4},\"D3\":{\"candidate_quote\":\"配对比较原解码器\",\"task_fact\":\"需强竞争解释而非只与弱基线比\",\"score\":2},\"D4\":{\"candidate_quote\":\"分别报告出现名、未出现名召回\",\"task_fact\":\"需检查训练出现和人为留出未出现产品名\",\"score\":3},\"D5\":{\"candidate_quote\":\"0.5小时锁定偏置强度和门限\",\"task_fact\":\"最低成本验证须预算内且公平\",\"score\":4},\"D6\":{\"candidate_quote\":\"无需训练和新增转写\",\"task_fact\":\"无合成语音、发音词典或额外转写预算\",\"score\":4},\"D7\":{\"candidate_quote\":\"任一失败即否决\",\"task_fact\":\"硬目标包括CER、误插入、延迟、模型和更新\",\"score\":3},\"D8\":{\"candidate_quote\":\"最低成本验证\",\"task_fact\":\"不罗列多个方向且≤550汉字\",\"score\":4}},\"weighted_total\":86.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"训练中出现过的名称、被人为留出\",\"task_fact\":\"最终集含见过和未见产品名切片\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"当前声学后验支持目录前缀时给予受限增益\",\"task_fact\":\"需单一路径中提高目录名召回\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"比较同一 RNN-T 基线\",\"task_fact\":\"需解释强常规rival及额外机制价值\",\"score\":2},\"D4\":{\"candidate_quote\":\"任一名称组不提升即否决\",\"task_fact\":\"不能只看总体CER或只测见过名\",\"score\":3},\"D5\":{\"candidate_quote\":\"2小时调参与2小时盲测\",\"task_fact\":\"最多2 GPU小时验证且需负样本\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"模型参数基本不变\",\"task_fact\":\"模型≤400MB、p95≤220ms、单声学路径\",\"score\":4},\"D7\":{\"candidate_quote\":\"用无产品名片段校准门限\",\"task_fact\":\"误插入率需从0.6%控制到≤1.2%\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"只要一个最优先idea\",\"score\":4}},\"weighted_total\":81,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"Y\",\"reason\":\"Y多覆盖最终37%未见名分布和更公平配对设置，总分领先5.5。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X补充强竞争解释并按最终未见名比例加权，总分领先10。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"tie\",\"reason\":\"X有更好反平庸解释，Y验证设计更细；总分差4.5未达5分门槛。\"}],\"ranking\":[[\"X\",\"Y\"],[\"Z\"]],\"position_or_length_concern\":\"三者长度接近，均未见明显位置或篇幅偏置证据。\",\"most_decisive_evidence\":\"X唯一明确提出宽松搜索导致误插入的竞争解释；Y验证切分最忠实；Z略缺最终37%分布和强rival。\"}\n",
+        "raw_sha256": "2eef02d3e9ead21b4b91c8371b209a9a021f3f880983537d4d819f33fa780a8e",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 91,
+            "Y": 86.5,
+            "Z": 81
+          },
+          "recomputed_totals": {
+            "X": 91.0,
+            "Y": 86.5,
+            "Z": 81.0
+          },
+          "total_mismatches": [],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "tie"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "tie"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-03": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-03\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"加入“版本—时点证据门控”\",\"task_fact\":\"抓住版本冲突、无答案误答、引用不准的结构缺口\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"仅保留同产品且在目标时点有效的章节\",\"task_fact\":\"用版本/日期有效性改变证据包和可回答状态\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"比较原证据包与门控证据包\",\"task_fact\":\"有基线rival但缺少强常规替代机制拆分\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"另看合格支持片段recall、上下文长度和普通题退化\",\"task_fact\":\"给出收益切片、副作用和否决观察\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"前200题确定门控阈值，余700题做配对盲测\",\"task_fact\":\"小样本保留core，调参与评测分离且公平\",\"score\":4},\"D6\":{\"candidate_quote\":\"仍是一次检索、一次生成\",\"task_fact\":\"覆盖GPU、工程、延迟和架构硬约束\",\"score\":4},\"D7\":{\"candidate_quote\":\"替代关系不全导致误删\",\"task_fact\":\"承认证据边界并检查召回与普通题退化\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单一idea，首测清楚，未扩展多模块\",\"score\":4}},\"weighted_total\":87.75,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"直接针对过时证据采纳、引用失真和错误作答\",\"task_fact\":\"问题重构贴合异常指标和硬目标\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"支持片段作正例、同产品其他版本的冲突片段作硬负例\",\"task_fact\":\"门控学习机制较具体，但语义可用性略宽泛\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与基线做逐题配对\",\"task_fact\":\"有基线比较，缺强rival或消融替代解释\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"记录有效旧版证据被误删、正常题拒答增加及延迟\",\"task_fact\":\"预测覆盖关键副作用，含CI跨线否决\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"500题均匀随机用于估计总体，另补200道版本冲突\",\"task_fact\":\"抽样兼顾总体与难例，预算内可决策\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"GPU总计封顶2小时\",\"task_fact\":\"符合一次检索生成、2GPU时、p95约束\",\"score\":4},\"D7\":{\"candidate_quote\":\"接近阈值但置信区间跨线也不进入完整预算\",\"task_fact\":\"边界诚实，检查拒答和误删，但训练轻门控风险未细化\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"简洁单核，无多模块堆叠\",\"score\":4}},\"weighted_total\":86,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"版本—时点一致性证据门\",\"task_fact\":\"锁定版本/时点冲突与拒答缺口\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"发布时间不晚于目标时点、产品匹配、版本一致、支持强度\",\"task_fact\":\"重排和阈值机制可执行，但支持强度定义不足\",\"score\":3},\"D3\":{\"candidate_quote\":\"与现系统配对比较\",\"task_fact\":\"仅与基线比较，rival较弱\",\"score\":2},\"D4\":{\"candidate_quote\":\"检查误删有效旧版证据、拒答过多和版本关系缺失\",\"task_fact\":\"有副作用和否决，但差异预测不如X/Y细\",\"score\":3},\"D5\":{\"candidate_quote\":\"优先覆盖全部版本冲突题、无答案题和历史时点题\",\"task_fact\":\"难例覆盖强，但总体估计/加权公平性不足\",\"score\":3},\"D6\":{\"candidate_quote\":\"预算封顶2 GPU小时\",\"task_fact\":\"基本满足资源与硬约束\",\"score\":4},\"D7\":{\"candidate_quote\":\"未检索创新性，状态为not-searched\",\"task_fact\":\"有边界说明和gold保留率检查，但略模板化\",\"score\":3},\"D8\":{\"candidate_quote\":\"Core 是在生成前消除过时冲突\",\"task_fact\":\"单一idea清楚，篇幅内相关\",\"score\":4}},\"weighted_total\":77.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"X验证更干净且有真占比加权，Y有硬负例训练和CI；总分差不足5。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"X\",\"reason\":\"X机制和首测更具体，调评分离、加权总体与副作用阈值明显强于Z。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Y\",\"reason\":\"Y有训练信号、随机总体样本和CI否决，较Z更能公平验证硬目标。\"}],\"ranking\":[[\"X\",\"Y\"],[\"Z\"]],\"position_or_length_concern\":\"三者篇幅接近，位置不构成主要疑虑。\",\"most_decisive_evidence\":\"X/Y都提出版本时点证据门并在≤1000题、≤2GPU时配对验证；X的调评分离和真实占比加权最强，Y的硬负例门控和CI否决接近，Z总体公平性与机制细节较弱。\"}\n",
+        "raw_sha256": "0f5475ec519f7b6459cbf3f605aabe74f8ba510b4c7e840f9c09d72c64fe4bf8",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 87.75,
+            "Y": 86,
+            "Z": 77.5
+          },
+          "recomputed_totals": {
+            "X": 87.75,
+            "Y": 86.0,
+            "Z": 77.0
+          },
+          "total_mismatches": [
+            {
+              "candidate": "Z",
+              "reported": 77.5,
+              "recomputed": 77.0
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-03\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"版本—时点证据门控\",\"task_fact\":\"主要缺口是版本冲突、过时片段采纳、无答案误答与引用支持不足\",\"score\":4},\"D2\":{\"candidate_quote\":\"仅保留同产品且在目标时点有效\",\"task_fact\":\"必须一次检索一次生成，不能加独立复核模型\",\"score\":4},\"D3\":{\"candidate_quote\":\"比较原证据包与门控证据包\",\"task_fact\":\"强rival应解释同一观察并等预算比较；现基线是混合检索+7B\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"按开发集真实占比加权统计\",\"task_fact\":\"目标含总体、冲突、引用、无答案、p95，不能只看代理指标\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"前200题确定门控阈值，余700题\",\"task_fact\":\"首测需≤1000开发题、≤2 GPU时且能公平决策\",\"score\":4},\"D6\":{\"candidate_quote\":\"仍是一次检索、一次生成\",\"task_fact\":\"硬约束为16 GPU时完整预算、首测2 GPU时、p95≤3秒\",\"score\":4},\"D7\":{\"candidate_quote\":\"副作用是替代关系不全导致误删\",\"task_fact\":\"手册无完整替代关系，需诚实处理未知和普通题退化\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"只允许一个idea、一次首测、≤600汉字\",\"score\":4}},\"weighted_total\":91.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"版本—时点约束证据门\",\"task_fact\":\"任务异常集中在过时证据、引用失真、无答案错误作答\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"支持片段作正例、冲突片段作硬负例\",\"task_fact\":\"需在现有检索后生成前改变证据状态，而非扩模调参\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与基线做逐题配对\",\"task_fact\":\"rival应是能解释同观察的常规方案；这里只主要给现系统基线\",\"score\":2.5},\"D4\":{\"candidate_quote\":\"接近阈值但置信区间跨线\",\"task_fact\":\"需差异预测和证伪，尤其避免靠大量拒答换无答案指标\",\"score\":3},\"D5\":{\"candidate_quote\":\"500题均匀随机用于估计总体\",\"task_fact\":\"低成本验证需抽题公平、配对、预算内可否决\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"GPU总计封顶2小时\",\"task_fact\":\"首测≤2 GPU时，系统仍只能一次检索一次生成\",\"score\":4},\"D7\":{\"candidate_quote\":\"正常题拒答增加及延迟\",\"task_fact\":\"需查副作用和边界，不能只报达标数字\",\"score\":3},\"D8\":{\"candidate_quote\":\"只把通过门限的证据送入原7B模型\",\"task_fact\":\"一个核心idea，文本简洁相关\",\"score\":4}},\"weighted_total\":82.75,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"版本—时点一致性证据门\",\"task_fact\":\"题目强调指定版本/历史时点、冲突正确低、无答案误答高\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"发布时间不晚于目标时点、产品匹配\",\"task_fact\":\"机制需解释如何减少过时片段进入上下文并触发拒答\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与现系统配对比较\",\"task_fact\":\"应给强常规rival及等预算增量；Z主要是基线对照\",\"score\":2},\"D4\":{\"candidate_quote\":\"检查误删有效旧版证据\",\"task_fact\":\"需预测切片收益、副作用和可拒绝观察\",\"score\":3},\"D5\":{\"candidate_quote\":\"抽取不超过1000题\",\"task_fact\":\"首测必须≤1000开发题、≤2 GPU时；校准和评测应分清\",\"score\":3},\"D6\":{\"candidate_quote\":\"预算封顶2 GPU小时\",\"task_fact\":\"不能增加独立复核模型，p95需≤3秒\",\"score\":4},\"D7\":{\"candidate_quote\":\"版本关系缺失造成的回退\",\"task_fact\":\"替代关系不完整是已知限制，需报告证据边界\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"Core 是在生成前消除过时冲突\",\"task_fact\":\"只提一个优先idea且篇幅内完成\",\"score\":4}},\"weighted_total\":80.25,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"Y在抽样总体估计、硬负例训练和置信区间否决上更清楚，但总分差2.5，未达5分胜出阈值。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X多出阈值/盲测拆分、按真实占比估总体、有效期近似和支持recall副作用检查，差距超过5分。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X的验证更忠实：200题调阈值、700题盲测、开发真实占比加权，并更明确处理缺失替代关系；差距超过5分。\"}],\"ranking\":[[\"X\"],[\"Y\",\"Z\"]],\"position_or_length_concern\":\"\",\"most_decisive_evidence\":\"X把核心门控机制与可证伪首测绑定得最完整：保留目标时点有效证据、不可答标记、阈值/盲测拆分、真实占比加权和普通题退化/支持recall否决。\"}\n",
+        "raw_sha256": "65f59f39fcc1a87d5f18727f0def2093fd6d743ae142fa676db0dc7aa81b1043",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 91.5,
+            "Y": 82.75,
+            "Z": 80.25
+          },
+          "recomputed_totals": {
+            "X": 91.5,
+            "Y": 82.75,
+            "Z": 80.25
+          },
+          "total_mismatches": [],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [
+            {
+              "candidate": "Y",
+              "dimension": "D2",
+              "kind": "not_exact_candidate_substring",
+              "quote": "支持片段作正例、冲突片段作硬负例"
+            }
+          ],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-04": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-04\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"组鲁棒、支持约束的7日增量策略\",\"task_fact\":\"重构短期代理、低覆盖、分组伤害和硬目标\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"以当前策略为锚，仅在动作有效样本量充足\",\"task_fact\":\"有锚定、支持门控、约束优化的因果结构\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"比较当前启发式、次日模型、直接7日模型和本策略\",\"task_fact\":\"含强基线，并用去门控/去分组反证机制\",\"score\":4},\"D4\":{\"candidate_quote\":\"若移除支持门控或分组约束后收益不变\",\"task_fact\":\"给出机制差异预测和失败判据，切片略少\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"2万条均匀随机序列仅作盲验证\",\"task_fact\":\"冻结配置，序贯DR、用户聚类bootstrap和max-t\",\"score\":4},\"D6\":{\"candidate_quote\":\"≤30M参数的轻量网络\",\"task_fact\":\"覆盖模型大小和2GPU时，未显式50ms/一人日\",\"score\":3},\"D7\":{\"candidate_quote\":\"不查看其余12万最终集\",\"task_fact\":\"清楚拒绝最终集调参、低支持和区间不可辨识\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先idea\",\"task_fact\":\"单idea、单首测，紧扣题面\",\"score\":4}},\"weighted_total\":90,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"支持约束、分组安全\",\"task_fact\":\"识别覆盖不足、分组安全和退订发送约束\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"直接最大化7日活跃的保守下置信界\",\"task_fact\":\"结构具体，但机制更像保守优化框架\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"两个现有模型仅作诊断比较\",\"task_fact\":\"有基线和诊断，但新增价值反证较弱\",\"score\":3},\"D4\":{\"candidate_quote\":\"分别检查新用户、沉默用户、普通用户、高活跃用户\",\"task_fact\":\"分组与动作时段切片较好，机制证伪一般\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"开放的2万条随机序列只评测，不调参\",\"task_fact\":\"验证忠实，但未明确序贯DR处理周动作\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"≤30M参数\",\"task_fact\":\"覆盖大小、统一策略和2GPU时，未显式50ms/一人日\",\"score\":3},\"D7\":{\"candidate_quote\":\"任一不满足、区间无法判定\",\"task_fact\":\"诚实处理支持不足、权重尾部和不可判定\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单idea、一次首测，简洁相关\",\"score\":4}},\"weighted_total\":84.75,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"基线锚定的保守约束策略\",\"task_fact\":\"覆盖锚定、支持、分组约束和主比较\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"动作优势；仅当优势的置信下界为正\",\"task_fact\":\"优势学习、支持门控、拉格朗日和蒸馏具体\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"现有两个模型仅作参照\",\"task_fact\":\"有常规rival，但缺少强反平庸机制消融\",\"score\":3},\"D4\":{\"candidate_quote\":\"估计器方向不一致或有效样本量不足即否决\",\"task_fact\":\"有分组和估计一致性拒绝，切片/干预预测较弱\",\"score\":3},\"D5\":{\"candidate_quote\":\"在2万条均匀随机序列上用已知1/3概率\",\"task_fact\":\"序贯DR与bootstrap合理，但训练数据边界表述略含糊\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"蒸馏为一个≤30M参数的统一策略\",\"task_fact\":\"覆盖大小、统一策略和2GPU时，未显式50ms/一人日\",\"score\":3},\"D7\":{\"candidate_quote\":\"有效样本量、权重尾部及DR与截尾IPS一致性\",\"task_fact\":\"稳健性意识强，拒绝低支持和估计冲突\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单idea、单验证，表达紧凑\",\"score\":4}},\"weighted_total\":82.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"X\",\"reason\":\"X总分高5.25；主要胜在明确序贯DR、max-t同时区间和去支持/去分组机制反证。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"X\",\"reason\":\"X总分高7.5；验证边界更清楚，rival与机制证伪更完整。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"tie\",\"reason\":\"Y总分仅高2.25，未达5分阈值；Y切片更全，Z序贯估计和一致性检查更明确。\"}],\"ranking\":[[\"X\"],[\"Y\",\"Z\"]],\"position_or_length_concern\":\"三者长度接近且内容高度同构；未见明显位置或篇幅偏置证据。\",\"most_decisive_evidence\":\"X同时写明强基线比较、支持/分组机制消融式否决、2万盲验证、序贯DR和max-t同时区间，最贴合覆盖不足与分组硬目标。\"}\n",
+        "raw_sha256": "dbcb30e038fbb6a783428d5e827c707532e38a987439fc60c7cb3253e3dcfeed",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 90,
+            "Y": 84.75,
+            "Z": 82.5
+          },
+          "recomputed_totals": {
+            "X": 90.0,
+            "Y": 84.75,
+            "Z": 82.5
+          },
+          "total_mismatches": [],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "X"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "tie"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "X"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "tie"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-04\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"短期代理目标和低重叠外推\",\"task_fact\":\"题面给次日代理错位、7日模型低支持和组损害\",\"score\":4},\"D2\":{\"candidate_quote\":\"组鲁棒、支持约束的7日增量策略\",\"task_fact\":\"需一个统一≤30M策略并处理覆盖、退订、发送、分组\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"比较当前启发式、次日模型、直接7日模型和本策略\",\"task_fact\":\"需强基线并说明相对现有模型新增价值\",\"score\":4},\"D4\":{\"candidate_quote\":\"若移除支持门控或分组约束后收益不变，则否决\",\"task_fact\":\"需差异预测、可证伪且覆盖异常切片\",\"score\":4},\"D5\":{\"candidate_quote\":\"开放的2万条均匀随机序列仅作盲验证\",\"task_fact\":\"只能用2万早期验证，不能线上或最终集调参\",\"score\":4},\"D6\":{\"candidate_quote\":\"固定一次配置，≤2 GPU小时\",\"task_fact\":\"完整预算10 GPU时，一工程师日，部署≤30M、<50ms\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"任一条件失败、区间不可辨识\",\"task_fact\":\"需诚实边界、低支持和方差失败处理\",\"score\":4},\"D8\":{\"candidate_quote\":\"最优先idea\",\"task_fact\":\"只提一个idea，≤600字且相关\",\"score\":4}},\"weighted_total\":94.0,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"支持约束、分组安全\",\"task_fact\":\"题面核心为支持不足、分组不降和硬目标\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"最大化7日活跃的保守下置信界\",\"task_fact\":\"需机制结构而非只堆模型调参\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"正式基线为当前启发式策略\",\"task_fact\":\"需和当前启发式、现有两模型公平比较\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"核对动作/时段切片\",\"task_fact\":\"需切片差异、少数组损害与拒绝条件\",\"score\":3},\"D5\":{\"candidate_quote\":\"开放的2万条随机序列只评测，不调参\",\"task_fact\":\"最低成本验证要保留开放集为公平评测\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"≤30M参数\",\"task_fact\":\"需≤2 GPU时验证、≤30M、<50ms、统一策略\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"无支持不足或极端权重\",\"task_fact\":\"需分清可识别、方差和估计边界\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"一个≤30M参数的\",\"task_fact\":\"一个idea且简洁相关\",\"score\":4}},\"weighted_total\":85.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"基线锚定的保守约束策略\",\"task_fact\":\"需重构启发式占95%、随机仅验证、目标硬约束\",\"score\":4},\"D2\":{\"candidate_quote\":\"仅当优势的置信下界为正且历史动作概率≥0.05\",\"task_fact\":\"需具体机制处理低覆盖和风险约束\",\"score\":4},\"D3\":{\"candidate_quote\":\"主比较对象为当前启发式\",\"task_fact\":\"需强rival，现有模型应作参照或比较\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"估计器方向不一致或有效样本量不足即否决\",\"task_fact\":\"需差异预测证伪和异常切片硬目标\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"冻结策略后，在2万条均匀随机序列上\",\"task_fact\":\"需开放2万随机序列、≤2 GPU时验证\",\"score\":4},\"D6\":{\"candidate_quote\":\"蒸馏为一个≤30M参数的统一策略\",\"task_fact\":\"需部署≤30M、<50ms统一策略和2 GPU时验证\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"检查有效样本量、权重尾部及DR与截尾IPS一致性\",\"task_fact\":\"需方差、支持、估计稳健边界\",\"score\":4},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"一个idea，简洁相关\",\"score\":4}},\"weighted_total\":93.75,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"Z\",\"reason\":\"Z在支持门控、估计稳健性和冻结评测上更完整，差值8.25≥5。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"tie\",\"reason\":\"X更强在rival和可证伪消融，Z机制略更具体；差值0.25<5。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"X补足现有模型比较、max-t同时区间和机制否决，差值8.5≥5。\"}],\"ranking\":[[\"X\",\"Z\"],[\"Y\"]],\"position_or_length_concern\":\"三者长度和位置未作为依据；X虽后置仍因证伪与比较更强获高分。\",\"most_decisive_evidence\":\"X明确比较三基线并设置去除支持门控/分组约束后收益不变即否决；Z的保守支持门控和DR/IPS一致性同样强。\"}\n",
+        "raw_sha256": "15bdaee8c3e4b5bc61c8b03e34baf01deedb0a269c0f3d6735f082a1325a2d5a",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 94.0,
+            "Y": 85.5,
+            "Z": 93.75
+          },
+          "recomputed_totals": {
+            "X": 96.25,
+            "Y": 85.75,
+            "Z": 94.5
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 94.0,
+              "recomputed": 96.25
+            },
+            {
+              "candidate": "Y",
+              "reported": 85.5,
+              "recomputed": 85.75
+            },
+            {
+              "candidate": "Z",
+              "reported": 93.75,
+              "recomputed": 94.5
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "X"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-05": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-05\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"新账户仅聚合其当时已连接旧账户\",\"task_fact\":\"抓住未来污染、新账户一跳旧账户、成本硬约束\",\"score\":4},\"D2\":{\"candidate_quote\":\"旧对手方行为嵌入；首24小时序列\",\"task_fact\":\"结构含流式状态、缓存嵌入、首日融合\",\"score\":4},\"D3\":{\"candidate_quote\":\"复算因果度数GraphSAGE(0.21)\",\"task_fact\":\"有修正GraphSAGE和树作同周同点 rival\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"95%自助法下界未超过GraphSAGE\",\"task_fact\":\"阈值、下界、资源门禁清楚但缺核心消融\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"第1—8周最终标签训练，第9周\",\"task_fact\":\"训练/开发/封存/逐事件回放忠实\",\"score\":4},\"D6\":{\"candidate_quote\":\"单卡训练不超过2小时\",\"task_fact\":\"覆盖≤2GPU时、12GB、30ms、8GB\",\"score\":4},\"D7\":{\"candidate_quote\":\"逐事件回放并截断全部未来记录\",\"task_fact\":\"证据边界稳，未夸最终达标但略少副作用检查\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"因果一跳“首日桥接”编码器\",\"task_fact\":\"单idea一次首测，简洁相关\",\"score\":4}},\"weighted_total\":93.25,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"连接“质量”而非是否连接\",\"task_fact\":\"对新账户连接混淆、未来污染和成本把握好\",\"score\":4},\"D2\":{\"candidate_quote\":\"固定宽度的流式状态\",\"task_fact\":\"锚点记忆、聚合统计、GBDT因果链清楚\",\"score\":4},\"D3\":{\"candidate_quote\":\"相同样本、账户聚合规则下比较\",\"task_fact\":\"强rival加核心消融，公平性最好\",\"score\":4},\"D4\":{\"candidate_quote\":\"核心消融增益<0.02\",\"task_fact\":\"有差异预测和拒绝阈值，切片干预明确\",\"score\":4},\"D5\":{\"candidate_quote\":\"按时间重放1—8周生成逐笔前视安全状态\",\"task_fact\":\"第9周冻结验证，标签不作状态更新\",\"score\":4},\"D6\":{\"candidate_quote\":\"≤2 GPU时、≤12 GB，推理≤30 ms\",\"task_fact\":\"训练、显存、推理、状态边界全覆盖\",\"score\":4},\"D7\":{\"candidate_quote\":\"第10—12周保持封存\",\"task_fact\":\"边界诚实；风险分来源略需警惕但可按行为生成\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"因果单跳“可信锚点记忆”\",\"task_fact\":\"一个idea、首测完整、文字紧凑\",\"score\":4}},\"weighted_total\":99,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"一跳旧邻居的行为状态而非“是否连接旧账户”\",\"task_fact\":\"覆盖新节点泛化、污染和采样成本\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"近期金额/频率、设备与商户变化\",\"task_fact\":\"机制可行但较通用，状态蒸馏细节少\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"相同样本、阈值和特征时点比较\",\"task_fact\":\"rival公平，有消融但常规增强描述弱\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"消融无明显下降，则否决\",\"task_fact\":\"有证伪方向，消融阈值不够量化\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"第9周作一次固定协议验证\",\"task_fact\":\"时间切分、截断、标签用途、预算内明确\",\"score\":4},\"D6\":{\"candidate_quote\":\"总GPU≤2小时、显存≤12GB\",\"task_fact\":\"资源约束全列且执行路径轻\",\"score\":4},\"D7\":{\"candidate_quote\":\"即使通过也仅升级最终评测，不宣称达标\",\"task_fact\":\"证据边界最克制，但副作用检查有限\",\"score\":4},\"D8\":{\"candidate_quote\":\"因果单跳“旧邻居状态蒸馏”\",\"task_fact\":\"单idea一次首测，略泛但合规\",\"score\":4}},\"weighted_total\":89.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"Y\",\"reason\":\"Y同样因果单跳且更公平：同样本聚合规则、核心消融增益0.02，证伪更强。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"tie\",\"reason\":\"X机制和统计门禁更强，Z证据边界更克制；总分差<5。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Y\",\"reason\":\"Y机制、rival、公平消融和拒绝阈值均更具体，总分差≥5。\"}],\"ranking\":[[\"Y\"],[\"X\",\"Z\"]],\"position_or_length_concern\":\"无明显位置或长度可疑；三者长度接近，均合规。\",\"most_decisive_evidence\":\"Y的“相同样本、账户聚合规则下比较”与“核心消融增益<0.02”同时满足公平rival和可证伪差异。\"}\n",
+        "raw_sha256": "1e493a3402eb3b1b2d17919366ce68ec48e209a676d8d9486c5193dfe06d96bc",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 93.25,
+            "Y": 99,
+            "Z": 89.5
+          },
+          "recomputed_totals": {
+            "X": 95.0,
+            "Y": 99.0,
+            "Z": 92.25
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 93.25,
+              "recomputed": 95.0
+            },
+            {
+              "candidate": "Z",
+              "reported": 89.5,
+              "recomputed": 92.25
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [
+            {
+              "left": "X",
+              "right": "Y",
+              "reported": "Y",
+              "normalized": "tie"
+            }
+          ],
+          "quote_deviations": [
+            {
+              "candidate": "X",
+              "dimension": "D2",
+              "kind": "not_exact_candidate_substring",
+              "quote": "旧对手方行为嵌入；首24小时序列"
+            }
+          ],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-05\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"新账户仅聚合其当时已连接旧账户\",\"task_fact\":\"抓新节点、一跳、未来截断和成本硬约束\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"缓存嵌入，并与首24小时序列经小型注意力网络融合\",\"task_fact\":\"结构具体但注意力/嵌入偏复杂，状态来源稍宽\",\"score\":3},\"D3\":{\"candidate_quote\":\"复算因果度数GraphSAGE(0.21)和逐交易树(0.17)\",\"task_fact\":\"有强rival，但用最终数值作比较锚点略不稳\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"95%自助法下界未超过GraphSAGE\",\"task_fact\":\"有差异预测和统计拒绝，但缺核心消融\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"逐事件回放并截断全部未来记录\",\"task_fact\":\"训练期+第9周忠实，固定配置单卡2小时\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"p95>30ms、状态>8GB、显存>12GB、训练>2小时\",\"task_fact\":\"覆盖全部资源门槛\",\"score\":4},\"D7\":{\"candidate_quote\":\"标签只用于损失\",\"task_fact\":\"证据边界基本清楚，未说明通过后不宣称最终达标\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先idea：因果一跳“首日桥接”编码器\",\"task_fact\":\"单idea，短而相关\",\"score\":4}},\"weighted_total\":86.0,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"连接“质量”而非是否连接可区分新账户风险\",\"task_fact\":\"重构连接异常切片、新账户与采样成本\",\"score\":4},\"D2\":{\"candidate_quote\":\"固定宽度的流式状态\",\"task_fact\":\"一跳锚点记忆+GBDT机制清楚\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与修正未来度数后的GraphSAGE和现有树模型\",\"task_fact\":\"常规rival公平，未细到阈值同口径\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"核心消融增益<0.02\",\"task_fact\":\"有核心消融、硬指标拒绝\",\"score\":4},\"D5\":{\"candidate_quote\":\"冻结模型，在第9周顺序更新无标签状态\",\"task_fact\":\"第9周协议忠实，数据边界清楚\",\"score\":4},\"D6\":{\"candidate_quote\":\"≤2 GPU时、≤12 GB，推理≤30 ms、状态≤8 GB\",\"task_fact\":\"资源硬约束完整\",\"score\":4},\"D7\":{\"candidate_quote\":\"绝不使用第9周后记录或第9周标签作特征/更新\",\"task_fact\":\"已知/未知边界清楚，但少最终通过声明限制\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea：因果单跳“可信锚点记忆”\",\"task_fact\":\"单idea一次首测，简洁\",\"score\":4}},\"weighted_total\":93.75,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"一跳旧邻居的行为状态而非“是否连接旧账户”\",\"task_fact\":\"准确抓污染、新账户、稀有与两跳成本\",\"score\":4},\"D2\":{\"candidate_quote\":\"近期金额/频率、设备与商户变化、可见度数及时间衰减\",\"task_fact\":\"状态、聚合、因果路径具体\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与因果GraphSAGE及逐交易树模型\",\"task_fact\":\"强rival且同样本阈值特征时点\",\"score\":4},\"D4\":{\"candidate_quote\":\"做消融（移除旧邻居状态）\",\"task_fact\":\"有核心消融和指标门禁，缺统计下界\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"第1—8周训练，第9周作一次固定协议验证\",\"task_fact\":\"训练期+第9周，最终封存，忠实低成本\",\"score\":4},\"D6\":{\"candidate_quote\":\"总GPU≤2小时、显存≤12GB；实测状态≤8GB、p95≤30ms\",\"task_fact\":\"资源边界完整且可测\",\"score\":4},\"D7\":{\"candidate_quote\":\"即使通过也仅升级最终评测，不宣称达标\",\"task_fact\":\"证据边界最稳健\",\"score\":4},\"D8\":{\"candidate_quote\":\"最优先 idea：因果单跳“旧邻居状态蒸馏”\",\"task_fact\":\"单idea一次首测，紧扣任务\",\"score\":4}},\"weighted_total\":95.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"Z证据边界和rival更完整，Y消融门槛更量化；总分差1.75<5。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"Z\",\"reason\":\"Z有核心消融、最终边界和更轻机制；总分差9.5。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"Y\",\"reason\":\"Y协议、消融和资源约束更忠实，且机制更轻；总分差7.75。\"}],\"ranking\":[[\"Z\",\"Y\"],[\"X\"]],\"position_or_length_concern\":\"无；未按呈现顺序、长度或措辞偏好裁决。\",\"most_decisive_evidence\":\"Z/Y都以因果一跳旧账户状态解决新账户泛化和两跳成本，并用第9周固定协议、核心消融、资源门禁否决；X缺核心消融且机制更重。\"}\n",
+        "raw_sha256": "0aba1c0e0d0545f93886060a4362602cd7b88d7bb966ba2c2bbad26012a03f2c",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 86.0,
+            "Y": 93.75,
+            "Z": 95.5
+          },
+          "recomputed_totals": {
+            "X": 86.25,
+            "Y": 95.0,
+            "Z": 95.5
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 86.0,
+              "recomputed": 86.25
+            },
+            {
+              "candidate": "Y",
+              "reported": 93.75,
+              "recomputed": 95.0
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-06": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-06\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D2\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D4\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D5\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D6\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D7\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D8\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0}},\"weighted_total\":0,\"objective_invalid\":true,\"invalid_reason\":\"precheck malformed envelope\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"6家粗标签厂用P(机械)=P(轴承磨损)+P(轴不对中)\",\"task_fact\":\"抓住粗细标签不一致、异质域、隐私通信和弱厂目标\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"共享编码器…适配器和分类头；…边际损失\",\"task_fact\":\"机制有层级损失、个性化适配、摘要原型、弱厂加权\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与同初始化、同采样、同字节的FedProx比较\",\"task_fact\":\"设置强常规rival且等预算；旧基线仅背景\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"粗/细标签厂差距…14家迁移集无一致收益，即放弃\",\"task_fact\":\"有分组切片和拒绝阈值，但差异性预测略少\",\"score\":3},\"D5\":{\"candidate_quote\":\"仅3轮…复查10段，共60段；冻结…最终测试均不检查\",\"task_fact\":\"复核公平覆盖粗标签厂，三轮低成本且不碰最终集\",\"score\":4},\"D6\":{\"candidate_quote\":\"验证ε≤1；推进后余下9轮ε≤4，每轮≤3.3MB/厂\",\"task_fact\":\"轮数、隐私、通信、GPU预算均有账本安排\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"FedAvg和独训既有结果作背景\",\"task_fact\":\"区分既有结果和首测观察，但未知副作用边界不多\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先idea：层级标签感知的个性化分布鲁棒联邦学习\",\"task_fact\":\"单idea、紧扣任务、未扩散多方向\",\"score\":4}},\"weighted_total\":86.25,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"6家粗标签厂以P(机械故障)=P(轴承磨损)+P(轴不对中)训练\",\"task_fact\":\"覆盖粗细标签、异质域、最坏厂、指标预算\",\"score\":4},\"D2\":{\"candidate_quote\":\"共享轻量时序编码器和四类头，各厂保留…条件归一化\",\"task_fact\":\"层级一致损失、个性化归一化、上尾加权结构清晰\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与同模型容量、本地步数、隐私和字节预算的FedProx比较\",\"task_fact\":\"强rival等预算；直接对FedProx增量检验\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"粗标签厂及设备域偏移厂改善最大，且两种机械类混淆显著下降\",\"task_fact\":\"有明确差异预测和机械混淆20%拒绝条件\",\"score\":4},\"D5\":{\"candidate_quote\":\"24厂均参加3轮；开发厂选全部6家粗标签厂…包含当前最差厂\",\"task_fact\":\"低成本首测覆盖全厂，60段复核分层且开发限定\",\"score\":4},\"D6\":{\"candidate_quote\":\"累计ε≤1.2、每厂上行≤10MB、服务器≤2 GPU小时\",\"task_fact\":\"隐私通信GPU满足首测，但完整12轮余量安排少于Y\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"基线与约束为reported；机制创新性not-searched，结论待实验\",\"task_fact\":\"明确证据边界、不可查创新性和实验待定\",\"score\":4},\"D8\":{\"candidate_quote\":\"最优先 idea：层级标签一致的个性化联邦最坏域优化\",\"task_fact\":\"单idea简洁，紧扣异常切片和硬目标\",\"score\":4}},\"weighted_total\":93.25,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"Y\",\"reason\":\"X前置格式无效且语义排除；Y有效并满足硬约束。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"Z\",\"reason\":\"X前置格式无效且语义排除；Z有效并满足硬约束。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Z\",\"reason\":\"Z总分高7分，优势集中在D1事实覆盖、D4差异预测证伪和D7证据边界，方向一致。\"}],\"ranking\":[[\"Z\"],[\"Y\"],[\"X\"]],\"position_or_length_concern\":\"无；X按前置门处理，Y/Z未按位置长度语气偏好裁判。\",\"most_decisive_evidence\":\"Z明确预测粗标签厂和域偏移厂收益、机械混淆下降，并用20%混淆降幅和硬目标作放弃条件。\"}\n",
+        "raw_sha256": "6eb1927a1ccbc1196c43c979f4232fb367f8bf4a5eb7ab8eec70ee4e9727aa5d",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 0,
+            "Y": 86.25,
+            "Z": 93.25
+          },
+          "recomputed_totals": {
+            "X": 0.0,
+            "Y": 86.5,
+            "Z": 94.5
+          },
+          "total_mismatches": [
+            {
+              "candidate": "Y",
+              "reported": 86.25,
+              "recomputed": 86.5
+            },
+            {
+              "candidate": "Z",
+              "reported": 93.25,
+              "recomputed": 94.5
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Z"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Z"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [
+            {
+              "candidate": "Y",
+              "dimension": "D2",
+              "kind": "not_exact_candidate_substring",
+              "quote": "共享编码器…适配器和分类头；…边际损失"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D4",
+              "kind": "not_exact_candidate_substring",
+              "quote": "粗/细标签厂差距…14家迁移集无一致收益，即放弃"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "仅3轮…复查10段，共60段；冻结…最终测试均不检查"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D2",
+              "kind": "not_exact_candidate_substring",
+              "quote": "共享轻量时序编码器和四类头，各厂保留…条件归一化"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "24厂均参加3轮；开发厂选全部6家粗标签厂…包含当前最差厂"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D7",
+              "kind": "over_35_codepoints",
+              "quote": "基线与约束为reported；机制创新性not-searched，结论待实验",
+              "length": 38
+            }
+          ],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-06\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D2\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D4\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D5\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D6\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D7\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D8\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0}},\"weighted_total\":0,\"objective_invalid\":true,\"invalid_reason\":\"precheck malformed envelope\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"边际损失，避免伪拆分\",\"task_fact\":\"识别粗细标签空间不一致、异质转速传感器、隐私通信约束\",\"score\":4},\"D2\":{\"candidate_quote\":\"相位重采样，各厂保留传感器归一化、适配器\",\"task_fact\":\"机制含编码器、适配器、边际损失、原型对齐和弱厂加权，具体但略堆叠\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"同初始化、同采样、同字节的FedProx比较\",\"task_fact\":\"有等预算强基线，FedAvg独训作背景，但增量归因受多组件影响\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"14家迁移集无一致收益，即放弃\",\"task_fact\":\"看粗细差距和迁移收益，但放弃阈值最差0.48低于目标0.55\",\"score\":3},\"D5\":{\"candidate_quote\":\"每个粗标签厂...复查10段，共60段\",\"task_fact\":\"60段全给粗标签厂，未显式包含当前最差厂，公平覆盖弱于题目风险\",\"score\":3},\"D6\":{\"candidate_quote\":\"验证ε≤1；推进后余下9轮ε≤4\",\"task_fact\":\"列明ε、通信、2GPU小时和压缩；客户端CPU未展开，后续9轮略分散首测\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"冻结的本地验证集和最终测试均不检查\",\"task_fact\":\"守住最终集，但假设原型和相位重采样有效的边界说明不足\",\"score\":3},\"D8\":{\"candidate_quote\":\"层级标签感知的个性化分布鲁棒联邦学习\",\"task_fact\":\"一个idea且较紧凑，但组件和后续推进信息稍多\",\"score\":3.5}},\"weighted_total\":84,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"P(机械故障)=P(轴承磨损)+P(轴不对中)\",\"task_fact\":\"准确抓住粗细标签、域偏移、最坏厂和隐私通信硬约束\",\"score\":4},\"D2\":{\"candidate_quote\":\"共享轻量时序编码器和四类头\",\"task_fact\":\"层级损失、条件归一化、上尾加权形成清晰因果机制\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"同模型容量、本地步数、隐私和字节预算的FedProx比较\",\"task_fact\":\"用最强已报联邦基线做等预算比较，较能反平庸\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"机械混淆未降20%...则放弃\",\"task_fact\":\"给出粗标签和域偏移改善、混淆下降、目标达标等可证伪预测\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"全6粗标签厂...覆盖选4家细标签厂\",\"task_fact\":\"开发厂覆盖粗标签、异质性和最差厂；60段兼顾粗厂与细类分歧\",\"score\":4},\"D6\":{\"candidate_quote\":\"ε≤1.2、每厂上行≤10MB、服务器≤2 GPU小时\",\"task_fact\":\"轮数、复核、隐私、通信和GPU预算均在首测约束内\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"机制创新性not-searched，结论待实验\",\"task_fact\":\"明确已知基线、未知创新性和实验边界，未借最终集调参\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"层级标签一致的个性化联邦最坏域优化\",\"task_fact\":\"单Core、一次首测、相关紧凑\",\"score\":4}},\"weighted_total\":91.25,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"Z\",\"reason\":\"Z总分高7.25且方向一致；主要胜在复核/开发厂公平覆盖、包含最差厂、放弃阈值贴合硬目标。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"Z\",\"reason\":\"X客观前置无效，语义排除；Z有效。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"Y\",\"reason\":\"X客观前置无效，语义排除；Y有效。\"}],\"ranking\":[[\"Z\"],[\"Y\"],[\"X\"]],\"position_or_length_concern\":\"已忽略呈现顺序、长度和语气；X仅按前置门处理。\",\"most_decisive_evidence\":\"Z明确把6家粗标签厂、异质覆盖和当前最差厂纳入开发，并用60段复核同时服务标签层级与机械混淆证伪；Y的复核集中于粗标签厂且放弃阈值低于目标。\"}\n",
+        "raw_sha256": "7bc273dc0a5abe73d63bdef254dbc5297ccbf57d8569691efffc3465e5b49948",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 0,
+            "Y": 84,
+            "Z": 91.25
+          },
+          "recomputed_totals": {
+            "X": 0.0,
+            "Y": 84.0,
+            "Z": 91.25
+          },
+          "total_mismatches": [],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Z"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [
+            {
+              "candidate": "Y",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "每个粗标签厂...复查10段，共60段"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D4",
+              "kind": "not_exact_candidate_substring",
+              "quote": "机械混淆未降20%...则放弃"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "全6粗标签厂...覆盖选4家细标签厂"
+            }
+          ],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-07": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-07\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"稀有条件混淆与记忆\",\"task_fact\":\"承接稀有匹配低、近邻记忆、扩充F1反降\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"因子化残差 LoRA\",\"task_fact\":\"用阶段/药物/形态共享因子加小交互残差\",\"score\":4},\"D3\":{\"candidate_quote\":\"比较对象为现有原子条件 LoRA\",\"task_fact\":\"有强常规rival但缺筛选rival\",\"score\":3},\"D4\":{\"candidate_quote\":\"任一不达即否决\",\"task_fact\":\"硬阈值覆盖匹配、记忆、专家、扩充效用\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"2 GPU小时内训练该 LoRA\",\"task_fact\":\"首测1000张、40专家、封存最终，基本忠实\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"各生成1000张\",\"task_fact\":\"满足≤2000生成、40专家、≤2GPU时；部署约束未明说\",\"score\":3},\"D7\":{\"candidate_quote\":\"不以总体FID补偿\",\"task_fact\":\"承认指标边界，但评价器独立性仍有限\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单idea、单首测、相关简洁\",\"score\":4}},\"weighted_total\":86.0,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"供体外校准\",\"task_fact\":\"直指评价器循环、记忆、真实扩充效用\",\"score\":4},\"D2\":{\"candidate_quote\":\"目标原型相对最易混淆原型\",\"task_fact\":\"边界、密度、SSIM、最远点选择结构具体\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"等量未筛选样本，以及不加生成数据\",\"task_fact\":\"包含强筛选rival和真实数据基线\",\"score\":4},\"D4\":{\"candidate_quote\":\"阈值只在校准组确定\",\"task_fact\":\"审计供体、bootstrap、硬继续标准可证伪\",\"score\":4},\"D5\":{\"candidate_quote\":\"每个稀有组合生成250张，共2,000张\",\"task_fact\":\"首测不改模型，公平比较，专家40张\",\"score\":4},\"D6\":{\"candidate_quote\":\"约1.1 GPU小时\",\"task_fact\":\"生成≤2000、专家40、≤2GPU；部署时延说明清楚\",\"score\":4},\"D7\":{\"candidate_quote\":\"所有指标在未参与调参的审计供体\",\"task_fact\":\"独立审计较稳，但筛选可能只报可保留子集\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单idea、一次首测，简洁覆盖目标\",\"score\":4}},\"weighted_total\":95.0,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D2\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D4\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D5\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D6\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D7\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D8\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0}},\"weighted_total\":0,\"objective_invalid\":true,\"invalid_reason\":\"precheck answer over length cap\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"Y\",\"reason\":\"Y总分高9分；更强独立审计、rival和资源闭合，X机制更深但验证独立性与部署约束稍弱\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"X\",\"reason\":\"Z预检超长无效\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"Y\",\"reason\":\"Z预检超长无效\"}],\"ranking\":[[\"Y\"],[\"X\"],[\"Z\"]],\"position_or_length_concern\":\"Z按给定预检无效；X/Y未因位置或长度加减分\",\"most_decisive_evidence\":\"Y用供体外校准/审计、等量未筛选和无生成基线，硬阈值同时检验匹配、记忆、专家合理与稀有F1真实效用\"}\n",
+        "raw_sha256": "0fd28744909c2e79d7992a14072fb563cc48e480d1d043fe606a8299ad420d78",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 86.0,
+            "Y": 95.0,
+            "Z": 0
+          },
+          "recomputed_totals": {
+            "X": 86.0,
+            "Y": 96.75,
+            "Z": 0.0
+          },
+          "total_mismatches": [
+            {
+              "candidate": "Y",
+              "reported": 95.0,
+              "recomputed": 96.75
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-07\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"稀有组合仅学习受范数约束的小交互残差\",\"task_fact\":\"稀有泛化、记忆、评价自证、效用均被触及\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"因子化残差 LoRA\",\"task_fact\":\"有明确结构因果但训练可行性偏紧\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"比较对象为现有原子条件 LoRA\",\"task_fact\":\"强rival有旧LoRA，但缺等量未筛选和无生成完整对照\",\"score\":3},\"D4\":{\"candidate_quote\":\"任一不达即否决，不以总体FID补偿\",\"task_fact\":\"阈值可证伪，切片覆盖稀有/常见/记忆\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"开发供体预先分成校准/评估两部分\",\"task_fact\":\"保封存最终集，评估公平；但首测含训练新LoRA\",\"score\":3},\"D6\":{\"candidate_quote\":\"各生成1000张\",\"task_fact\":\"满足≤2000、40专家、≤2GPU时但训练风险高\",\"score\":3},\"D7\":{\"candidate_quote\":\"取经校准的现评价器与冻结编码器原型分类器\",\"task_fact\":\"承认不用FID，但仍部分依赖现评价器\",\"score\":3},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"单idea，基本简洁相关\",\"score\":3.5}},\"weighted_total\":82.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"属性边界—去记忆—多样性\",\"task_fact\":\"直接对应稀有匹配、记忆、自证、扩充效用\",\"score\":4},\"D2\":{\"candidate_quote\":\"目标原型相对最易混淆原型有足够间隔\",\"task_fact\":\"筛选机制具体，含密度、SSIM、远点多样性\",\"score\":4},\"D3\":{\"candidate_quote\":\"原始LoRA等量未筛选样本，以及不加生成数据\",\"task_fact\":\"同时设等预算生成rival和无生成基线\",\"score\":4},\"D4\":{\"candidate_quote\":\"任一不满足即否决\",\"task_fact\":\"硬阈值和优于未筛选，失败不被成功筛样掩盖\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"阈值只在校准组确定\",\"task_fact\":\"首测用校准/审计供体，配对bootstrap，预算内\",\"score\":4},\"D6\":{\"candidate_quote\":\"每个稀有组合生成250张，共2,000张\",\"task_fact\":\"满足2000张、40专家、≤2GPU时、部署不变\",\"score\":4},\"D7\":{\"candidate_quote\":\"所有指标在未参与调参的审计供体上报告\",\"task_fact\":\"边界诚实，避免最终集和同评价器循环自证\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"最优先 idea\",\"task_fact\":\"一个idea一次首测，简洁完整\",\"score\":4}},\"weighted_total\":96.5,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D2\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D3\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D4\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D5\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D6\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D7\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0},\"D8\":{\"candidate_quote\":\"\",\"task_fact\":\"precheck invalid\",\"score\":0}},\"weighted_total\":0,\"objective_invalid\":true,\"invalid_reason\":\"precheck answer over length cap\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"Y\",\"reason\":\"Z预检超长无效；Y为有效候选。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"X\",\"reason\":\"Z预检超长无效；X为有效候选。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"Y\",\"reason\":\"Y总分高14分；rival更完整，首测更低成本且更直接防记忆和评价自证。\"}],\"ranking\":[[\"Y\"],[\"X\"],[\"Z\"]],\"position_or_length_concern\":\"Z按题面前置门无效；Y、X均未因顺序或长度获益。\",\"most_decisive_evidence\":\"Y设置等量未筛选与无生成双对照，并在校准/审计供体上用硬阈值否决，最贴合四个异常目标。\"}\n",
+        "raw_sha256": "fd8a6d4d861ece3137875f7a460e984b1bb3c4e8c8bca51e0c2baf49725a2408",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 82.5,
+            "Y": 96.5,
+            "Z": 0
+          },
+          "recomputed_totals": {
+            "X": 81.5,
+            "Y": 96.75,
+            "Z": 0.0
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 82.5,
+              "recomputed": 81.5
+            },
+            {
+              "candidate": "Y",
+              "reported": 96.5,
+              "recomputed": 96.75
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "Y"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "X"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [],
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-08": {
+      "forward": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-08\",\"presentation_order\":[\"X\",\"Y\",\"Z\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"同时消除位置/长度捷径并提高“相当”\",\"task_fact\":\"需同时处理位置、篇幅、冲突、tie类\",\"score\":4},\"D2\":{\"candidate_quote\":\"对称分数、两次分歧、长度差及矛盾分\",\"task_fact\":\"7B两次、NLI、240标签均可用\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与现有单次7B评委在同一120题配对比较\",\"task_fact\":\"需强rival反平庸；简单交换投票不够\",\"score\":3},\"D4\":{\"candidate_quote\":\"80题误选率；120题交换后变化率\",\"task_fact\":\"异常切片含80冲突题、换序22%改变\",\"score\":4},\"D5\":{\"candidate_quote\":\"固定80题错误细节集...分层随机抽40题\",\"task_fact\":\"首测≤120开发样本、≤2GPU时\",\"score\":4},\"D6\":{\"candidate_quote\":\"每题恰好两次7B调用...预算上限2 GPU小时\",\"task_fact\":\"每对最多调用7B两次、p95≤4秒\",\"score\":4},\"D7\":{\"candidate_quote\":\"通过仅表示值得在完整160题复验\",\"task_fact\":\"开发首测不等于最终达标，人工18%分歧\",\"score\":4},\"D8\":{\"candidate_quote\":\"最优先 idea：证据约束的顺序对称评委\",\"task_fact\":\"只提一个idea，不实现不列多个，≤600字\",\"score\":4}},\"weighted_total\":91.75,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"直接针对位置、长度、事实冲突和相当类阈值\",\"task_fact\":\"需同时处理四类已知失败模式\",\"score\":4},\"D2\":{\"candidate_quote\":\"冲突分数只允许降低对应答案胜率\",\"task_fact\":\"NLI不可当绝对真值，需证据门控\",\"score\":4},\"D3\":{\"candidate_quote\":\"与现有单次7B评委比较\",\"task_fact\":\"需强rival；基线是现有7B评委\",\"score\":3},\"D4\":{\"candidate_quote\":\"交换顺序，测判决变化率\",\"task_fact\":\"换序变化目标≤5%，固定80冲突题\",\"score\":4},\"D5\":{\"candidate_quote\":\"固定80题冲突子集...分层随机抽40题\",\"task_fact\":\"首测≤120样本；需公平抽样和指标\",\"score\":4},\"D6\":{\"candidate_quote\":\"耗时超过2 GPU小时、p95超过4秒，即否决\",\"task_fact\":\"硬约束24GB/8h、首测≤2h、p95≤4秒\",\"score\":4},\"D7\":{\"candidate_quote\":\"用配对bootstrap给95%区间\",\"task_fact\":\"前两名人工18%分歧，需不夸大证据\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"证据门控的顺序对称裁决器\",\"task_fact\":\"单idea，开发方案简洁相关\",\"score\":4}},\"weighted_total\":91,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"交换对称、证据约束的校准裁决器\",\"task_fact\":\"需同时处理位置、篇幅、事实冲突、tie\",\"score\":4},\"D2\":{\"candidate_quote\":\"带单调约束的三分类校准器\",\"task_fact\":\"需机制具体且不只堆模块/调参\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"同时跑现有评委与新方法\",\"task_fact\":\"需强常规rival与等预算增量\",\"score\":3},\"D4\":{\"candidate_quote\":\"点估计任一未达0.65、0.55、8%、5%\",\"task_fact\":\"目标κ≥0.65、相当F1≥0.55等\",\"score\":4},\"D5\":{\"candidate_quote\":\"纳入固定80题错误细节集...抽40题\",\"task_fact\":\"≤120开发样本，需抽样概率加权\",\"score\":4},\"D6\":{\"candidate_quote\":\"约240次7B调用和NLI批处理，限2 GPU小时\",\"task_fact\":\"每对最多两次7B，首测≤2GPU时\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"最终规则天然不依赖顺序\",\"task_fact\":\"长度差等特征仍可能引入副作用\",\"score\":3},\"D8\":{\"candidate_quote\":\"只JSON\",\"task_fact\":\"候选本身单idea且简洁\",\"score\":4}},\"weighted_total\":88.25,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"X\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"Y机制更稳健地限制NLI冲突影响，X否决和复验边界更清楚；总分差<5。\"},{\"left\":\"X\",\"right\":\"Z\",\"winner\":\"tie\",\"reason\":\"X在资源、证据边界和否决条件上更严，但差距未达5分。\"},{\"left\":\"Y\",\"right\":\"Z\",\"winner\":\"tie\",\"reason\":\"Y的冲突门控和资源否决更清楚，Z有“天然不依赖顺序”过强表述；差距<5。\"}],\"ranking\":[[\"X\",\"Y\",\"Z\"]],\"position_or_length_concern\":\"三者均首位为对称评委，内容也相近；未见可由位置或长度单独解释的质量差异。\",\"most_decisive_evidence\":\"X/Y/Z都覆盖AB-BA两次评审、NLI证据约束、240标签校准、80冲突题+40分层抽样、κ/tieF1/误选/换序/p95否决；差异主要在NLI门控严谨性和证据边界表述。\"}\n",
+        "raw_sha256": "2cfdc62d0afe514823a1b0d55d9c228ac86faa07fa9b6b854524b6730f477271",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "pair_order": [
+            [
+              "X",
+              "Y"
+            ],
+            [
+              "X",
+              "Z"
+            ],
+            [
+              "Y",
+              "Z"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 91.75,
+            "Y": 91,
+            "Z": 88.25
+          },
+          "recomputed_totals": {
+            "X": 94.25,
+            "Y": 95.5,
+            "Z": 90.75
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 91.75,
+              "recomputed": 94.25
+            },
+            {
+              "candidate": "Y",
+              "reported": 91,
+              "recomputed": 95.5
+            },
+            {
+              "candidate": "Z",
+              "reported": 88.25,
+              "recomputed": 90.75
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "tie"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "X",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "X",
+              "right": "Z",
+              "winner": "tie"
+            },
+            {
+              "left": "Y",
+              "right": "Z",
+              "winner": "tie"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [
+            {
+              "candidate": "X",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "固定80题错误细节集...分层随机抽40题"
+            },
+            {
+              "candidate": "X",
+              "dimension": "D6",
+              "kind": "not_exact_candidate_substring",
+              "quote": "每题恰好两次7B调用...预算上限2 GPU小时"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "固定80题冲突子集...分层随机抽40题"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "纳入固定80题错误细节集...抽40题"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D8",
+              "kind": "not_exact_candidate_substring",
+              "quote": "只JSON"
+            }
+          ],
+          "validation_errors": []
+        }
+      },
+      "reverse": {
+        "raw": "{\"schema_version\":\"1.0\",\"task_id\":\"IDEA-08\",\"presentation_order\":[\"Z\",\"Y\",\"X\"],\"candidates\":{\"X\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"位置/长度捷径并提高“相当”\",\"task_fact\":\"需同时处理位置、篇幅、冲突、tie\",\"score\":3.5},\"D2\":{\"candidate_quote\":\"平均分数；400M NLI逐句检查\",\"task_fact\":\"限同一7B两次、可用NLI和训练标签\",\"score\":3.5},\"D3\":{\"candidate_quote\":\"与现有单次7B评委在同一120题配对比较\",\"task_fact\":\"需强rival与等预算增量\",\"score\":3},\"D4\":{\"candidate_quote\":\"交换后变化率；另报p95延迟\",\"task_fact\":\"目标含换序变化、错误细节、p95\",\"score\":3.5},\"D5\":{\"candidate_quote\":\"固定80题错误细节集，再...抽40题\",\"task_fact\":\"首测≤120开发样本、≤2GPU时\",\"score\":3.5},\"D6\":{\"candidate_quote\":\"每题恰好两次7B调用...预算上限2 GPU小时\",\"task_fact\":\"平均最多调用7B两次，2GPU时首测\",\"score\":4},\"D7\":{\"candidate_quote\":\"通过仅表示值得在完整160题复验\",\"task_fact\":\"需分清开发首测非最终达标\",\"score\":4},\"D8\":{\"candidate_quote\":\"证据约束的顺序对称评委\",\"task_fact\":\"只提一个idea一次首测\",\"score\":4}},\"weighted_total\":87.25,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Y\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"直接针对位置、长度、事实冲突和相当类阈值\",\"task_fact\":\"四类已知失效均需处理\",\"score\":4},\"D2\":{\"candidate_quote\":\"五折交叉拟合的多项逻辑校准\",\"task_fact\":\"240训练标签小样本，需校准边界\",\"score\":4},\"D3\":{\"candidate_quote\":\"与现有单次7B评委比较\",\"task_fact\":\"需强常规rival与等预算增量\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"测判决变化率，同时记录p95时延\",\"task_fact\":\"目标含κ、相当F1、误选、换序、p95\",\"score\":4},\"D5\":{\"candidate_quote\":\"固定80题冲突子集...分层随机抽40题\",\"task_fact\":\"首测≤120开发样本\",\"score\":4},\"D6\":{\"candidate_quote\":\"耗时超过2 GPU小时、p95超过4秒，即否决\",\"task_fact\":\"硬约束2GPU时、p95≤4秒\",\"score\":4},\"D7\":{\"candidate_quote\":\"冲突分数只允许降低对应答案胜率\",\"task_fact\":\"警惕把NLI当绝对真值\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"证据门控的顺序对称裁决器\",\"task_fact\":\"单一idea，简洁相关\",\"score\":4}},\"weighted_total\":96.0,\"objective_invalid\":false,\"invalid_reason\":\"\"},\"Z\":{\"dimensions\":{\"D1\":{\"candidate_quote\":\"不依赖顺序\",\"task_fact\":\"开发中前答案和长答案偏置明显\",\"score\":4},\"D2\":{\"candidate_quote\":\"单调约束的三分类校准器\",\"task_fact\":\"需具体结构而非交换投票\",\"score\":4},\"D3\":{\"candidate_quote\":\"同时跑现有评委与新方法\",\"task_fact\":\"需常规rival和增量证据\",\"score\":3.5},\"D4\":{\"candidate_quote\":\"κ、相当F1、80题误选率...变化率\",\"task_fact\":\"需可证伪差异预测\",\"score\":4},\"D5\":{\"candidate_quote\":\"纳入固定80题错误细节集...抽40题\",\"task_fact\":\"≤120开发样本且避免只调80题\",\"score\":4},\"D6\":{\"candidate_quote\":\"约240次7B调用和NLI批处理，限2 GPU小时\",\"task_fact\":\"最多两次7B、≤2GPU时\",\"score\":3.5},\"D7\":{\"candidate_quote\":\"用已知抽样概率加权还原开发集分布\",\"task_fact\":\"需证据边界稳健，处理抽样偏差\",\"score\":3.5},\"D8\":{\"candidate_quote\":\"交换对称、证据约束的校准裁决器\",\"task_fact\":\"只提一个idea\",\"score\":4}},\"weighted_total\":94.5,\"objective_invalid\":false,\"invalid_reason\":\"\"}},\"pairwise\":[{\"left\":\"Z\",\"right\":\"Y\",\"winner\":\"tie\",\"reason\":\"总分差1.5<5；Y补p95否决更全，Z相当区间更明确。\"},{\"left\":\"Z\",\"right\":\"X\",\"winner\":\"Z\",\"reason\":\"Z机制更完整，有单调校准、相当区间、抽样加权；差7.25。\"},{\"left\":\"Y\",\"right\":\"X\",\"winner\":\"Y\",\"reason\":\"Y约束、p95否决、交叉拟合和冲突软门控更稳；差8.75。\"}],\"ranking\":[[\"Y\",\"Z\"],[\"X\"]],\"position_or_length_concern\":\"候选顺序Z,Y,X；三者均采用交换对称，未见因位置或篇幅给分。\",\"most_decisive_evidence\":\"Y/Z都覆盖四个硬目标和120题首测；X略少强rival与机制细节。Z缺p95否决，Y缺显式相当区间但资源闭环更全。\"}\n",
+        "raw_sha256": "2b7ad38cc072ded9a5a8d0ce9e942a9058552fe3216d683db7a46ecd65a35070",
+        "run": {
+          "model": "gpt-5.5",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "presentation_order": [
+            "Z",
+            "Y",
+            "X"
+          ],
+          "pair_order": [
+            [
+              "Z",
+              "Y"
+            ],
+            [
+              "Z",
+              "X"
+            ],
+            [
+              "Y",
+              "X"
+            ]
+          ],
+          "used_tools": false,
+          "read_files": false,
+          "used_web": false,
+          "used_other_skills": false,
+          "used_subagents": false,
+          "used_cross_run_memory": false,
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "audit": {
+          "parse_status": "strict_json",
+          "structure_usable": true,
+          "reported_totals": {
+            "X": 87.25,
+            "Y": 96.0,
+            "Z": 94.5
+          },
+          "recomputed_totals": {
+            "X": 88.75,
+            "Y": 97.25,
+            "Z": 95.75
+          },
+          "total_mismatches": [
+            {
+              "candidate": "X",
+              "reported": 87.25,
+              "recomputed": 88.75
+            },
+            {
+              "candidate": "Y",
+              "reported": 96.0,
+              "recomputed": 97.25
+            },
+            {
+              "candidate": "Z",
+              "reported": 94.5,
+              "recomputed": 95.75
+            }
+          ],
+          "reported_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "normalized_pairwise": [
+            {
+              "left": "Z",
+              "right": "Y",
+              "winner": "tie"
+            },
+            {
+              "left": "Z",
+              "right": "X",
+              "winner": "Z"
+            },
+            {
+              "left": "Y",
+              "right": "X",
+              "winner": "Y"
+            }
+          ],
+          "pairwise_mismatches": [],
+          "quote_deviations": [
+            {
+              "candidate": "X",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "固定80题错误细节集，再...抽40题"
+            },
+            {
+              "candidate": "X",
+              "dimension": "D6",
+              "kind": "not_exact_candidate_substring",
+              "quote": "每题恰好两次7B调用...预算上限2 GPU小时"
+            },
+            {
+              "candidate": "Y",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "固定80题冲突子集...分层随机抽40题"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D4",
+              "kind": "not_exact_candidate_substring",
+              "quote": "κ、相当F1、80题误选率...变化率"
+            },
+            {
+              "candidate": "Z",
+              "dimension": "D5",
+              "kind": "not_exact_candidate_substring",
+              "quote": "纳入固定80题错误细节集...抽40题"
+            }
+          ],
+          "validation_errors": []
+        }
+      }
+    }
+  }
+}

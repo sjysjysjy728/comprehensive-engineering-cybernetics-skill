@@ -1,0 +1,844 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "CEC-AIIdea-8x3-Dev-1",
+  "artifact_role": "frozen_candidate_outputs_after_reveal",
+  "source_freeze_sha256": "984eca608a46ea3895bcae23963aec7f375383e2b6c0e9277af3b8681975ad70",
+  "generation": {
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "fresh_context_per_task_arm": true,
+    "isolation_level": "prompt_trace_only",
+    "quality_retries": 0,
+    "usage": "unavailable"
+  },
+  "summary": {
+    "total": 24,
+    "valid": 22,
+    "precheck_invalid": 2,
+    "invalid_candidates": [
+      {
+        "task_id": "IDEA-06",
+        "arm_id": "legacy",
+        "reason": "malformed JSON envelope"
+      },
+      {
+        "task_id": "IDEA-07",
+        "arm_id": "legacy",
+        "reason": "answer length 780 exceeds 600-code-point cap"
+      }
+    ]
+  },
+  "candidates": {
+    "IDEA-01": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先验证“框引导的前景—背景解耦增强”：从7,000张框标注图裁出动物，将其按真实分布、并提高小于画面4%的比例，粘贴到训练集空画面和不同拍摄点背景；同时保留较多原始空画面作为硬负样本。该方法只改变训练，不增加模型大小或推理耗时，直接针对背景捷径、小目标漏检和空画面误报。\\n\\n最低成本验证共2 GPU小时：从同一现有ConvNeXt-T检查点出发，用相同步数和采样各微调1小时；对照组沿用普通增强，实验组加入上述增强。只用84,000张训练图及现有框训练；12,000张同地点和6,000张偏移开发集仅评估。主看偏移macro-F1，辅看同地点macro-F1、小于4%动物召回率、空画面误报率，并复测延迟与模型大小。若偏移macro-F1提升不足0.04，或小目标召回提升不足0.08，或空画面误报未下降至少4个百分点，或同地点低于0.86，则放弃。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "c00c739305dea1bab13b0edd861b54a8adb72fab72bac58a99af3242867c6817",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 377,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：框引导的“前景—背景解耦”增强。假设普通随机裁剪丢失小动物且模型依赖拍摄点背景。仅用训练集：从7,000个动物框裁出带少量上下文的前景，缩放至画面占比1%–8%，粘贴到其他训练地点的空画面，并约束同一前景跨背景预测一致；原始样本仍保留。该方法只改变训练，推理结构不变。\\n最低成本验证（F1，尚未运行）：从现有ConvNeXt-T检查点出发，总GPU时间封顶2小时；对照组用原增强继续训练50分钟，实验组等步数、同初始权重与采样训练50分钟，余时评测同地点及两个偏移地点。比较macro-F1、逐地点F1、<4%动物召回、空画面误报率，并复核延迟和模型大小。\\n放弃条件：偏移macro-F1提升不足0.03、任一偏移地点下降、<4%召回提升不足0.08、空画面误报未下降至少4个百分点，或同地点F1低于0.86；任一触发即判定核心预测未获支持。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "de51a8887a2e3fd86c05f5fb3560552d7c8d7a6b03e82781a0b04405019a9aaa",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 380,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先验证：框引导的跨拍摄点反事实一致性训练。假设当前模型依赖地点背景，导致小动物漏检和空画面误报。核心是用7,000个动物框裁出前景，缩放至画面1%–8%，粘贴到另一训练点的空画面；将“同一背景无动物/加入动物”和“同一动物跨背景”组成配对，并约束预测只随动物出现而改变。推理仍用原ConvNeXt-T，不增加模型或耗时。\\n最低成本验证（总计≤2 GPU小时）：从现有模型同一权重出发，各微调一个等步数实验臂；实验臂使用全部框图及按类别、地点匹配的训练集空画面，控制臂使用相同图片、采样次数和普通裁剪/颜色增强。仅在训练完成后评测6,000张偏移开发集和12,000张同地点开发集，最终集不触碰。主指标为偏移macro-F1；机制指标为小于4%动物召回率和空画面误报率；同时检查同地点macro-F1、延迟和模型大小。若相对控制臂偏移macro-F1提升不足0.03，或小动物召回未提升至少0.08且空画面误报未下降至少4个百分点，或同地点低于0.86，即放弃该机制。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "59be7f03de4dc6f97e33af7adfd9d596e77eb9da1ba3a2c105e88077cd653b7b",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 435,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-02": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先 idea：在现有 RNN-T 单一 beam 内加入可热更新的字符级产品名 Trie 偏置，不增设声学路径或第二语言模型。仅当当前声学后验支持目录前缀时给予受限增益，完整命中再奖励，未完成前缀回撤；用无产品名片段校准门限，抑制误插入。32,000 个名称离线编译 Trie，目标 5 分钟内装载生效，模型参数基本不变。\\n最低成本验证：将固定4小时按说话人和产品名分成2小时调参与2小时盲测；盲测分别报告训练中出现过的名称、被人为留出且训练中从未出现的名称，并加入无产品名语句。比较同一 RNN-T 基线与“RNN-T+Trie”，网格搜索偏置强度和声学门限。通过：盲测产品名总体召回≥58%，且已见、未见两组均高于基线；非产品名CER≤7.8%，负样本误插入≤1.2%，p95≤220 ms，模型≤400 MB，目录更新≤5分钟。任一超限或任一名称组不提升即否决。成本约1.5 GPU小时、0.5工程师日。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "aa9ea5ef432a10def3fe75d44302160e2f6acd96bc6896daa761b1fb845e24ef",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 407,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：在现有 RNN-T 的同一束搜索中加入“动态目录前缀 Trie 偏置”。把当周产品名按现有输出 token 编成 Trie；仅当假设与目录前缀一致时累加受上限约束的偏置，完整名称结束后立即清零，并用无名称语句校准触发门槛。它不增加声学路径或第二语言模型，目录只需重新编译 Trie，模型参数基本不变，可在5分钟内更新。核心竞争解释是召回提升仅来自宽松搜索并伴随误插入。\\n最低成本验证：固定4小时混合录音，按名称隔离，分别统计训练中出现名、完全留出名；另加入固定的无产品名标注负样本。与原 RNN-T 在相同 beam、硬件和流式设置下配对比较，只在独立校准子集搜索偏置强度/上限，锁定后评测。通过：按最终37%未见名比例加权的严格召回≥58%，两类名称均不低于基线；非名称CER≤7.8%、误插入≤1.2%、p95≤220 ms、模型≤400 MB、目录编译≤5分钟。任一项失败即否决。成本：约1.5 GPU小时解码与扫参，0.5工程师工作日，无训练和新标注。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "12e956b215e2e65c757ef3e5df34f0cebdcb0d8b56e9f98db00d76aa7db42d72",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 439,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先idea：在现有RNN-T的同一束搜索内加入“目录前缀Trie门控偏置”。用原分词器把当周32,000个产品名编成Trie；仅当假设命中目录前缀且声学分数处于可混淆区间时逐步加分，完整命中给封顶奖励，失配立即衰减。它不增加声学路径或第二语言模型，模型仍为338 MB；换目录只重编Trie，目标小于5分钟。最低成本验证：从28小时混合录音固定留4小时，按名称划分并保证“未出现组”在其余全部训练录音中为零；测试集产品名实例按最终分布含37%未出现名，同时保留无产品名负样本。用其中0.5小时锁定偏置强度和门限，余3.5小时在相同模型、beam和硬件上配对比较原解码器；分别报告出现名、未出现名召回，并报告总体召回、非产品名CER、误插入率、p95、目录加载时间。通过：总体召回≥58%，两组召回均高于基线，CER≤7.8%、误插入≤1.2%、p95≤220 ms、模型≤400 MB、更新≤5分钟；任一失败即否决。成本预计≤1.5 A100小时、半个工程师日；无需训练和新增转写。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "2f223928a2f2e15d114df2079cff6c79235bf3d82665d23a12e5cd0326197d44",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 443,
+          "answer_cap": 550,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-03": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先 idea：在现有检索与生成之间加入“版本—时点证据门控”。它从问题解析产品、指定版本或历史日期；对一次检索得到的候选，仅保留同产品且在目标时点有效的章节，精确版本优先，并用同章节发布日期区间近似缺失的替代关系。门控同时计算可回答置信度：没有合格证据或证据相互冲突时，给7B模型传入“不可回答”标记；回答只能引用保留片段。仍是一次检索、一次生成。\\n最低成本验证：从开发集分层抽900题，其中300题含新旧冲突（至少一半为历史时点）、300题为指定版本无答案、300题为普通题；用前200题确定门控阈值，余700题做配对盲测。固定检索结果、解码参数和模型，比较原证据包与门控证据包，按开发集真实占比加权统计总体正确率、冲突正确率、引用支持精度、无答案错误作答率及p95；另看合格支持片段recall、上下文长度和普通题退化。预计主要收益来自阻断过时片段和证据不足时拒答，副作用是替代关系不全导致误删。总推理不超过2 GPU小时。若任一目标未达标，普通题正确率下降超过2个百分点，合格支持recall低于90%，或p95超过3秒，即否决。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "3a062cc760eefbf72e7a960d9544a73625a92417b8da60b6783c57ee0710ffd8",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 470,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：版本—时点约束证据门。对单次混合检索的 top-8，以问题中的产品号、指定版本或历史截止日为条件，联合语义相关性判断片段是否可用；用训练集支持片段作正例、同产品其他版本的冲突片段作硬负例。只把通过门限的证据送入原7B模型；没有足够支持时输出“该版本无答案”。它直接针对过时证据采纳、引用失真和错误作答，仍保持一次检索、一次生成。\\n最低成本验证：从开发集去重抽取不超过1000题：500题均匀随机用于估计总体，另补200道版本冲突、150道无答案、150道历史时点题；不足则用随机题补齐。复用缓存的top-8和基线输出，仅训练轻量门控并运行一次门控后生成，GPU总计封顶2小时。与基线做逐题配对，观察总体正确率、冲突正确率、引用支持精度、无答案错误作答率、p95，并记录有效旧版证据被误删、正常题拒答增加及延迟。若冲突<65%、引用<78%、无答案错误率>20%、随机样本总体不足79%，或正常可答题正确率下降超过2个百分点、p95>3秒，即否决；接近阈值但置信区间跨线也不进入完整预算。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "66280daebdb4109fe61c26a787d26bcad0468d865253307b74abf684fba26e47",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 452,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先 idea：版本—时点一致性证据门。把问题中的产品号、指定版本或历史日期编译成检索约束；对一次混合检索返回的候选按“发布时间不晚于目标时点、产品匹配、版本一致、支持强度”统一重排，只向7B传入相容证据；若最高相容证据低于由开发集校准的阈值，则输出无答案。Core 是在生成前消除过时冲突并以同一证据分数决定拒答，而非改提示词。\\n最低成本验证：抽取不超过1000题，优先覆盖全部版本冲突题、无答案题和历史时点题，其余按产品系列与普通题分层补齐；同一候选池、7B、提示词和解码下，与现系统配对比较。记录总体正确率、冲突正确率、引用支持精度、无答案错误作答率、gold 支持片段保留率及p95，并检查误删有效旧版证据、拒答过多和版本关系缺失造成的回退。仅做阈值校准与一次评测，预算封顶2 GPU小时。若任一硬指标未达79%/65%/78%/≤20%，p95超过3秒，或相容gold保留率显著下降，即否决该机制；未检索创新性，状态为not-searched。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "689c84eb70a1da0e0a1ae7552376efed97729131c90fa7ca81aeb4181a9d9ac6",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 428,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-04": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先 idea：训练“基线锚定的保守约束策略”。用未含开放随机集的日志学习7日活跃、退订和发送成本的动作优势；仅当优势的置信下界为正且历史动作概率≥0.05时偏离当前启发式，否则沿用启发式。以拉格朗日约束同时控制退订、发送量及四组最差活跃变化；蒸馏为一个≤30M参数的统一策略。主比较对象为当前启发式，现有两个模型仅作参照。冻结策略后，在2万条均匀随机序列上用已知1/3概率的交叉拟合序贯双重稳健估计，按用户周配对bootstrap得到95%区间；分别报告新用户、沉默、普通和高活跃组，并检查有效样本量、权重尾部及DR与截尾IPS一致性。验证限2 GPU小时。通过：7日活跃点估计≥4%且区间下界>0；退订增量区间上界≤0.10个百分点；平均发送增量上界≤3%；四组活跃增量区间下界均≥−1%。任一不满足、估计器方向不一致或有效样本量不足即否决，不进入最终评测。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "cfd652eb2ddd8b8dfd8ac27c2e0df28909e634785cfe580fc12cd9cd1480dbc0",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 382,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：训练一个≤30M参数的“支持约束、分组安全”统一策略。它直接最大化7日活跃的保守下置信界，同时把退订、发送量及四组活跃设为硬约束；仅在历史倾向概率≥0.05或随机数据证实有支持时改变动作，并以靠近当前启发式策略的惩罚抑制外推。正式基线为当前启发式策略；两个现有模型仅作诊断比较。\\n最低成本验证：候选及超参先用非开放验证集的数据冻结，开放的2万条随机序列只评测，不调参；保留其1/3已知倾向，采用按用户交叉拟合的增广逆倾向加权估计，按用户聚类bootstrap，报告相对差、95%区间、有效样本量和权重尾部。分别检查新用户、沉默用户、普通用户、高活跃用户，并核对动作/时段切片。最多2 GPU小时用于训练与五折预测，其余为CPU统计。\\n通过标准：相对启发式的7日活跃点估计≥4%且95%区间下界>0；退订差的95%上界≤0.10个百分点；平均发送增幅上界≤3%；四组活跃差各自95%下界≥−1%，且无支持不足或极端权重。任一不满足、区间无法判定或直接7日模型的增益不能被稳健估计复现，即否决，不进入最终12万条评测。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "15b7cb830cdfb7f07060c3384f62696d9083a8ff0e4b83f0c7b2b04de75f19f4",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 466,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先idea：组鲁棒、支持约束的7日增量策略。用≤30M参数的轻量网络估计三种动作相对当前启发式的7日活跃增量，同时预测退订；以当前策略为锚，仅在动作有效样本量充足且活跃增量下置信界为正时改变动作，并用拉格朗日约束发送量、退订及四组最坏活跃变化。其核心假设是现有模型的问题来自短期代理目标和低重叠外推；若移除支持门控或分组约束后收益不变，则否决该机制。\\n最低成本验证：模型只用非开放历史数据训练，固定一次配置，≤2 GPU小时；开放的2万条均匀随机序列仅作盲验证。比较当前启发式、次日模型、直接7日模型和本策略。按已知1/3倾向概率做交叉拟合序贯双重稳健估计，按用户聚类bootstrap，并用max-t构造同时95%区间；报告总体7日活跃、退订、发送量及四组活跃差异和有效样本量。\\n通过：相对启发式总体点估计≥4%且95%下界>0，退订增量95%上界≤0.10个百分点，发送量增幅上界≤3%，四组活跃下界均≥−1%，且无权重爆炸。任一条件失败、区间不可辨识或收益主要来自低有效样本动作即否决，不查看其余12万最终集。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "e6ba2d88853e1457397b8299c97b9be11e8a8537a5fa9f38c425cf0ca80c6d28",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 460,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-05": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先idea：因果一跳“首日桥接”编码器。按事件时间流式维护账户的金额、频率、设备/MCC新颖度及旧对手方行为嵌入；新账户仅聚合其当时已连接旧账户的缓存嵌入，并与首24小时序列经小型注意力网络融合。标签只用于损失，采用正例加权和新账户分层采样；不查两跳，在线只做状态更新与一次前向。\\n最低成本验证：用第1—8周最终标签训练，第9周首次出现账户定义为新账户；逐事件回放并截断全部未来记录，第10—12周完全封存。固定一次模型配置、单卡训练不超过2小时；在同一第9周账户及评分时点复算因果度数GraphSAGE(0.21)和逐交易树(0.17)。主指标为账户级AUPRC、新账户FPR=0.2%召回；另实测单请求p95、峰值显存及序列化在线状态。若第9周AUPRC<0.27、召回<0.34、95%自助法下界未超过GraphSAGE，或p95>30ms、状态>8GB、显存>12GB、训练>2小时，否决该idea。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "9cbe6c46811a61baa6be5cd04808d3c732b6ab45f2ef84a948eb3b68c8c5d1d1",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 406,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：因果单跳“旧邻居状态蒸馏”。为每个旧账户维护仅由当前交易前记录生成的轻量状态（近期金额/频率、设备与商户变化、可见度数及时间衰减）；新账户连接旧账户时，只聚合一跳旧邻居状态、边新近度和自身24小时轨迹，由浅层模型评分。核心预测是：一跳旧邻居的行为状态而非“是否连接旧账户”，能区分新账户风险，同时省去两跳采样。\\n最低成本验证：用第1—8周训练，第9周作一次固定协议验证；第10—12周完全封存。最终调查标签只作监督/评测，不作特征；每条样本按交易时刻截断。与因果GraphSAGE及逐交易树模型在相同样本、阈值和特征时点比较。主指标为AUPRC、新账户FPR=0.2%召回；守护指标为全量回放p95、在线状态峰值。先CPU流式生成状态，3090训练一个固定种子并做消融（移除旧邻居状态），总GPU≤2小时、显存≤12GB；实测状态≤8GB、p95≤30ms。若第9周AUPRC<0.27、召回<0.34、任一资源越界，或消融无明显下降，则否决；即使通过也仅升级最终评测，不宣称达标。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "2e06d386e53f4fc2d6b81fdda374b1e605b169761d44c29ffe5b3700c14394c8",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 450,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先 idea：因果单跳“可信锚点记忆”。为每个旧账户维护固定宽度的流式状态（仅含时刻t前的金额/频率突变、设备与商户稳定性及由这些行为产生的风险分）；新账户首24小时仅聚合直接相连旧账户状态的max/mean、连接时序和设备一致性，再由小型GBDT评分。核心预测是：连接“质量”而非是否连接可区分新账户风险，同时免除两跳采样。\\n\\n最低成本验证：按时间重放1—8周生成逐笔前视安全状态并训练；冻结模型，在第9周顺序更新无标签状态，绝不使用第9周后记录或第9周标签作特征/更新。与修正未来度数后的GraphSAGE和现有树模型在相同样本、账户聚合规则下比较，并做移除锚点记忆的核心消融。报告总体AUPRC、新账户FPR=0.2%召回；同时实测p95、峰值显存、状态字节数和训练GPU时，门禁为≤2 GPU时、≤12 GB，推理≤30 ms、状态≤8 GB。\\n\\n若第9周AUPRC<0.27、新账户召回<0.34、核心消融增益<0.02，或任一资源边界失败，即否决该idea；第10—12周保持封存。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "f203d6f82b0fbe9564753adf80e76b4909a069b782441dd0756e0a6e4be3973a",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 449,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-06": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先idea：层级标签感知的个性化分布鲁棒联邦学习。轻量共享编码器先按转速作相位重采样，各厂保留传感器归一化、适配器和分类头；6家粗标签厂用P(机械)=P(轴承磨损)+P(轴不对中)的边际损失，避免伪拆分；服务器用加噪64维类原型对齐表示，并按低绩效工厂加权聚合。开发集选全部6家粗标签厂及覆盖样本量、转速、传感器两端的4家细标签厂，其余14家仅作迁移验证。每个粗标签厂从训练历史中按模型分歧、转速和设备分层复查10段，共60段；冻结的本地验证集和最终测试均不检查。验证仅3轮，与同初始化、同采样、同字节的FedProx比较；FedAvg和独训既有结果作背景。上传裁剪加噪、稀疏int8更新及摘要，验证ε≤1；推进后余下9轮ε≤4，每轮≤3.3MB/厂，累计≤40MB。2 GPU小时内观察平均及最差macro-F1、四类召回、粗/细标签厂差距、通信和隐私账本。若相对FedProx平均提升<0.02、最差提升<0.07，或最差仍<0.48、任一类召回<0.50，或14家迁移集无一致收益，即放弃。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "e515147929776482437d7adb842ac2bdd13a671da903f5024f541aac980fe214",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 450,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "**最优先 idea：标签层级感知的鲁棒联邦原型学习。**  \n假设 FedProx 的短板来自粗标签梯度把两种机械故障压成一类，并与转速/传感器域偏移耦合。客户端保留转速、传感器条件化适配器；共享编码器。细标签厂上传加噪64维类原型，粗标签厂以 \\(P(机械)=P(磨损)+P(不对中)\\) 训练；服务器按高损失工厂加权，直接压低尾部风险。更新与摘要统一裁剪、加噪并联合记账，三轮累计 ε≤5。\n\n**最低成本验证（F2）：**24厂均参加3轮；预先指定全部6家粗标签厂及按样本量、转速、传感器分层选出的6家细标签厂调参，其余12家验证指标锁定至结束。每个粗标签厂审查10段非测试历史记录：5段分层随机、5段取两机械类预测分歧最大者，共60段，仅作机制审计。\n\n与相同初始化、数据、局部步数、隐私和上行预算的 FedProx 并行比较；两模型合计每厂≤40 MB，服务器≤2 GPU小时。观察平均/最差工厂macro-F1、四类召回、机械两类混淆、工厂间方差、随机与困难审查集结果、ε和字节数。\n\n若最差工厂增益＜0.05、平均F1下降＞0.01、任一机械类召回无改善，或隐私/通信越界，则放弃。通过也仅支持升级实验，不代表达到最终验收。\n",
+        "raw_sha256": "991cb55835fe2f40a2ca658d8641f79388c74c2381c21450e95a937cdefd9dbc",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "malformed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": false,
+          "envelope_valid": false,
+          "attestation_valid": false,
+          "answer_codepoints": null,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先 idea：层级标签一致的个性化联邦最坏域优化。共享轻量时序编码器和四类头，各厂保留传感器/转速条件归一化；6家粗标签厂以P(机械故障)=P(轴承磨损)+P(轴不对中)训练，不伪造细标签；服务器按工厂验证损失上尾加权，集中修正弱厂。预测是粗标签厂及设备域偏移厂改善最大，且两种机械类混淆显著下降。\\n\\n最低成本验证：24厂均参加3轮；开发厂选全部6家粗标签厂，再按传感器、转速、样本量覆盖选4家细标签厂，包含当前最差厂。复核60段：粗标签厂各先抽5段高不确定机械记录，余30段按两细类分歧和域覆盖分配，仅用于开发。与同模型容量、本地步数、隐私和字节预算的FedProx比较；最终测试不检查、不调参。交换裁剪加噪更新及64维摘要，试验累计ε≤1.2、每厂上行≤10MB、服务器≤2 GPU小时。\\n\\n观察24厂平均及最差macro-F1、四类召回、机械类混淆、粗/细标签分组、跨轮方差、ε和通信量。若第3轮未达平均0.74、最差0.55、各类召回0.50，或较FedProx的机械混淆未降20%，或触碰资源边界，则放弃。基线与约束为reported；机制创新性not-searched，结论待实验。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "f22c51314cfb561369ec2a87514683cbe1676dc5fcd4469904ca9e93b3026ce5",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 499,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-07": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先 idea：供体外校准的“属性边界—去记忆—多样性”稀有样本选择器。将开发供体再分为校准/审计两组；用冻结编码器和训练图建立24类原型及局部密度。每个稀有组合生成250张，共2,000张；仅保留其目标原型相对最易混淆原型有足够间隔、位于真实图密度区、且对任一训练图SSIM<0.94的样本，再按嵌入最远点选取平衡子集。该方法不改扩散模型，筛选开销很小，部署生成时延基本不变。\\n比较对象：原始LoRA等量未筛选样本，以及不加生成数据的分类器。属性匹配由两个分别基于不同供体训练的冻结编码器线性探针一致判定，阈值只在校准组确定；所有指标在未参与调参的审计供体上报告，分类器采用相同训练配方并做配对bootstrap。随机盲抽40张，由专家二选一判定形态合理/不合理。\\n继续标准：稀有匹配≥70%、训练近邻超相似≤2%、专家合理≥32/40、稀有macro-F1较真实数据基线提升≥0.04、常见下降≤0.01，且优于等量未筛选组；任一不满足即否决。预计2,000张生成约1.1 GPU小时，筛选与分类验证合计控制在2 GPU小时内。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "70874bb43922bc7d707549fc69ca6ca4042bc5104ca51b5166ceb7111c22dc75",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 467,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：稀有条件均衡的“原型对齐—防复制”LoRA。训练时重采样8个稀有组合，以冻结编码器构建24类原型；对生成结果加入目标原型吸引、非目标原型排斥及最近训练样本表征排斥，并回放常见组合以防遗忘。Core 是条件原型约束与防复制约束同时存在。\\n最低成本验证：候选与现有LoRA使用相同提示、种子和采样参数，各生成800张（每个稀有组合100张），总计1600张；训练与生成合计硬限2 GPU小时。属性严格匹配同时用现有评价器和仅由冻结编码器、开发集校准的原型判别器评估；对全部训练图计算最近邻SSIM。分别用真实训练集、加入候选图、加入基线图训练同规格分类器，在供体隔离开发集比较稀有/常见macro-F1；最终 slots=\\\",\\\" tests data remain untouched.40 candidate charts according to combined tiers, blind second-choice decisions in form of admissibility. \\n continuation criteria: both types of property evaluation ≥ 70%, SSIM ≥ 0.94 ≤ 2%, expert acceptable at least 37/40, rare F1 compared to real world ≥ +0.04 and better than the same amount of baseline, usual decline ≤ 0.01; any failure is rejected, if only expert samples are uncertain, it is not allowed to claim compliance.\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "0a4e6c1fe4001ef7b09f1613bbc3bdc83a074e73d9bed7811593cb3852235bb3",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": false,
+          "attestation_valid": true,
+          "answer_codepoints": 780,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": [
+            "over_cap",
+            "expected_valid_envelope"
+          ]
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先 idea：将24类原子条件 LoRA 改为“因子化残差 LoRA”：阶段、药物、形态等级分别学习共享低秩控制量，稀有组合仅学习受范数约束的小交互残差；训练时按组合及供体均衡采样，并用冻结编码器施加正确组合原型间隔和训练近邻排斥。假设是常见组合可提供可迁移因子，残差只补交互，因而同时减少稀有条件混淆与记忆；比较对象为现有原子条件 LoRA。\\n最低成本验证：开发供体预先分成校准/评估两部分，最终测试保持封存；2 GPU小时内训练该 LoRA。新旧模型使用相同种子，各生成1000张：每个稀有组合100张，另200张按常见组合分层。属性匹配取经校准的现评价器与冻结编码器原型分类器的一致判定；逐图计算对训练集最大SSIM。各用对应1000张、相同预算扩充同一分类器，在评估供体测两类macro-F1。对新模型每个稀有组合盲抽5张，共40次专家“合理/不合理”二选一。\\n继续标准：稀有匹配≥70%、SSIM≥0.94比例≤2%、专家至少37/40合理、稀有F1较不扩充提升≥0.04且常见下降≤0.01，并优于旧LoRA；任一不达即否决，不以总体FID补偿。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "ad1c0c802c1b749201a9abf487ec8e0c359b1d40d0962b603ba02cd7e89e4fa1",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 481,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    },
+    "IDEA-08": {
+      "no_skill": {
+        "raw": "{\"answer\":\"最优先 idea：做“交换对称、证据约束的校准裁决器”。每题让7B以固定低温分别评A/B和B/A，映射回原顺序后平均偏好分；400M NLI逐句计算两答案相对支持材料的矛盾率。仅用240个训练标签拟合带单调约束的三分类校准器，特征为对称偏好分、两次分歧、双方矛盾率及长度差；设置对称的“相当”区间，并规定明显矛盾答案不得获胜。这样仍仅调用7B两次，且最终规则天然不依赖顺序。\\n最低成本验证：在160个开发样本中预先取120个：纳入固定80题错误细节集，再从其余样本按人工三类和长度胜负关系分层、固定随机种子抽40题；用已知抽样概率加权还原开发集分布。冻结校准器后同时跑现有评委与新方法，预算约240次7B调用和NLI批处理，限2 GPU小时。报告加权κ、“相当”F1、80题误选率、同一120题交换顺序后的变化率，并给配对bootstrap 95%区间。若点估计任一未达0.65、0.55、8%、5%，或κ及相当F1相对基线的提升区间包含0，即否决；80题误选超过6题也直接否决。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "569b87f1c86deb4b775ab0e61ab960c023fec08e0ef4e679bc7995767bd6e7d1",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "none"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 440,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "legacy": {
+        "raw": "{\"answer\":\"最优先 idea：证据约束的顺序对称评委。每题让同一7B分别按A/B与B/A评判，将结果映射回答案身份后平均分数；400M NLI逐句检查候选与支持材料的矛盾。用240个训练标签拟合一个三分类校准器，输入对称分数、两次分歧、长度差及矛盾分；若一方存在高置信矛盾而另一方没有，则禁止选择该方。阈值只在训练集确定，核心是同时消除位置/长度捷径并提高“相当”的判别。\\n最低成本验证：在开发集取固定80题错误细节集，再从其余80题按人工类别、长度差和答案顺序分层随机抽40题；固定随机种子。与现有单次7B评委在同一120题配对比较；新方法每题恰好两次7B调用，NLI结果缓存，预算上限2 GPU小时。\\n报告按抽样概率加权的κ、“相当”F1；80题误选率；120题交换后变化率；另报p95延迟和配对bootstrap区间。任一条件即否决：κ<0.65、相当F1<0.55、80题误选超过6题、交换变化超过6题、p95>4秒、耗时>2 GPU小时，或任一主指标相对基线的95%配对bootstrap下界≤0。通过仅表示值得在完整160题复验，不等于最终达标。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "8d8d555ffe3880c9333155456b04e1567c6cbc0ff98cec2f5d27722bdd2b18c6",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "legacy",
+            "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+            "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+            "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 473,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      },
+      "current": {
+        "raw": "{\"answer\":\"最优先 idea：证据门控的顺序对称裁决器。对每题以AB、BA各调用7B一次，将反向后的偏好分数取均值，并加入两次分歧、长度差及400M NLI检测到的“答案—支持材料”最大冲突分数；用240个训练标签做五折交叉拟合的多项逻辑校准，学习A/B/相当边界，冲突分数只允许降低对应答案胜率。该机制直接针对位置、长度、事实冲突和相当类阈值。\\n最低成本验证：冻结模型后，在开发集取固定80题冲突子集，再从其余80题按人工类别、长度差、原评委结果分层随机抽40题；总体指标按抽样概率加权。与现有单次7B评委比较加权κ、相当F1、80题误选率；对120题整体交换顺序，测判决变化率，同时记录p95时延。用配对bootstrap给95%区间。若κ或相当F1点估计未达0.65/0.55，冲突误选率或换序变化率超过8%/5%，任一改进区间不优于基线，或耗时超过2 GPU小时、p95超过4秒，即否决，不进入完整开发。\",\"isolation_attestation\":{\"used_tools\":false,\"read_files\":false,\"used_web\":false,\"used_other_skills\":false,\"used_subagents\":false,\"used_cross_run_memory\":false}}\n",
+        "raw_sha256": "2f69cc2bfaae51bf5d5adaae05525fb9e91770ed196c87cfda68839321c39182",
+        "run": {
+          "model": "gpt-5.6-sol",
+          "reasoning_effort": "high",
+          "fresh_context": true,
+          "isolation_level": "prompt_trace_only",
+          "instruction_bundle": {
+            "kind": "current",
+            "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+            "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+            "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+          },
+          "retry_of": null,
+          "status": "completed",
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "total_tokens": null,
+            "available": false
+          }
+        },
+        "precheck": {
+          "strict_json_valid": true,
+          "envelope_valid": true,
+          "attestation_valid": true,
+          "answer_codepoints": 400,
+          "answer_cap": 600,
+          "leakage_hits": [],
+          "json_error": "",
+          "validation_errors": []
+        }
+      }
+    }
+  }
+}

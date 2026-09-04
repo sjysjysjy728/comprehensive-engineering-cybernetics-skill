@@ -18,6 +18,11 @@ evaluations/ai-ideation/PILOT.md
 evaluations/ai-ideation/RESULT.md
 evaluations/ai-ideation/RUBRIC.md
 evaluations/ai-ideation/TASK.md
+evaluations/ai-ideation/behavioral-8x3/PROTOCOL.md
+evaluations/ai-ideation/behavioral-8x3/RUBRIC.md
+evaluations/ai-ideation/behavioral-8x3/commitments/prerun.json
+evaluations/ai-ideation/behavioral-8x3/prompts/CANDIDATE.md
+evaluations/ai-ideation/behavioral-8x3/prompts/JUDGE.md
 evaluations/ai-ideation/evaluate.py
 evaluations/ai-ideation/result.json
 evaluations/ai-research/RESULT.md

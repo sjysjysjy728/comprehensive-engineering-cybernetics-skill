@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "evaluation_id": "CEC-AIIdea-8x3-Dev-1",
+  "status": "preregistered_before_generation",
+  "date": "2026-09-04",
+  "task_count": 8,
+  "arms": [
+    "no_skill",
+    "legacy",
+    "current"
+  ],
+  "samples_per_task_arm": 1,
+  "generator": {
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "fresh_context": "fork_turns=none"
+  },
+  "judge": {
+    "model": "gpt-5.5",
+    "reasoning_effort": "high",
+    "fresh_context": "fork_turns=none",
+    "passes": [
+      "forward",
+      "reverse"
+    ]
+  },
+  "target_versions": {
+    "legacy": {
+      "commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+      "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+      "reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+    },
+    "current": {
+      "commit": "43501b979d47dc83ebe59e35154cbb27f26141d5",
+      "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+      "reference_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e"
+    }
+  },
+  "public_file_sha256": {
+    "PROTOCOL.md": "b0c05a83d9efca272ce53b14840535297542e809d2abecf452ed14caa6342d82",
+    "RUBRIC.md": "4129539380b45ff712a62e9afef805c434707ee0f9dacc133dd492a1a8bd1255",
+    "prompts/CANDIDATE.md": "a6dcb22dfff736f2bafb1670803d65420270659bb7d72b8085d3c704a6e5aeb0",
+    "prompts/JUDGE.md": "cd0f5c4e1842dd12dca2415952d89707568f4f3bb3383d0bebee849034c0957c"
+  },
+  "sealed_commitments": {
+    "TASKS.md": "61cde0ec150c5bda50f6e29e6524140239c06719bd2bc02d1ee0f32d0f6178c6",
+    "EVALUATOR_KEYS.md": "9705a3d1985e12434ff22cd041757289e01230c02527a975c406d0986bab8637",
+    "anonymization.json": "79c4edcb85ae5711636d74b2c0f0015ad64e60452c65fbf79eceffddb340183d"
+  },
+  "evidence_ceiling": "exploratory comparison on eight frozen paired development tasks; not a general advantage proof"
+}

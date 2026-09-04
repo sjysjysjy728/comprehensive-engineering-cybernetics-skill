@@ -43,3 +43,31 @@ jobs:
             --repo . \
             --skill . \
             --archive "${RUNNER_TEMP}/comprehensive-engineering-cybernetics.zip"
+
+  windows-compatibility:
+    name: Windows CPython 3.11 compatibility
+    runs-on: windows-2025
+    timeout-minutes: 5
+    env:
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Set up CPython 3.11
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+
+      - name: Run validator self-tests
+        run: python -X utf8 -I -B ci/validate_release.py --self-test
+
+      - name: Run public evaluation regressions
+        run: python -X utf8 -I -B evaluations/run_all.py
+
+      - name: Validate public Skill release
+        run: python -X utf8 -I -B ci/validate_release.py --repo . --skill .

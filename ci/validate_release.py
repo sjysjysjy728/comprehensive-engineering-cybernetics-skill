@@ -537,6 +537,48 @@ def validate_workflow(text: str, findings: list[Finding]) -> None:
         if re.search(r"(?:^|[{: ,])write(?:-all)?(?:$|[}, #])", stripped):
             add(findings, "workflow", ".github/workflows/quality-gate.yml", "write permissions are not allowed")
 
+    lines = text.splitlines()
+    windows_marker = "  windows-compatibility:"
+    try:
+        start = lines.index(windows_marker) + 1
+    except ValueError:
+        windows_body = ""
+    else:
+        end = len(lines)
+        for index in range(start, len(lines)):
+            if re.fullmatch(r"  [A-Za-z0-9_-]+:", lines[index]):
+                end = index
+                break
+        windows_body = "\n".join(lines[start:end])
+
+    windows_lines = []
+    for line in windows_body.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        windows_lines.append(stripped.split(" #", 1)[0].rstrip())
+
+    windows_required_lines = (
+        "name: Windows CPython 3.11 compatibility",
+        "runs-on: windows-2025",
+        "timeout-minutes: 5",
+        'PYTHONUTF8: "1"',
+        'PYTHONDONTWRITEBYTECODE: "1"',
+        "uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "persist-credentials: false",
+        "uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
+        'python-version: "3.11"',
+        "run: python -X utf8 -I -B ci/validate_release.py --self-test",
+        "run: python -X utf8 -I -B evaluations/run_all.py",
+        "run: python -X utf8 -I -B ci/validate_release.py --repo . --skill .",
+    )
+    if not windows_body:
+        add(findings, "workflow", ".github/workflows/quality-gate.yml", "Windows compatibility job is missing")
+    else:
+        for required_line in windows_required_lines:
+            if required_line not in windows_lines:
+                add(findings, "workflow", ".github/workflows/quality-gate.yml", "required Windows compatibility setting is missing")
+
 
 def validate_release_tag(ref_type: str, ref_name: str, findings: list[Finding]) -> None:
     if ref_type == "tag" and not SEMVER_TAG.fullmatch(ref_name):
@@ -738,7 +780,42 @@ def run_self_test() -> int:
     validate_workflow("permissions: {contents: write}\npersist-credentials: true\n", findings)
     require(any(item.message == "write permissions are not allowed" for item in findings), "inline write permission was accepted")
     require(any(item.message == "unsafe workflow setting is present" for item in findings), "persisted checkout credentials were accepted")
+    require(any(item.message == "Windows compatibility job is missing" for item in findings), "missing Windows compatibility job was accepted")
     assertions += 1
+
+    windows_job = """jobs:
+  windows-compatibility:
+    name: Windows CPython 3.11 compatibility
+    runs-on: windows-2025
+    timeout-minutes: 5
+    env:
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+      - run: python -X utf8 -I -B ci/validate_release.py --self-test
+      - run: python -X utf8 -I -B evaluations/run_all.py
+      - run: python -X utf8 -I -B ci/validate_release.py --repo . --skill .
+"""
+    for active_line in (
+        "    runs-on: windows-2025",
+        "      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0",
+        '          python-version: "3.11"',
+    ):
+        indentation = active_line[: len(active_line) - len(active_line.lstrip())]
+        commented = indentation + "# " + active_line.lstrip()
+        findings = []
+        validate_workflow(windows_job.replace(active_line, commented, 1), findings)
+        require(
+            any(item.message == "required Windows compatibility setting is missing" for item in findings),
+            f"commented Windows setting was accepted: {active_line.strip()}",
+        )
+        assertions += 1
 
     findings = []
     validate_release_tag("tag", "v1.2.3", findings)

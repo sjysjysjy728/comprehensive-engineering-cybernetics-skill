@@ -14,6 +14,8 @@
 
 ## 一键复现
 
+完整流程见仓库根目录的 [使用、复现与改进指南](../USAGE_AND_IMPROVEMENT_GUIDE.md)。8 任务包已经公开[完整任务样例](ai-ideation/behavioral-8x3/TASKS.md)、[原始候选](ai-ideation/behavioral-8x3/artifacts/candidates.json)、[原始评委](ai-ideation/behavioral-8x3/artifacts/judgments.json)、[揭盲映射](ai-ideation/behavioral-8x3/reveal/anonymization.json)和[结果](ai-ideation/behavioral-8x3/RESULT.md)，便于复核、定位失败和提出改进。模型生成阶段不能由下述命令或 CI 重放；它们只会对已经冻结的公开产物做确定性复算。
+
 在仓库根目录运行：
 
 ```bash
@@ -37,7 +39,7 @@ ai-research/evaluate.py --check result.json
 ## 证据边界
 
 - 新 AI idea 行为测试有 8 个冻结开发任务，但每臂每题仍只有一个样本；三个原有行为评测和旧 pilot 都是单个合成任务。它们不代表真实项目、真实科研数据或生产分布上的平均效果。AI idea 结构回归甚至不生成候选，只验证发布文件结构。
-- 任务、匿名映射、结果和可复算夹具公开后都已失去盲测资格；资源组合包使用另行派生的公开回归夹具，原始 held-out seed/reveal 未发布。当前命令只能做确定性回归或公开审计，不能重建历史生成条件。
+- 8 任务测试的完整样例、原始候选、原始评委、匿名映射、揭盲和结果公开后均已失去盲测资格；这八题只能用于确定性回归、公开审计和失败分析，不能作为迭代后新的独立效果证据。任何新的效果主张都必须换用未公开任务，并在生成前冻结任务、规则和裁决门槛。资源组合包使用另行派生的公开回归夹具，原始 held-out seed/reveal 未发布；当前命令也不能重建历史生成条件。
 - 各项评测与 pilot 的任务、量表和成本口径不同，分数不能跨项目直接比较。
 - 8 任务测试的隔离证据只是 `prompt_trace_only`，不是操作系统调用级取证；无可比较的 token 或墙钟记录，因此不支持运行时节省结论。
 - AI 初始实验包含匹配的 Skill/无 Skill A/B；8 任务测试和旧 pilot 都包含三臂，但仍是探索性生成；项目交付与资源组合结果都缺少匹配的无 Skill 写作基线。

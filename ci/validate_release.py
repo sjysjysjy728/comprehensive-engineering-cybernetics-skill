@@ -50,6 +50,7 @@ REQUIRED_RELEASE_FILES = (
     "SECURITY.md",
     "SKILL.md",
     "THIRD_PARTY_NOTICES.md",
+    "USAGE_AND_IMPROVEMENT_GUIDE.md",
     "agents/openai.yaml",
     "ci/release-files.txt",
     "ci/validate_release.py",

@@ -195,8 +195,10 @@
   },
   "closed_loop_fix": {
     "trigger": "Initial blind feedback located a UTF-8 portability failure and a claim-to-model hierarchy mismatch.",
-    "current_skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
-    "current_ai_research_reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c",
+    "published_snapshot_commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+    "snapshot_provenance": "post-evaluation byte-identical public snapshot; not a contemporaneous runtime binding",
+    "evaluated_skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+    "evaluated_ai_research_reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c",
     "changes": [
       "Added an explicit Windows PowerShell 5 UTF-8 portability instruction and mandatory reread on garbling.",
       "Added a structural-hierarchy gate requiring matched lower-order main effects for incremental high-order mechanism claims."

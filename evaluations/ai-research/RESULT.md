@@ -39,12 +39,12 @@ R 比 Q 多 254,452 个输入 token，即增加 82.770421%。模型结构成本�
 1. Windows PowerShell 5 在未显式指定编码时把中文 Skill 文本读成严重乱码，可能削弱了语义执行；
 2. Skill 当时没有明确要求“高阶增量 claim 必须保留匹配的低阶主效应”，导致主模型和 rival 层级不一致。
 
-当前版本增加了 PowerShell 5 UTF-8 可移植性指令，以及科研“结构层级门”。修复后文件哈希为：
+定向回归所使用的修订版本增加了 PowerShell 5 UTF-8 可移植性指令，以及科研“结构层级门”。提交 [`3278710dc8a141a5ecb9a7651c86ea2b9da631e6`](https://github.com/sjysjysjy728/comprehensive-engineering-cybernetics-skill/tree/3278710dc8a141a5ecb9a7651c86ea2b9da631e6) 是评测后发布的字节一致快照，不是对评测当时 runtime HEAD 的同时代绑定；其中两个被评测文件的哈希为：
 
 - `SKILL.md`: `14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0`
 - `references/ai-research.md`: `138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c`
 
-这些改动来自已经观察到的初测失败；后续实验因此是 benchmark-informed 的定向回归，不是新的独立验证。
+这些改动来自已经观察到的初测失败；后续实验因此是 benchmark-informed 的定向回归，不是新的独立验证。后续发布可以继续修改 Skill，但不能把该历史 A/B 的结果绑定到新文件或解释为新版本证据。
 
 ## 修复后定向回归：机器指标相同，盲评平局
 

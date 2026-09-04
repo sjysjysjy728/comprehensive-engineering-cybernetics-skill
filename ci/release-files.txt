@@ -14,6 +14,12 @@ agents/openai.yaml
 ci/release-files.txt
 ci/validate_release.py
 evaluations/README.md
+evaluations/ai-ideation/PILOT.md
+evaluations/ai-ideation/RESULT.md
+evaluations/ai-ideation/RUBRIC.md
+evaluations/ai-ideation/TASK.md
+evaluations/ai-ideation/evaluate.py
+evaluations/ai-ideation/result.json
 evaluations/ai-research/RESULT.md
 evaluations/ai-research/RUBRIC.md
 evaluations/ai-research/RUN_PROMPT.md
@@ -37,6 +43,7 @@ evaluations/resource-synthesis/evaluate.py
 evaluations/resource-synthesis/plan.json
 evaluations/resource-synthesis/result.json
 evaluations/run_all.py
+references/ai-ideation.md
 references/ai-research.md
 references/foundations.md
 references/project-delivery.md

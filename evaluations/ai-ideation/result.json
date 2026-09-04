@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0-public",
+  "evaluation_id": "CEC-AIIdeation-Structure-1",
+  "evaluation_date": "2026-09-04",
+  "scope": "deterministic progressive-disclosure and static instruction-payload regression",
+  "baseline": {
+    "source_commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+    "skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+    "ai_research_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c",
+    "pure_ai_instruction_files": [
+      "SKILL.md",
+      "references/ai-research.md"
+    ],
+    "utf8_bytes": 25062
+  },
+  "current": {
+    "skill_sha256": "6ccc7af4657b8be0dfcba20491335173394314e0190de88161004306cfd3ff2d",
+    "ai_ideation_sha256": "e936923e15daa943f6963edb168b637c3271b4f30fb28a8b8decc1bc2fe94e7e",
+    "ai_research_sha256": "a50e92640c49cb40abc0c70e8164257769cbf8b8fd6e10ba6a0aa0cab37533f4",
+    "pure_idea_instruction_files": [
+      "SKILL.md",
+      "references/ai-ideation.md"
+    ],
+    "pure_idea_utf8_bytes": 17326,
+    "full_research_instruction_files": [
+      "SKILL.md",
+      "references/ai-research.md"
+    ],
+    "full_research_utf8_bytes": 24053,
+    "same_context_sequential_files": [
+      "SKILL.md",
+      "references/ai-ideation.md",
+      "references/ai-research.md"
+    ],
+    "same_context_sequential_utf8_bytes": 30080,
+    "same_context_sequential_vs_baseline_percent": 20.022345,
+    "pure_idea_reduction_bytes": 7736,
+    "pure_idea_reduction_percent": 30.867449
+  },
+  "gates": {
+    "pure_idea_routes_to_light_reference": true,
+    "selected_idea_routes_to_full_research": true,
+    "research_accepts_handoff_and_routes_back": true,
+    "ideation_quality_invariants_present": true,
+    "handoff_fields_complete": true,
+    "bounded_novelty_states_complete": true,
+    "legacy_generation_heading_absent": true,
+    "pure_idea_payload_reduction_at_least_30_percent": true,
+    "full_research_payload_not_larger_than_baseline": true
+  },
+  "gate_summary": {
+    "passed": 9,
+    "total": 9,
+    "status": "PASS"
+  },
+  "verdict": {
+    "progressive_disclosure_structurally_verified": true,
+    "static_instruction_payload_reduction_observed": true,
+    "behavioral_idea_quality_advantage_supported": false,
+    "runtime_token_savings_supported": false,
+    "same_context_end_to_end_payload_reduction_observed": false
+  },
+  "limitations": [
+    "UTF-8 bytes are a static instruction-payload proxy, not model input tokens, cache behavior, latency, money or total runtime cost.",
+    "Marker gates verify release structure, not semantic compliance by an agent.",
+    "The public task is not blind and cannot establish better ideas or research outcomes.",
+    "If one context retains both references while moving from ideation to implementation, the cumulative static payload is larger than the old monolithic path."
+  ]
+}

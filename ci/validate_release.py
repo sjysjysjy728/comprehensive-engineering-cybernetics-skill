@@ -30,6 +30,12 @@ MAX_RELEASE_BYTES = 5_000_000
 ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 ZIP_MODE = 0o100644
 SEMVER_TAG = re.compile(r"v(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\Z")
+HISTORICAL_AI_EVALUATION_BINDING = {
+    "published_snapshot_commit": "3278710dc8a141a5ecb9a7651c86ea2b9da631e6",
+    "snapshot_provenance": "post-evaluation byte-identical public snapshot; not a contemporaneous runtime binding",
+    "evaluated_skill_sha256": "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0",
+    "evaluated_ai_research_reference_sha256": "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c",
+}
 
 REQUIRED_RELEASE_FILES = (
     ".gitattributes",
@@ -48,6 +54,12 @@ REQUIRED_RELEASE_FILES = (
     "ci/release-files.txt",
     "ci/validate_release.py",
     "evaluations/README.md",
+    "evaluations/ai-ideation/PILOT.md",
+    "evaluations/ai-ideation/RESULT.md",
+    "evaluations/ai-ideation/RUBRIC.md",
+    "evaluations/ai-ideation/TASK.md",
+    "evaluations/ai-ideation/evaluate.py",
+    "evaluations/ai-ideation/result.json",
     "evaluations/ai-research/RESULT.md",
     "evaluations/ai-research/RUBRIC.md",
     "evaluations/ai-research/RUN_PROMPT.md",
@@ -71,6 +83,7 @@ REQUIRED_RELEASE_FILES = (
     "evaluations/resource-synthesis/plan.json",
     "evaluations/resource-synthesis/result.json",
     "evaluations/run_all.py",
+    "references/ai-ideation.md",
     "references/ai-research.md",
     "references/foundations.md",
     "references/project-delivery.md",
@@ -275,24 +288,20 @@ def validate_project_artifacts(repo: Path, documents: dict[str, object], finding
             add(findings, "evaluation-integrity", relative, f"artifact record does not match {name}")
 
 
-def validate_ai_skill_binding(repo: Path, documents: dict[str, object], findings: list[Finding]) -> None:
+def validate_historical_ai_evaluation_binding(
+    documents: dict[str, object], findings: list[Finding]
+) -> None:
     relative = "evaluations/ai-research/result.json"
     result = documents.get(relative)
     if not isinstance(result, dict):
         return
     binding = result.get("closed_loop_fix")
     if not isinstance(binding, dict):
-        add(findings, "evaluation-integrity", relative, "revised Skill hash binding is missing")
+        add(findings, "evaluation-integrity", relative, "historical evaluated-version binding is missing")
         return
-    expected = {
-        "SKILL.md": binding.get("current_skill_sha256"),
-        "references/ai-research.md": binding.get("current_ai_research_reference_sha256"),
-    }
-    for name, recorded in expected.items():
-        path = repo / PurePosixPath(name)
-        actual = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
-        if recorded != actual:
-            add(findings, "evaluation-integrity", relative, f"revised Skill binding does not match {name}")
+    for name, expected in HISTORICAL_AI_EVALUATION_BINDING.items():
+        if binding.get(name) != expected:
+            add(findings, "evaluation-integrity", relative, f"historical AI evaluation binding changed: {name}")
 
 
 def is_link_like(path: Path) -> bool:
@@ -646,7 +655,7 @@ def validate_release(repo: Path) -> tuple[list[Finding], list[str], int]:
     if "LICENSE" in blobs:
         validate_license(blobs["LICENSE"], findings)
     validate_project_artifacts(repo, documents, findings)
-    validate_ai_skill_binding(repo, documents, findings)
+    validate_historical_ai_evaluation_binding(documents, findings)
 
     return sorted(set(findings)), entries, total
 

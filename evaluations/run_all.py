@@ -9,6 +9,11 @@ from typing import Any
 
 EVALUATIONS = (
     (
+        "ai-ideation",
+        "evaluate.py",
+        ("--check", "result.json"),
+    ),
+    (
         "project-delivery",
         "acceptance_test.py",
         ("counter_merge.py",),

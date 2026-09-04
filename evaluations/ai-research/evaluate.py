@@ -13,8 +13,9 @@ from typing import Any
 
 
 SUBMISSION_SHA256 = "51ca953d0eee5390b35657a9538a67853fe5bc797909e3d356c302208ceece0e"
-SKILL_SHA256 = "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0"
-AI_REFERENCE_SHA256 = "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
+PUBLISHED_SNAPSHOT_COMMIT = "3278710dc8a141a5ecb9a7651c86ea2b9da631e6"
+EVALUATED_SKILL_SHA256 = "14b6fd6a1e831baf92853bb6f9e9c1fa1b473bc2f1343548522daf9350100fb0"
+EVALUATED_AI_REFERENCE_SHA256 = "138c0a49eedfa9159e669e4067360ccaa544eee32a20c77b596ec6012b942e8c"
 
 TERM_COST = {
     "raw": 1,
@@ -356,7 +357,7 @@ def audit_blind_summary(
     exact(f"{label} expected winner", calculated_winner, expected_winner)
 
 
-def audit_result(result: dict[str, Any], submission_path: Path, repo_root: Path) -> None:
+def audit_result(result: dict[str, Any], submission_path: Path) -> None:
     exact_keys(
         "result root",
         result,
@@ -384,10 +385,31 @@ def audit_result(result: dict[str, Any], submission_path: Path, repo_root: Path)
     exact("result nested main effects", public_artifact.get("nested_main_effects_verified"), True)
 
     fix = result["closed_loop_fix"]
-    exact("recorded Skill hash", fix.get("current_skill_sha256"), SKILL_SHA256)
-    exact("recorded AI reference hash", fix.get("current_ai_research_reference_sha256"), AI_REFERENCE_SHA256)
-    exact("checked Skill hash", sha256(repo_root / "SKILL.md"), SKILL_SHA256)
-    exact("checked AI reference hash", sha256(repo_root / "references" / "ai-research.md"), AI_REFERENCE_SHA256)
+    exact_keys(
+        "closed-loop fix",
+        fix,
+        {
+            "trigger",
+            "published_snapshot_commit",
+            "snapshot_provenance",
+            "evaluated_skill_sha256",
+            "evaluated_ai_research_reference_sha256",
+            "changes",
+            "evidence_status",
+        },
+    )
+    exact("published snapshot commit", fix.get("published_snapshot_commit"), PUBLISHED_SNAPSHOT_COMMIT)
+    exact(
+        "snapshot provenance",
+        fix.get("snapshot_provenance"),
+        "post-evaluation byte-identical public snapshot; not a contemporaneous runtime binding",
+    )
+    exact("evaluated Skill hash", fix.get("evaluated_skill_sha256"), EVALUATED_SKILL_SHA256)
+    exact(
+        "evaluated AI reference hash",
+        fix.get("evaluated_ai_research_reference_sha256"),
+        EVALUATED_AI_REFERENCE_SHA256,
+    )
     changes = fix.get("changes")
     require(isinstance(changes, list) and len(changes) == 2, "exactly two closed-loop fixes must be recorded")
 
@@ -519,11 +541,10 @@ def main() -> int:
     here = Path(__file__).resolve().parent
     result_path = args.check if args.check.is_absolute() else Path.cwd() / args.check
     submission_path = here / "submission.json"
-    repo_root = here.parents[1]
     try:
         audit_submission(submission_path)
         result = load_json_strict(result_path)
-        audit_result(result, submission_path, repo_root)
+        audit_result(result, submission_path)
     except (AuditError, OSError, UnicodeError, json.JSONDecodeError, KeyError, TypeError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1
